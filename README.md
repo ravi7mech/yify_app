@@ -1,2 +1,1 @@
-# yify_app
-An Ionic Angular app to access YIFY API
+An Ionic Angular Yify Browser App to access YIFY API
