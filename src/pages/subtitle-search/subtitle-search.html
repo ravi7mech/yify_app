@@ -1,0 +1,70 @@
+
+<ion-header>
+  <ion-navbar>
+      <button ion-button menuToggle style="font-size: 2.4rem;">
+          <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-buttons start *ngIf="hasRecognitionAvailable==true">
+        <button ion-button style="font-size: 20px;" (click)="listenmic()">
+              <ion-icon name="mic"></ion-icon>
+          </button>
+      </ion-buttons>
+  
+      <ion-searchbar [(ngModel)]="textinput" (ionInput)="getItems($event.target.value)" 
+      placeholder="Search movies"
+      [animated]="animated" spellcheck="true"
+        #searchbar>
+  
+  
+      </ion-searchbar>
+  
+    </ion-navbar>
+
+</ion-header>
+
+<ion-content padding #container [ngClass]="(darkui)?'darkcolor':'litecolor'">
+    <div>
+      <ion-spinner color="spinner" name="crescent" *ngIf="asyncCall == true" 
+      style="top: 50%;left: 50%; margin-top: 5px;margin-left: -14px;">
+      </ion-spinner>
+    </div>
+  
+    <ion-list>
+      <div *ngFor="let movie of submovielist" (click)="openMoviePage(movie)">
+          <ion-item *ngIf = "!movie.video">
+                <ion-thumbnail item-start>
+                  <div class="tileimage" [lazyLoad]="getMoviePoster(movie)" 
+                   [scrollTarget]="container.getScrollElement()"
+                   [defaultImage]="defaultImage"
+                   [errorImage]="defaultImage" 
+                  [scrollObservable]="container.ionScroll"
+                    style="background-repeat: no-repeat;
+                     background-size: contain;
+                     height: 107px;
+                     width: 100%;">        
+                  </div>  
+                </ion-thumbnail>
+                  <h2>{{movie.title}}</h2>
+                  <p>{{movie.vote_average}}</p>
+                  <p>{{movie.release_date | date}}</p> 
+                  <p [innerHtml]="getNativeLanguage(movie)"></p>    
+          </ion-item>
+      </div>
+     
+    </ion-list><!-- 
+    <ion-item text-wrap *ngIf="showText">No movies found related to your search ,
+       Try again with complete words !!!</ion-item> -->
+    <ion-fab bottom right>
+      
+              <button ion-fab (click) = "openSettings()" class="animated zoomIn">
+                  <ion-icon ios="ios-settings" md="md-settings"></ion-icon>
+              </button>
+      
+          </ion-fab>
+
+          <ion-infinite-scroll (ionInfinite)="doInfinite($event)" threshold="30%">
+              <ion-infinite-scroll-content loadingSpinner="crescent" color="spinner">
+              </ion-infinite-scroll-content>
+          </ion-infinite-scroll>
+
+  </ion-content>

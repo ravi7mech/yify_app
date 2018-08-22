@@ -1,0 +1,34 @@
+
+<ion-header>
+  
+    <ion-navbar>
+      <ion-buttons start>
+        <button ion-button (click)="search()">
+          <ion-icon name="search" style="font-size: 2.4rem;" ></ion-icon>
+        </button>
+      </ion-buttons>
+      <button ion-button menuToggle style="font-size: 2.4rem;">
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>
+       Browser for YIFY (Yts)  
+      </ion-title>
+      <ion-buttons end>
+        <button ion-button (click)="openPopover($event)" style="font-size: 2.4rem;">
+          <ion-icon name="more"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-navbar>
+  
+  </ion-header>
+
+  
+
+
+<ion-content no-bounce >
+  <super-tabs>
+    <super-tab [root]="page1" title="LATEST"></super-tab>
+    <super-tab [root]="page2" title="TOP RATED"></super-tab>
+    <super-tab [root]="page3" title="SAVED" badge="{{bookmarkcount}}" ></super-tab>
+  </super-tabs>
+</ion-content>

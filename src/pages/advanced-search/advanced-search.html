@@ -1,0 +1,129 @@
+<ion-header>
+
+   <ion-navbar>
+      <button ion-button menuToggle style="font-size: 2.4rem;">
+          <ion-icon name="menu"></ion-icon>
+      </button>
+    <ion-title>Browser for YIFY</ion-title>
+    <ion-buttons end *ngIf="hasRecognitionAvailable==true">
+         <button ion-button style="font-size: 20px;" (click)="listenmic()">
+              <ion-icon name="mic"></ion-icon>
+          </button>
+      </ion-buttons>
+
+  </ion-navbar>
+
+  <ion-toolbar color="bgback">
+    <ion-buttons start>
+            <button ion-button style="font-size: 20px;"  (click) = "advancedSearch()">
+                    <ion-icon name="arrow-forward"></ion-icon>
+            </button>
+      
+      </ion-buttons>
+    <ion-searchbar [(ngModel)]="moviename" (ionInput)="getItems($event.target.value)" 
+    [animated]="animated" spellcheck="true"  [debounce]="250"
+    #searchbar>
+
+
+  </ion-searchbar>
+  </ion-toolbar>
+   
+
+</ion-header>
+
+
+<ion-content padding [ngClass]="(darkui)?'darkcolor':'litecolor'">
+
+    
+     
+     <ion-toolbar color="bgback">
+          <ion-item>
+		<ion-label>Genre</ion-label>
+		<ion-select interface="popover" [(ngModel)]="genre">
+            <ion-option value="Action">Action</ion-option>
+            <ion-option value="Adventure">Adventure</ion-option>
+            <ion-option value="Animation">Animation</ion-option>
+            <ion-option value="Biography">Biography</ion-option>
+            <ion-option value="Comedy">Comedy</ion-option>
+            <ion-option value="Crime">Crime</ion-option>
+            <ion-option value="Documentary">Documentary</ion-option>
+            <ion-option value="Drama">Drama</ion-option>
+            <ion-option value="Family">Family</ion-option>
+            <ion-option value="Fantasy">Fantasy</ion-option>
+            <ion-option value="Film-Noir">Film-Noir</ion-option>
+            <ion-option value="History">History</ion-option>
+            <ion-option value="Horror">Horror</ion-option>
+            <ion-option value="Music">Music</ion-option>
+            <ion-option value="Musical">Musical</ion-option>
+            <ion-option value="Mystery">Mystery</ion-option>
+            <ion-option value="Romance">Romance</ion-option>
+            <ion-option value="Sci-Fi">Sci-Fi</ion-option>
+            <ion-option value="Sport">Sport</ion-option>
+            <ion-option value="Thriller">Thriller</ion-option>
+            <ion-option value="War">War</ion-option>
+            <ion-option value="Western">Western</ion-option>
+		</ion-select>
+	</ion-item>
+      </ion-toolbar>
+
+      <ion-toolbar color="bgback">
+        <ion-item>
+      <ion-label>Quality</ion-label>
+      <ion-select interface="popover" [(ngModel)]="quality">
+          <ion-option value="720p">720p</ion-option>
+          <ion-option value="1080p">1080p</ion-option>
+          <ion-option value="3D">3D</ion-option>
+      </ion-select>
+  </ion-item>
+    </ion-toolbar>
+    <ion-toolbar color="bgback">
+        <ion-item>
+      <ion-label>IMDB Rating</ion-label>
+      <ion-select interface="popover" [(ngModel)]="minimum_rating">
+          <ion-option value="0">0 +</ion-option>
+          <ion-option value="1">1 +</ion-option>
+          <ion-option value="2">2 +</ion-option>
+          <ion-option value="3">3 +</ion-option>
+          <ion-option value="4">4 +</ion-option>
+          <ion-option value="5">5 +</ion-option>
+          <ion-option value="6">6 +</ion-option>
+          <ion-option value="7">7 +</ion-option>
+          <ion-option value="8">8 +</ion-option>
+          <ion-option value="9">9 +</ion-option>
+      </ion-select>
+  </ion-item>
+    </ion-toolbar>
+    <ion-toolbar color="bgback">
+        <ion-item>
+      <ion-label>Sort By</ion-label>
+      <ion-select interface="popover" [(ngModel)]="sort_by">
+          <ion-option value="title">Movie title</ion-option>
+          <ion-option value="year">Year released</ion-option>
+          <ion-option value="rating">Imdb Rating</ion-option>
+          <ion-option value="peers">Peers</ion-option>
+          <ion-option value="seeds">Seeds</ion-option>
+          <ion-option value="download_count">Download count</ion-option>
+          <ion-option value="like_count">Likes</ion-option>
+          <ion-option value="date_added">Date uploaded</ion-option>
+      </ion-select>
+  </ion-item>
+    </ion-toolbar>
+    <ion-toolbar color="bgback">
+        <ion-item>
+      <ion-label>Order By</ion-label>
+      <ion-select interface="popover" [(ngModel)]="order_by">
+          <ion-option value="desc">Descending order</ion-option>
+          <ion-option value="asc">Ascending order</ion-option>
+      </ion-select>
+  </ion-item>
+    </ion-toolbar>
+
+    <ion-fab bottom right>
+        
+                <button ion-fab (click) = "openSettings()" class="animated zoomIn">
+                    <ion-icon ios="ios-settings" md="md-settings"></ion-icon>
+                </button>
+        
+            </ion-fab>
+
+</ion-content>

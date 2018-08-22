@@ -1,0 +1,137 @@
+.dark-theme {
+    ion-content {
+      background-color: #090f2f;
+      color: #fff;
+    }
+   
+    .toolbar-title {
+      color: #fff;
+    }
+   
+    .header .toolbar-background {
+      border-color: #ff0fff;
+      background-color: #090f2f;
+    }
+    .tab-buttons {
+      color: #f4f4f4;
+      background-color: #090f2f;
+    }
+
+    .item-md {
+      color: #fff;
+      background-color: #060a1f;
+    }
+    .scroll-content {
+      background: #060a1f;
+    }
+
+    .list-header-md {
+      border-top: 1px solid #ff0fff;
+    }
+    .button-md-primary {
+      background-color: #ff0fff;
+    }
+
+
+.badge-md {
+  border-radius: 10px;
+  color: #fff;
+  background-color: #ff0fff;
+}
+.fab-md {
+  color: #ff0fff;
+  background-color: #090f2f;
+}
+
+.card-md h2 {
+  margin: 0px 0;
+  font-size: 1.6rem;
+  font-weight: normal;
+  color: #f4f4f4;
+}
+.toolbar-md-bgback .toolbar-background-md {
+  background: #060a1f;
+}
+
+.item-md.item-block .item-inner {
+  padding-right: 8px;
+  border-bottom: 1px solid #ff0fff;
+}
+
+.bar-button-default-md, .bar-button-clear-md-default, .bar-button-md-default {
+  color: #ff0fff;
+  background-color: transparent;
+}
+
+.searchbar-md .searchbar-input {
+  color: #000;
+  background-color: #bdbdbd;
+
+}
+
+.toolbar-md-bgback .bar-button-clear-md, .toolbar-md-bgback .bar-button-default-md, .toolbar-md-bgback .bar-button-outline-md, .toolbar-md-bgback .toolbar-title-md {
+  color: #ff0fff;
+}
+
+.button-md {
+  color: #fc0efd;
+  background-color: #090f2f;
+}
+
+ion-card-content {
+  padding: 13px 16px;
+  font-size: 1.4rem;
+  line-height: 1.5;
+  background: #060a1f;
+  color: #fff;
+}
+
+ion-row{
+  background: #060a1f;
+}
+.moviedes{
+  color: #fff;
+}
+
+.link {
+  color: #f4f4f4;
+  text-transform: lowercase;
+  text-decoration: underline;
+}
+
+.radio-md .radio-inner {
+  left: 2px;
+  top: 2px;
+  border-radius: 50%;
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: #fc0ffc;
+}
+
+.radio-md .radio-checked {
+    border-color: #fc0ffc;
+}
+.item-ios {
+  padding-left: 16px;
+  border-radius: 0;
+  position: relative;
+  font-size: 1.7rem;
+  color: #fff;
+  background-color: #060a1f;
+  -webkit-transition: background-color 200ms linear;
+  transition: background-color 200ms linear;
+}
+
+
+.alertDanger{
+  color:#000;
+}
+
+.item-radio-checked.item-md ion-label {
+  color: #fc0ffc;
+}
+
+
+
+  }  

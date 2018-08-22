@@ -1,0 +1,218 @@
+<ion-header class="ripple">
+
+  <ion-navbar>
+    <ion-title>{{movietitle}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content #pageContent padding>
+
+  <div class="tileimage" [lazyLoad]="large_screenshot" [defaultImage]="large_screenshot" (tap)="watchtrailer()" style="height: 30%;width: 100%;background-size: cover;background-repeat: no-repeat;">
+    <div style="position: absolute; left: 42%;top: 10%;z-index: 10;">
+      <i class="fa fa-youtube-play" style="font-size: 60px; color: #ec5539;" aria-hidden="true"></i>
+    </div>
+  </div>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col col-50>
+        <button class="ripple" ion-button block (tap)="chooseTorrents()">
+          <i class="fa fa-cloud-download" style="font-size: 18px;" aria-hidden="true"></i>
+          <span style="padding: 15px;">TORRENT</span>
+        </button>
+
+      </ion-col>
+      <ion-col col-50>
+        <button class="ripple" ion-button block (tap)="chooseMagnet()">
+          <ion-icon style="font-size: 20px;" ios="ios-magnet" md="md-magnet"></ion-icon>
+          <span style="padding: 15px;">MAGNET</span>
+        </button>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col col-50 class="ripple" (tap)="bookmarkMovie()" style="height: 304px;">
+        <div class="tileimage" [lazyLoad]="tileimage" style="background-repeat: no-repeat;height: 100%;background-size: contain;width: 100%;">
+        </div>
+
+        <span class="bookmark" [ngStyle]="{'color': bookmarkcolor}">
+          <i class="fa fa-bookmark fa-lg" aria-hidden="true"></i>
+        </span>
+      </ion-col>
+      <ion-col col-50>
+        <ion-row class="ripple">
+          <ion-col col-20 style="max-width: 20%;">
+            <i class="fa fa-clock-o cus" aria-hidden="true"></i>
+          </ion-col>
+          <ion-col col-50 class="msum">
+            <span> {{runtime}} mins</span>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ripple" *ngIf="genres != null && genres !=''">
+          <ion-col col-20 style="max-width: 20%;">
+            <i class="fa fa-film cus" aria-hidden="true"></i>
+          </ion-col>
+          <ion-col col-50 class="msum">
+            <span> {{genres}}</span>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ripple">
+          <ion-col col-20 style="max-width: 20%;">
+            <i class="fa fa-imdb cus" aria-hidden="true"></i>
+          </ion-col>
+          <ion-col col-50 class="msum">
+            <span> {{rating}}/10</span>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ripple">
+          <ion-col col-20 style="max-width: 20%;">
+            <i class="fa fa-calendar cus" aria-hidden="true"></i>
+          </ion-col>
+          <ion-col col-50 class="msum">
+            <span> {{date_uploaded_unix * 1000 | date: 'mediumDate'}} </span>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ripple" *ngIf="mpa_rating != null && mpa_rating !=''">
+          <ion-col col-20 style="max-width: 20%;">
+            <i class="fa fa-eye cus" aria-hidden="true"></i>
+
+          </ion-col>
+          <ion-col col-50 class="msum">
+            <span> {{mpa_rating}} </span>
+          </ion-col>
+        </ion-row>
+
+
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!--  <ion-grid>
+        <ion-row>
+            <ion-col col-50 class="ripple">
+                <button ion-button block (tap)="openYts()">YTS</button>
+            </ion-col>
+            <ion-col col-50 class="ripple">
+                <button ion-button block (tap)="browsesubtitles()" >SUBTITLES</button>
+            </ion-col>
+        </ion-row>
+    </ion-grid> -->
+
+  <ion-spinner name="crescent" *ngIf="asyncCall == true" color="spinner" style="left: 50%;">
+  </ion-spinner>
+
+  <ion-card>
+
+    <ion-item>
+      <h2 style="font-size: 18px;">Storyline</h2>
+    </ion-item>
+
+
+
+    <ion-card-content class="ripple">
+      <p style="white-space: pre-wrap;">
+        <span class="moviedes">{{description_full}}</span>
+      </p>
+    </ion-card-content>
+
+    <ion-row>
+      <ion-col class="ripple">
+
+        <i class="fa fa-download fa-lg cus " aria-hidden="true">
+          <span style="padding:15px;">{{download_count}}</span>
+        </i>
+
+
+      </ion-col>
+      <ion-col class="ripple">
+        <i class="fa fa-thumbs-up fa-lg cus " aria-hidden="true">
+          <span style="padding:15px;">{{like_count}}</span>
+        </i>
+
+      </ion-col>
+
+    </ion-row>
+
+    <ion-list id="myLabel" *ngIf="castinglist != undefined && castinglist != null && castinglist.length > 0 ">
+      <ion-item>
+
+        <h2>
+          <span>Cast</span>
+        </h2>
+
+      </ion-item>
+      <ion-item class="ripple" *ngFor="let cast of castinglist" (tap)="viewcastImdb(cast.imdb_code)">
+        <ion-avatar item-start>
+          <div class="avatarimg" *ngIf="cast.url_small_image != undefined" [ngStyle]="{'background-image': 'url(' + cast.url_small_image + ')'}"></div>
+          <div class="avatarimg" *ngIf="cast.url_small_image == undefined" [ngStyle]="{'background-image': 'url(' + errorAvtImage + ')'}"></div>
+
+        </ion-avatar>
+        <h2>{{cast.name}}</h2>
+        <p>{{cast.character_name}}</p>
+        <button ion-button clear item-end>
+          <i class="fa fa-imdb imdbc fa-4x" aria-hidden="true">
+          </i>
+        </button>
+      </ion-item>
+    </ion-list>
+
+  </ion-card>
+
+  <fab-toolbar ion-fixed [enableBackdropDismiss]="enableBackdropDismiss" [color]="color" [icon]="icon" [position]="position"
+    [buttons]="buttons">
+  </fab-toolbar>
+
+
+  <!--  <ion-fab bottom right>
+        
+                <button ion-fab (tap) = "openSettings()" class="animated zoomIn">
+                    <ion-icon ios="ios-settings" md="md-settings"></ion-icon>
+                </button>
+        
+            </ion-fab> -->
+
+
+</ion-content>
+
+<style>
+  .imdbc {
+    color: yellow;
+    background-color: black;
+  }
+
+
+  .cus {
+    color: #ec5539;
+    font-size: 24px;
+    padding: 2px;
+  }
+
+  .msum {
+    font-size: 18px;
+  }
+
+
+  .alert-title {
+    font-size: 18px;
+  }
+
+  .my-alert {
+    text-align: left;
+    text-align: start;
+    padding: 15px 14px 20px;
+  }
+
+  .bookmark {
+    position: absolute;
+    left: 83%;
+    top: 4%;
+    z-index: 10;
+    font-size: 23px;
+  }
+
+</style>

@@ -1,0 +1,49 @@
+
+<ion-header>
+
+  <ion-navbar>
+      <button ion-button menuToggle style="font-size: 2.4rem;">
+          <ion-icon name="menu"></ion-icon>
+      </button>
+    <ion-title>Settings</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+<!--     <ion-list-header>
+        Provider / Load from*
+       </ion-list-header>
+       <ion-list radio-group [(ngModel)]="domain">
+         <ion-item>
+           <ion-label>Yts.am</ion-label>
+           <ion-radio value="yts.unblocked.lat" (ionSelect) = "useAm()"></ion-radio>
+         </ion-item>
+         <ion-item>
+           <ion-label>Yts.me</ion-label>
+           <ion-radio value="yts.me" (ionSelect) = "useMe()"></ion-radio>
+         </ion-item>
+       </ion-list>
+ -->
+  <ion-list-header>
+   Night Mode
+  </ion-list-header>
+  <ion-list radio-group [(ngModel)]="mode">
+    <ion-item>
+      <ion-label>On</ion-label>
+      <ion-radio value="on" (ionSelect) = "showMode()"></ion-radio>
+    </ion-item>
+    <ion-item>
+      <ion-label>Off</ion-label>
+      <ion-radio value="off" (ionSelect) = "showMode()"></ion-radio>
+    </ion-item>
+    <ion-item>
+      <ion-label>Automatic on Sunset</ion-label>
+      <ion-radio value="auto" (ionSelect) = "showMode()"></ion-radio>
+    </ion-item>
+  </ion-list>
+  
+
+</ion-content>
+

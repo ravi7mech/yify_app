@@ -1,0 +1,56 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Advanced Search Results</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding #container>
+  <ion-refresher (ionRefresh)="doRefresh($event)" pullMax="250">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Release to refresh" refreshingSpinner="circles" refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <div>
+    <ion-spinner color="spinner" name="crescent" *ngIf="asyncCall == true" style="top: 50%;left: 50%; margin-top: 5px;margin-left: -14px;">
+    </ion-spinner>
+  </div>
+
+  <ion-list class="animate-ripple">
+
+    <ion-grid>
+      <ion-row justify-content-center>
+        <ion-col col-4 *ngFor="let movie of movielist" (click)="openMoviePage(movie)">
+
+          <div class="tileimage col" [lazyLoad]="movie.medium_cover_image" [offset]="offset" [defaultImage]="defaultImage" [errorImage]="defaultImage"
+            [scrollTarget]="container.getScrollElement()" [scrollObservable]="container.ionScroll">
+
+          </div>
+          <br>
+          <span style="padding-left: 5px;float: left;">{{movie.title_long}}</span>
+          <br>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+
+
+
+
+  </ion-list>
+  <ion-fab bottom right>
+
+    <button ion-fab (click)="openSettings()" class="animated zoomIn">
+      <ion-icon ios="ios-settings" md="md-settings"></ion-icon>
+    </button>
+
+  </ion-fab>
+
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)" threshold="30%">
+    <ion-infinite-scroll-content loadingSpinner="crescent" color="spinner">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+
+</ion-content>

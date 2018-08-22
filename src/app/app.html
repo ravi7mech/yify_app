@@ -1,0 +1,26 @@
+  <ion-menu [content]="content" [class]="selectedTheme">
+    <ion-content>
+      <div class = "bgbar">
+
+         
+            
+      </div>
+      <ion-list-header>
+        Browser for YIFY
+      </ion-list-header>
+
+      <ion-list no-lines>
+          <button ion-item menuClose *ngFor="let item of menuItems" (click)="openPage(item)">
+            
+              <i [class]="item.faclass" aria-hidden="true" style="color:#387ef5"></i>
+              <span style="padding-left: 25px;font-size: 16px;">{{ item.name }}</span> 
+          
+          </button>         
+
+        </ion-list>
+
+      
+    </ion-content>
+  </ion-menu>
+  <ion-nav [root]="rootPage" [class]="selectedTheme" [rootParams]="rootParams" main #content></ion-nav>
+

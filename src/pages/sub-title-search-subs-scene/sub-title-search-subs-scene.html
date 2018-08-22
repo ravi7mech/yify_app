@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Subtitles</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+<div *ngIf = "asynccall" class="subspinner">
+  <svg class="spinner" width="55px" height="55px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+  <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+</svg>
+</div>
+<ion-item text-wrap *ngIf="msg">Subtitles not found for this movie, Try after some times !!!</ion-item>
+
+<ion-card *ngFor="let sub of sublist ; index as i">
+  
+    <ion-item>
+      <ion-icon style="color: #387ef5;" name="map" item-start large></ion-icon>
+      <h2>{{sub.lang}}  </h2>
+    </ion-item>
+  
+
+    <ion-item>
+      <ion-icon style="color: #387ef5;" name="document" item-left large ></ion-icon>
+      <h2>{{sub.name}}</h2>
+     
+    </ion-item>
+
+    <ion-item>
+        <button ion-button icon-left clear item-start>
+            <ion-spinner *ngIf = "sub.downstart" style= "color: #387ef5;" icon="dots" 
+            class="spinner-dark"></ion-spinner>
+            <ion-icon *ngIf = "sub.downcomplete" style="font-size: 28px; color: green;" 
+            ios="ios-checkmark" md="md-checkmark"></ion-icon> <span *ngIf = "sub.downcomplete" 
+            style=" color: green;" >Downloaded!</span>
+          
+          </button> 
+
+      <button ion-button icon-left clear item-end (click) = "downloadfile(sub, i)">
+          <ion-icon name="download"></ion-icon>
+          Download
+        </button>
+    </ion-item>
+  
+  </ion-card>
+
+
+</ion-content>
