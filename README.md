@@ -5,17 +5,14 @@
 
 ## Overview
 	visit https://yts.am/api for details
-	
-
 ## Instructions
 
 * Git clone or download the zip and extract in local
 
 ## Configurations
 
-```node
-node >= v8.5.0
-```
+node >= v8.5.0,
+npm >= 4.1.1
 
 ## Commands
 * **To bootstrap the application**
