@@ -1,20 +1,20 @@
 ![D](https://media.giphy.com/media/9RXVhtP9KBwl9sceL5/200w_d.gif)
-### Yify Browser
+## Yify Browser
 
-## An Ionic Angular App to access YIFY API
+### An Ionic Angular App to access YIFY API
 
-## Overview
+### Overview
 	visit https://yts.am/api for details
-## Instructions
+### Instructions
 
 * Git clone or download the zip and extract in local
 
-## Configurations
+### Configurations
 
 node >= v8.5.0,
 npm >= 4.1.1
 
-## Commands
+### Commands
 * **To bootstrap the application**
 ```node
 npm install && ionic serve
