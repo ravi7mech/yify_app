@@ -3,24 +3,32 @@
 
 ### An Ionic Angular App to access YIFY API
 
-### Overview
-	visit https://yts.am/api for details
+### Overview [Visit API Details](https://yts.am/api)
+
+	It is an Ionic 3 Hybrid application to access the yify site by using its open source api in a feasible way.  
+
 ### Instructions
 
-* Git clone or download the zip and extract in local
+* Git clone repo or download the zip and extract in local
+* Install [NodeJs](https://nodejs.org/en/download/)
+* Install [Ionic](https://ionicframework.com/docs/intro/installation/) or run this command in terminal 
+	```shell
+	npm install -g ionic@3.18.0
+	```
 
 ### Configurations
 
 node >= v8.5.0,
 npm >= 4.1.1
+ionic = 3.18.0
 
 ### Commands
 * **To bootstrap the application**
-```node
+```shell
 npm install && ionic serve
 ```
 * **To build the application**
-```node
+```shell
 ionic cordova platform add android
 ionic cordova build android --prod
 ```
