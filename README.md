@@ -11,7 +11,13 @@
 
 * Git clone or download the zip and extract in local
 
-  ## Commands
+## Configurations
+
+```node
+node >= v8.5.0
+```
+
+## Commands
 * **To bootstrap the application**
 ```node
 npm install && ionic serve
@@ -22,4 +28,3 @@ ionic cordova platform add android
 ionic cordova build android --prod
 ```
 
-* **or Install the YifyApp.apk in your Android**
