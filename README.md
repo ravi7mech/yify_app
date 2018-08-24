@@ -29,8 +29,8 @@ npm install && ionic serve
 
 ## To build the application
 
-### Linux Machine
-### Installing Cordova 
+### Linux Machine 
+## Installing Cordova 
 ```shell
 sudo npm install -g cordova 
 ``` 
