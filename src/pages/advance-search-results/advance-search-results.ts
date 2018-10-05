@@ -4,7 +4,6 @@ import { Response, Movies, ResponseData, Torrents } from '../../models/moviesjso
 import { YifyMoviesProvider } from '../../providers/yify-movies/yify-movies';
 import { LazyLoadImageDirective } from 'ng-lazyload-image';
 import {HomePage} from '../home/home';
-
 @IonicPage()
 @Component({
   selector: 'page-advance-search-results',
@@ -18,8 +17,6 @@ import {HomePage} from '../home/home';
       from { opacity: 0; }
       to   { opacity: 1; }
   }
-
-
 `]
 })
 export class AdvanceSearchResultsPage {
@@ -47,12 +44,8 @@ export class AdvanceSearchResultsPage {
     private yifyprovider: YifyMoviesProvider,public toastCtrl:ToastController,public homepage :HomePage) {
     this.querystring = navParams.get('qstring');
     this.loadMovies(this.movielimit,this.moviepage,null,this.querystring);
-
-
   }
-
   loadMovies(limit: number, page: number, infiniteScroll: any,querystring:string) {
-    
         try {
           if (!this.asyncCall) {
             if (this.movielist.length == 0) 
@@ -75,40 +68,30 @@ export class AdvanceSearchResultsPage {
                     if (infiniteScroll != null) {
                       infiniteScroll.complete();
                     }
-                    
                   }
                 }else{
                   this.asyncCall = false;
                   if (infiniteScroll != null) {
                     infiniteScroll.complete();
                   }
-                  
                   if(this.movielist.length > 0)
                   this.presentToast('No more movies found !!');
                   else
                   this.presentToast('No movies found releated to your queries.')
                 }
-               
-
               }
             },error =>{
               console.log(error);
               throw error;
-    
             },
-    
             )
           }
-    
-    
         } catch (error) {
           this.asyncCall = false;
           console.log(error);
           if (infiniteScroll != null) infiniteScroll.complete();
         }
-    
       }
-
       presentToast(msg:string) {
         const toast = this.toastCtrl.create({
           message: msg,
@@ -117,57 +100,37 @@ export class AdvanceSearchResultsPage {
           showCloseButton:false,
           duration:3000
         });
-      
         toast.onDidDismiss(() => {
           console.log('Dismissed toast');
         });
-      
         toast.present();
     }
-      
-    
       doInfinite(infiniteScroll) {
         console.log('Begin async operation');
-    
         if (!this.asyncCall) {
           this.moviepage = this.moviepage + 1;
           this.loadMovies(this.movielimit, this.moviepage, infiniteScroll,this.querystring);
         } else {
           infiniteScroll.complete();
         }
-    
       }
-    
-    
       openMoviePage(movie: Movies): void {
         this.navCtrl.push('MoviedetailsPage', { movie });
-    
       }
-
-
   doRefresh(refresher) {
     this.moviepage = 1;
     this.movielist=[];
     refresher.complete();
     this.loadMovies(this.movielimit, this.moviepage, null,this.querystring);
-
   }
-
-
   scrollToTop(){
     this.isScrolled = false;
     this.content.scrollToTop(1000);
   }
-
   shareApp(){
     this.homepage.shareApp();
   }
-
   openSettings(){
     this.navCtrl.push('AppSettingsPage');
   }
-
-
-    
-
 }

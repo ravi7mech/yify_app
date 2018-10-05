@@ -9,17 +9,13 @@ export interface Torrents {
     date_uploaded:string;
     date_uploaded_unix: number
 }
-
 export interface YifyMeta{
    server_time:number;
    server_timezone: string;
    api_version: number;
    execution_time: string;
-	
 }
-
 export interface Movies {
-
     id: number;
     url:string;
     imdb_code: string;
@@ -55,16 +51,13 @@ export interface Movies {
     medium_screenshot_image1:string;
     medium_screenshot_image2:string;
     medium_screenshot_image3:string;
-
 }
-
 export interface Cast {
     name: string;
     character_name:string;
     url_small_image: string;
     imdb_code: string;
 }
-
 export interface ResponseData {
     movie_count: number;
     limit: number;
@@ -77,15 +70,11 @@ export interface ResponseData {
     description_full:string;
     yt_trailer_code:string;
 } 
-
-
 export interface Response {
     status: string;
     status_message: string;
     data:ResponseData;
-    
 }
-
 export interface Language {
     lang:string;
 }
@@ -98,20 +87,16 @@ export interface SubNames{
 export interface Rating{
     rating:string
 }
-
 export interface SubsceneSubtitlesLinks{
     link:string;
     lang:string;
     name:string;
     downstart:boolean;
     downcomplete:boolean;
-
 }
-
 export interface SubsceneLangReleaseNames{
     lang_name:string;
 }
-
 export interface SubsceneResults{
     down_links:Array<SubsceneSubtitlesLinks>;
     langs_names:Array<SubsceneLangReleaseNames>;
@@ -122,8 +107,6 @@ export interface YifySubtitleResultJson{
     sub_links:Array<DownloadLink>;
     sub_names:Array<SubNames>;
 }
-
-
 export interface FinalYifySubList{
     lang:string;
     link:string;
@@ -132,14 +115,12 @@ export interface FinalYifySubList{
     downstart:boolean;
     downcomplete:boolean;
 }
-
 export interface TMDbResponse {
     page: number;
     total_results: number;
     total_pages: number;
     results:Array<TMDbMovieResults>;
 }
-
 export interface TMDbMovieResults{
     id:number;
     name:string;
@@ -153,7 +134,4 @@ export interface TMDbMovieResults{
     video:boolean;
     original_title:string;
     title:string;
-    
 }
-
-

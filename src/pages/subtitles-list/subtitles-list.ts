@@ -9,8 +9,6 @@ import { SocialSharing } from '@ionic-native/social-sharing';
 import { Diagnostic } from '@ionic-native/diagnostic';
 import { SubtitleTabsPage } from '../subtitle-tabs/subtitle-tabs';
 import index from 'ng-lazyload-image';
-
-
 @IonicPage()
 @Component({
   selector: 'page-subtitles-list',
@@ -29,7 +27,6 @@ import index from 'ng-lazyload-image';
       vertical-align: baseline;
   }`
   ]
-
 })
 export class SubtitlesListPage {
   imdb_code: string;
@@ -41,7 +38,6 @@ export class SubtitlesListPage {
   sublist: Array<FinalYifySubList> = [];
   url:string;
   filename:string;
-
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private yifyProvider: YifyMoviesProvider, private transfer: FileTransfer, private file: File
     , public toastCtrl: ToastController, private clipboard: Clipboard, private socialSharing: SocialSharing,
@@ -50,23 +46,16 @@ export class SubtitlesListPage {
    this.imdb_code = subtabs.imdb_code;
    this.fileTransfer = this.transfer.create();;
    this.loadSubtitle();
-
   }
-
   /* showBanner() {
-
     let interaddConfig: AdMobFreeBannerConfig = {
       autoShow: true,
       id: 'ca-app-pub-8173350460907694/2714806253'
-
     };
-
     this.admob.interstitial.config(interaddConfig);
     this.admob.interstitial.prepare();
     this.admob.interstitial.show();
-
   } */
-
   showOpenSettingsAlert(){
     let alert = this.alert.create({
       title: 'Permission needed!',
@@ -82,10 +71,6 @@ export class SubtitlesListPage {
     });
     alert.present();
   }
-
-  
-
-
   loadSubtitle() {
     try {
       this.asynccall = true;
@@ -99,7 +84,6 @@ export class SubtitlesListPage {
               this.filteredsubnames.push(subname);
             };
           }
-
           for (let i = 0; i < this.yifyresult.rating_list.length; i++) {
             let subobj = {
               lang: this.yifyresult.lang_list[i].lang,
@@ -110,17 +94,12 @@ export class SubtitlesListPage {
               downcomplete:false
             }
             this.sublist.push(subobj);
-
           }
           this.asynccall = false;
-
-
         } else {
           this.asynccall = false;
           this.msg = true;
         }
-
-
       })
     } catch (e) {
       console.log(e);
@@ -128,7 +107,6 @@ export class SubtitlesListPage {
       this.msg = true;
     }
   }
-
   handleSubDownload(index:number){
     this.sublist[index].downstart = true;
       this.fileTransfer.download(this.url, this.file.externalRootDirectory+'YIFY_Torrent_Browser/' + this.filename).then((entry) => {
@@ -138,9 +116,7 @@ export class SubtitlesListPage {
       },error =>{
         this.showOpenSettingsAlert()
       });
-    
   }
-
   downloadfile(file: FinalYifySubList,index:number) {
     this.url = file.link;
     this.filename = this.url.split("/").pop();
@@ -148,11 +124,7 @@ export class SubtitlesListPage {
       if(res) this.handleSubDownload(index)
       else this.requestExternalStorageAuthorization(index)
     })
-    
-
-    
   }
-
   requestExternalStorageAuthorization(index:number){
     this.diagnostic.requestExternalStorageAuthorization().then(res =>{
       console.log("requestExternalStorageAuthorization ",res)
@@ -162,13 +134,10 @@ export class SubtitlesListPage {
       this.showOpenSettingsAlert()
     })
   }
-
   copylink(file: FinalYifySubList) {
     this.clipboard.copy(file.link);
     this.presentToast('Copied!!');
-   
   }
-
   sharelink(file: FinalYifySubList) {
     let message = file.link;
     this.socialSharing.share(null, null, null, message).then((res) => {
@@ -177,7 +146,6 @@ export class SubtitlesListPage {
       console.log(e);
     });
   }
-
   presentToast(msg: string) {
     const toast = this.toastCtrl.create({
       message: msg,
@@ -185,12 +153,9 @@ export class SubtitlesListPage {
       closeButtonText: 'OK',
       showCloseButton: true
     })
-
     toast.onDidDismiss(() => {
       // this.showBanner();
     })
-
     toast.present()
   }
-
 }

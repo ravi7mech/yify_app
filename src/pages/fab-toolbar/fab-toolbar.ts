@@ -1,6 +1,4 @@
 import { Component, ElementRef, Input, Renderer } from '@angular/core';
-
-
 /**
  * @name FabToolbar
  * @description
@@ -38,7 +36,6 @@ import { Component, ElementRef, Input, Renderer } from '@angular/core';
  * @see {@link https://github.com/ekhmoi/Ionic-Component-fab-toolbar Ionic-Component-fab-toolbar}
  *
  */
-
 @Component({ 
     selector: 'fab-toolbar',
     template: `
@@ -55,29 +52,20 @@ import { Component, ElementRef, Input, Renderer } from '@angular/core';
                     </button>
                 </ion-col>
             </ion-row>
-           
             <button (click)="onClick($event, false)" [style.transform]="active ? width: 'scale(1)' " 
             ion-fab color="{{color}}"><ion-icon name="{{icon}}"></ion-icon></button>
-
-
         </div>
         `
 })
-
-
 export class FabToolbar {
-    
     public active: boolean = false;
     constructor(public el: ElementRef, public renderer: Renderer) {}
-
-    
     @Input() position: string = 'left';
     @Input() color: string = 'secondary';
     @Input() icon: string = 'more';
     @Input() cssClass: string = '';
     @Input() enableBackdropDismiss: boolean = true;
     @Input() buttons: Array<any> = [];
-
     ngOnInit() {
         this.renderer.setElementClass(this.el.nativeElement, this.position, true)
     }
@@ -90,7 +78,6 @@ export class FabToolbar {
                 this.closeButton();
                 return;
             }
-
         }
         if (this.el.nativeElement.contains(event.target)) {
             // User has clicked on our component. Check if he clicked on sub button or no.
@@ -103,7 +90,6 @@ export class FabToolbar {
                         shouldDismiss = false; 
                     }
                 }
-
                 if (shouldDismiss) {
                     setTimeout(() => {
                         this.closeButton();
@@ -120,12 +106,10 @@ export class FabToolbar {
             }
         }
     }
-
     public get width() {
         let width = window.innerWidth / 56 * 2;
         return 'scale(' + width + ')';
     }
-
     public openButton(): void {
         this.renderer.setElementClass(this.el.nativeElement, 'activated', true);
         setTimeout(() => {
@@ -135,7 +119,6 @@ export class FabToolbar {
         this.renderer.setElementStyle(this.el.nativeElement, 'width', '100%');
         this.active = true;
     }
-
     public closeButton(): void {
         this.renderer.setElementClass(this.el.nativeElement, 'activated', false);
         setTimeout(() => {

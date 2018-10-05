@@ -20,9 +20,7 @@ import { SettingsProvider } from '../providers/settings/settings';
 import { SubtitlesListPage } from '../pages/subtitles-list/subtitles-list';
 import { SubsceneListPage } from '../pages/subscene-list/subscene-list';
 import { DomSanitizer } from '@angular/platform-browser';
-
 enableProdMode();
-
 @NgModule({
   declarations: [
     MyApp,PopoverPage,SubtitlesListPage,SubsceneListPage
@@ -48,4 +46,3 @@ enableProdMode();
   ]
 })
 export class AppModule {}
-

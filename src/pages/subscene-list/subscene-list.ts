@@ -8,8 +8,6 @@ import { Clipboard } from '@ionic-native/clipboard';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { Storage } from "@ionic/storage";
 import { Diagnostic } from '@ionic-native/diagnostic';
-
-
 @IonicPage()
 @Component({
   selector: 'page-subscene-list',
@@ -28,7 +26,6 @@ import { Diagnostic } from '@ionic-native/diagnostic';
       vertical-align: baseline;
   }`
   ]
-
 })
 export class SubsceneListPage {
   suburl: string;
@@ -41,7 +38,6 @@ export class SubsceneListPage {
   filename:string;
   showheader:boolean = false;
   params:any = {showheader:false};
-
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private yifyProvider: YifyMoviesProvider, private transfer: FileTransfer, private file: File
     , public toastCtrl: ToastController, private clipboard: Clipboard, private socialSharing: SocialSharing,
@@ -54,30 +50,17 @@ export class SubsceneListPage {
     this.localstorage.get('suburl').then((value) => {
        this.suburl = value;
         this.loadSubtitle();
-       
     });
-   
   }
-
- 
-
-
   /* showBanner() {
-
     let interaddConfig: AdMobFreeBannerConfig = {
       autoShow: true,
       id: 'ca-app-pub-8173350460907694/2714806253'
-
     };
-
     this.admob.interstitial.config(interaddConfig);
     this.admob.interstitial.prepare();
     this.admob.interstitial.show();
-
   } */
-
- 
-
   loadSubtitle() {
     try {
       this.asynccall = true;
@@ -95,22 +78,17 @@ export class SubsceneListPage {
         }
         this.asynccall = false;
         this.sublist = this.subtitelist.down_links;
-
-
        }else{
         this.asynccall = false;
         this.msg = true;
        }      
-
       }) 
-      
     } catch (e) {
       console.log(e);
       this.asynccall = false;
       this.msg = true;
     }
   }
-
   handleSubDownload(index:number){
     this.sublist[index].downstart = true;
       this.yifyProvider.downloadSubsceneSubs(this.url).subscribe(res => {
@@ -121,11 +99,8 @@ export class SubsceneListPage {
         }, (error) => {
          this.showOpenSettingsAlert()
         })
-
        })  
-    
   }
-
   showOpenSettingsAlert(){
     let alert = this.alert.create({
       title: 'Permission needed!',
@@ -141,7 +116,6 @@ export class SubsceneListPage {
     });
     alert.present();
   }
-
   downloadfile(file: SubsceneSubtitlesLinks,index:number) {
     this.url = 'https://subscene.com'+file.link;
     this.filename = file.name+'.zip';   
@@ -150,7 +124,6 @@ export class SubsceneListPage {
       else this.requestExternalStorageAuthorization(index)
     })
   }
-
   requestExternalStorageAuthorization(index:number){
     this.diagnostic.requestExternalStorageAuthorization().then(res =>{
       console.log("requestExternalStorageAuthorization ",res)
@@ -160,8 +133,6 @@ export class SubsceneListPage {
       this.showOpenSettingsAlert()
     })
   }
-
- 
   presentToast(msg: string) {
     const toast = this.toastCtrl.create({
       message: msg,
@@ -169,12 +140,9 @@ export class SubsceneListPage {
       closeButtonText: 'OK',
       showCloseButton: true
     })
-
     toast.onDidDismiss(() => {
       // this.showBanner()
     })
-
     toast.present()
   }
-
 }

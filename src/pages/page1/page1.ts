@@ -11,11 +11,6 @@ import { Page2Page } from '../../pages/page2/page2';
 import { MyApp } from '../../app/app.component';
 import { SettingsProvider } from '../../providers/settings/settings';
 import { Toast } from '@ionic-native/toast';
-
-
-
-
-
 @IonicPage()
 @Component({
   selector: 'page-page1',
@@ -29,11 +24,8 @@ import { Toast } from '@ionic-native/toast';
       from { opacity: 0; }
       to   { opacity: 1; }
   }
-
-
 `]
 })
-
 export class Page1Page {
   @ViewChild(Content) content: Content;
   yifyappsub: string = 'Browser for YIFY';
@@ -59,12 +51,10 @@ export class Page1Page {
   offset = 100;
   selectedTheme: String;
   sitecount: number = -1;
-
   public position: string = 'bottom';
   public icon: string = 'more';
   public enableBackdropDismiss: boolean = true;
   public buttonColor: string = 'dark';
-
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     private yifyprovider: YifyMoviesProvider,
@@ -76,23 +66,13 @@ export class Page1Page {
     public toastCtrl: ToastController, private page2page: Page2Page,
     public myapp: MyApp, public settings: SettingsProvider, private toast: Toast) {
     this.rootNavCtrl = navParams.get('rootNavCtrl');
-
     this.sitecount++
     this.loadMovies(this.movielimit, this.moviepage, null);
     this.checkApps();
-
     this.isUpdateAvailable();
-
     platform.ready().then(() => {
-
-     
-
     })
   }
-
-
-
-
   presentToast(message: string) {
     let toast = this.toastCtrl.create({
       message: message,
@@ -100,20 +80,11 @@ export class Page1Page {
     });
     toast.present();
   }
-
   isUpdateAvailable() {
-
   }
-
-
-
   setTheme(theme: any) {
     this.selectedTheme = theme;
   }
-
-
-
-
   ngAfterViewInit() {
     this.content.ionScroll.subscribe((data) => {
       if (data != null && data != undefined && data.scrollTop == 0) {
@@ -123,32 +94,23 @@ export class Page1Page {
           this.isScrolled = false;
         else
           this.isScrolled = true;
-
       }
     });
   }
-
-
   checkApps(): void {
     let app;
-
     if (this.platform.is('ios')) {
       app = this.youtube_ios;
     } else if (this.platform.is('android')) {
       app = this.youtube_android;
     }
-
     this.appAvailability.check(app)
       .then(
         (yes) => this.localstorage.set('hasytapp', true),
         (no) => this.localstorage.set('hasytapp', false)
       );
-
-
   }
-
   loadMovies(limit: number, page: number, infiniteScroll: any) {
-
     try {
       if (!this.asyncCall) {
         if (this.movielist.length == 0)
@@ -174,7 +136,6 @@ export class Page1Page {
               if (infiniteScroll != null) {
                 infiniteScroll.complete();
               }
-
             }
           }
         }, error => {
@@ -189,76 +150,54 @@ export class Page1Page {
               })
           }
           throw error;
-
         })
       }
-
-
     } catch (error) {
       if (infiniteScroll != null) infiniteScroll.complete();
     }
-
   }
-
-
   doInfinite(infiniteScroll) {
     console.log('Begin async operation');
-
     if (!this.asyncCall) {
       this.moviepage = this.moviepage + 1;
       this.loadMovies(this.movielimit, this.moviepage, infiniteScroll);
     } else {
       infiniteScroll.complete();
     }
-
   }
-
-
   openMoviePage(movie: Movies): void {
     this.rootNavCtrl.push('MoviedetailsPage', { movie });
-
   }
-
   showBadgeCount(badgecount: number): void {
     this.localstorage.get('badgecount').then((value) => {
       if (value == undefined || value == null) {
         this.localstorage.set('badgecount', badgecount);
         this.homepage.setBadgeCount('');
-
       } else {
         let badge = (badgecount - value > 0) ? badgecount - value : '';
         this.localstorage.set('badgecount', badgecount);
         this.homepage.setBadgeCount(badge);
       }
     });
-
   }
-
   doRefresh(refresher) {
     this.moviepage = 1;
     this.movielist = [];
     refresher.complete();
     this.loadMovies(this.movielimit, this.moviepage, null);
-
   }
-
   openSettings() {
     this.rootNavCtrl.push('AppSettingsPage');
   }
-
-
   scrollToTop() {
     this.isScrolled = false;
     this.content.scrollToTop(1000);
   }
-
   shareApp() {
     if (this.myapp.selectedTheme === 'dark-theme') {
       this.myapp.selectedTheme = 'light-theme';
-
     } else {
       this.myapp.selectedTheme = 'dark-theme';
-
     }
   }
 }

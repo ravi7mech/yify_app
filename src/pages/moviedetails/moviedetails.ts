@@ -8,10 +8,6 @@ import { LazyLoadImageDirective } from 'ng-lazyload-image';
 import { HomePage } from '../home/home';
 import { Clipboard } from '@ionic-native/clipboard';
 import { MyApp } from '../../app/app.component';
-
-
-
-
 @IonicPage()
 @Component({
   selector: 'page-moviedetails',
@@ -25,10 +21,8 @@ import { MyApp } from '../../app/app.component';
       from { opacity: 0; }
       to   { opacity: 1; }
   }
-  
 `]
 })
-
 export class MoviedetailsPage {
   @ViewChild(Content) content: Content;
   movie: Movies;
@@ -72,7 +66,6 @@ export class MoviedetailsPage {
   public enableBackdropDismiss: boolean = false;
   public buttonColor: string = 'dark';
   imdb_review_url: string = 'https://m.imdb.com/title/####/reviews';
-
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public alert: AlertController,
     private yifyProvider: YifyMoviesProvider, private localstorage: Storage,
@@ -97,12 +90,9 @@ export class MoviedetailsPage {
     this.imdb_code = this.movie.imdb_code;
     this.torrents = this.movie.torrents;
     this.url = this.movie.url;
-
     this.bookMarkListContains(this.imdb_code);
     this.loadMovieInfo(this.movie.id);
-
   }
-
   public buttons = [
     {
       title: 'YTS',
@@ -139,12 +129,9 @@ export class MoviedetailsPage {
       }
     }
   ];
-
   ionViewWillEnter() {
     this.myapp.checkTorrentsAppAvailability();
   }
-
-
   routetoReview() {
     let url = this.imdb_review_url.replace("####", this.imdb_code);
     this.download(url);
@@ -157,18 +144,14 @@ export class MoviedetailsPage {
     if (genre != undefined && genre.length > 0) {
       for (let i = 0; i < genre.length; i++) {
         genres += genre[i] + ' ';
-
       }
-
     }
     return genres;
   }
-
   loadMovieInfo(movie_id: number) {
     try {
       this.asyncCall = true;
       this.yifyProvider.loadYifyMovieDetails(movie_id).subscribe(res => {
-
         this.asyncCall = false;
         if (res.status == 'ok') {
           this.castinglist = (res.data.movie != undefined && res.data.movie != null) ? res.data.movie.cast : res.data.cast;
@@ -182,11 +165,6 @@ export class MoviedetailsPage {
       this.asyncCall = false;
       console.log(e);
     }
-
-
-
-
-
   }
   watchtrailer() {
     this.localstorage.get('hasytapp').then((value) => {
@@ -198,7 +176,6 @@ export class MoviedetailsPage {
         else if (this.yt_code != undefined) {
           this.download(this.youtube_link + this.yt_code);
         }
-
       } else {
         //this.youtube.openVideo(this.movie.yt_trailer_code);
         if (this.movie.yt_trailer_code != undefined) {
@@ -209,15 +186,10 @@ export class MoviedetailsPage {
         }
       }
     });
-
-
-
-
   }
   openimdb() {
     this.download(this.imdb_url + this.imdb_code);
   }
-
   presentConfirm(mgurl: string) {
     let alert = this.alert.create({
       title: 'No torrent downloader found !!',
@@ -226,7 +198,6 @@ export class MoviedetailsPage {
         {
           text: 'CANCEL',
           handler: () => {
-
           }
         },
         {
@@ -234,15 +205,12 @@ export class MoviedetailsPage {
           handler: () => {
             this.clipboard.copy(mgurl);
             this.presentToast('Copied!!');
-
           }
         }
       ]
     });
     alert.present();
   }
-
-
   getAvailableTorrentFormats(torrents: any, alert: any): any {
     for (var i = 0; i < torrents.length; i++) {
       let element = {
@@ -258,27 +226,21 @@ export class MoviedetailsPage {
     }
     return alert;
   }
-
   getAvailableSubTitleSites(alert: any): any {
-
     let element = {
       type: 'radio',
       label: 'Yify Subtitles',
       value: 'Y'
     }
-
     alert.addInput(element);
-
     element = {
       type: 'radio',
       label: 'Subscene',
       value: 'S'
     }
     alert.addInput(element);
-
     return alert;
   }
-
   chooseTorrents() {
     let alert = this.alert.create();
     alert = this.getAvailableTorrentFormats(this.torrents, alert);
@@ -294,14 +256,11 @@ export class MoviedetailsPage {
           this.testRadioResult = data;
           this.download(data);
         } else {
-
         }
-
       }
     });
     alert.present();
   }
-
   chooseMagnet() {
     this.myapp.checkTorrentsAppAvailability();
     let alert = this.alert.create();
@@ -318,15 +277,11 @@ export class MoviedetailsPage {
           this.testRadioResult = data;
           this.magnet_download(data);
         } else {
-
         }
-
       }
     });
     alert.present();
-
   }
-
   magnet_download(namedata: string) {
     let namearr = namedata.split("$#@$%");
     let mgurl = this.magnet_url.replace("TORRENT_HASH", namearr[1]);
@@ -336,16 +291,10 @@ export class MoviedetailsPage {
         window.open(mgurl, '_system', "location=yes");
       } else {
         this.presentConfirm(mgurl);
-
-
       }
     });
-
-
   }
-
   getAvailableMagnetFormats(torrents: any, alert: any): any {
-
     for (var i = 0; i < torrents.length; i++) {
       let element = {
         type: 'radio',
@@ -353,7 +302,6 @@ export class MoviedetailsPage {
         value: this.movietitle + "$#@$%" + torrents[i].hash,
         checked: false
       }
-
       if (i == 0) {
         element.checked = true;
       }
@@ -361,42 +309,29 @@ export class MoviedetailsPage {
     }
     return alert;
   }
-
   download(url: string) {
     window.open(url, '_system', "location=yes");
   }
-
   browsesubtitles() {
-
     let movie = this.title.replace(/[^\w\s]/gi, ".");
     let openurl = this.sub_sceneurl + movie + "." + this.year + ".720p.BluRay.x264&l=";
     let imdb = { imdbcode: this.imdb_code, suburl: openurl };
     const ANIMATION = { animate: true, direction: 'forward' };
     this.navCtrl.push('SubtitleTabsPage', { imdb }, ANIMATION);
-
   }
-
   openSubTitleSites(siteflag: String) {
     if (siteflag == 'Y') {
       let openurl = this.yify_subtitle_url + this.imdb_code;
       window.open(openurl, '_system', "location=yes");
-
     } else {
-
-
       let movie = this.title.replace(/[^\w\s]/gi, ".");
       let openurl = this.sub_sceneurl + movie + "." + this.year + ".720p.BluRay.x264&l=";
       window.open(openurl, '_system', "location=yes");
-
     }
-
   }
-
-
   scrollToTop() {
     this.content.scrollToTop(1000);
   }
-
   ScrollToBottom() {
     var element = document.getElementById("myLabel");
     setTimeout(() => { element.scrollIntoView(true) }, 100);
@@ -406,25 +341,20 @@ export class MoviedetailsPage {
       this.moreorless = 'More';
     }
   }
-
   viewcastImdb(imdbcode: string) {
     if (imdbcode != null && imdbcode.startsWith("nm")) {
       this.download(this.imdb_cast_url1 + imdbcode);
     } else {
       this.download(this.imdb_cast_url + imdbcode);
     }
-
   }
-
   openYts() {
     this.download(this.url);
   }
-
   errorHandler(event) {
     console.debug(event);
     event.target.src = "http://img.youtube.com/vi/" + this.yt_code + "/maxresdefault.jpg";
   }
-
   bookmarkMovie() {
     this.localstorage.get('bookmarklist').then((value) => {
       if (value == undefined || value == null || value.length == 0) {
@@ -433,7 +363,6 @@ export class MoviedetailsPage {
         this.localstorage.set('bookmarklist', bmklist);
         this.bookmarkcolor = '#0045b9';
         this.presentToast('Added to Bookmark Successfully!!');
-
       } else {
         let bmklist = <Array<Movies>>value;
         if (this.havingtheMovieId(bmklist)) {
@@ -443,19 +372,14 @@ export class MoviedetailsPage {
         }
       }
     });
-
-
   }
-
   havingtheMovieId(bmklist: Array<Movies>): boolean {
-
     for (var i = 0; i < bmklist.length; i++) {
       if (bmklist[i].imdb_code == this.imdb_code)
         return true;
     }
     return false;
   }
-
   removeFromBookmark(imdb_code: string, bmklist: Array<Movies>) {
     for (var i = 0; i < bmklist.length; i++) {
       if (bmklist[i].imdb_code == this.imdb_code)
@@ -464,17 +388,13 @@ export class MoviedetailsPage {
     this.localstorage.set('bookmarklist', bmklist);
     this.bookmarkcolor = '#a9a9a9';
     this.presentToast('Removed from Bookmark Successfully !!');
-
   }
-
   addToBookmark(bmklist: Array<Movies>) {
     bmklist.push(this.movie);
     this.localstorage.set('bookmarklist', bmklist);
     this.bookmarkcolor = '#0045b9';
     this.presentToast('Added to Bookmark Successfully !!');
-
   }
-
   presentToast(msg: string) {
     const toast = this.toastCtrl.create({
       message: msg,
@@ -483,16 +403,12 @@ export class MoviedetailsPage {
       showCloseButton: false,
       duration: 3000
     });
-
     toast.onDidDismiss(() => {
       console.log('Dismissed toast');
     });
-
     toast.present();
   }
-
   bookMarkListContains(imdb_code: string) {
-
     this.localstorage.get('bookmarklist').then((value) => {
       if (value == undefined || value == null || value.length == 0) {
         this.bookmarkcolor = '#a9a9a9';
@@ -501,11 +417,7 @@ export class MoviedetailsPage {
         this.bookmarkcolor = (this.havingtheMovieId(bmklist)) ? '#0045b9' : '#a9a9a9';
       }
     });
-
   }
-
-
-
   shareTorrent() {
     let alert = this.alert.create();
     alert = this.getAvailableTorrentFormats(this.torrents, alert);
@@ -523,9 +435,7 @@ export class MoviedetailsPage {
     });
     alert.present();
   }
-
   socialShare(data) {
-
     let message = this.movie.title_long;
     let subject = this.getSubjectContent(data);
     let file = [this.movie.large_cover_image];
@@ -536,36 +446,22 @@ export class MoviedetailsPage {
     }).catch((e) => {
       console.log(e);
     });
-
-
-
   }
-
   getSubjectContent(data): string {
     let content = '';
-
     for (var i = 0; i < this.torrents.length; i++) {
       if (this.torrents[i].url == data) {
         content += "Download " + this.movie.title_long + ' ' + this.torrents[i].quality + ' / ' +
           this.torrents[i].size + ' (P/S : ' + this.torrents[i].peers + '/' + this.torrents[i].seeds + ')' +
           ' by clicking the below torrent link.';
       }
-
     }
-
     return content;
   }
-
-
   shareApp() {
     this.homepage.shareApp();
   }
-
-
   openSettings() {
     this.navCtrl.push('AppSettingsPage');
   }
-
-
-
 }

@@ -1,5 +1,4 @@
 <ion-header>
-
    <ion-navbar>
       <button ion-button menuToggle style="font-size: 2.4rem;">
           <ion-icon name="menu"></ion-icon>
@@ -10,32 +9,20 @@
               <ion-icon name="mic"></ion-icon>
           </button>
       </ion-buttons>
-
   </ion-navbar>
-
   <ion-toolbar color="bgback">
     <ion-buttons start>
             <button ion-button style="font-size: 20px;"  (click) = "advancedSearch()">
                     <ion-icon name="arrow-forward"></ion-icon>
             </button>
-      
       </ion-buttons>
     <ion-searchbar [(ngModel)]="moviename" (ionInput)="getItems($event.target.value)" 
     [animated]="animated" spellcheck="true"  [debounce]="250"
     #searchbar>
-
-
   </ion-searchbar>
   </ion-toolbar>
-   
-
 </ion-header>
-
-
 <ion-content padding [ngClass]="(darkui)?'darkcolor':'litecolor'">
-
-    
-     
      <ion-toolbar color="bgback">
           <ion-item>
 		<ion-label>Genre</ion-label>
@@ -65,7 +52,6 @@
 		</ion-select>
 	</ion-item>
       </ion-toolbar>
-
       <ion-toolbar color="bgback">
         <ion-item>
       <ion-label>Quality</ion-label>
@@ -117,13 +103,9 @@
       </ion-select>
   </ion-item>
     </ion-toolbar>
-
     <ion-fab bottom right>
-        
                 <button ion-fab (click) = "openSettings()" class="animated zoomIn">
                     <ion-icon ios="ios-settings" md="md-settings"></ion-icon>
                 </button>
-        
             </ion-fab>
-
 </ion-content>

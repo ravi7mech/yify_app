@@ -3,7 +3,6 @@ import { IonicPageModule } from 'ionic-angular';
 import { MoviedetailsPage } from './moviedetails';
 import { LazyLoadImageModule } from 'ng-lazyload-image';
 import { FabToolbar } from '../../pages/fab-toolbar/fab-toolbar';
-
 @NgModule({
   declarations: [
     MoviedetailsPage,FabToolbar

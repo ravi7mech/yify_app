@@ -5,12 +5,6 @@ import { Response, Movies, ResponseData, Torrents } from '../../models/moviesjso
 import { LazyLoadImageDirective } from 'ng-lazyload-image';
 import { HomePage } from '../home/home';
 import { Toast } from '@ionic-native/toast';
-
-
-
-
-
-
 @IonicPage()
 @Component({
   selector: 'page-page2',
@@ -24,7 +18,6 @@ import { Toast } from '@ionic-native/toast';
       from { opacity: 0; }
       to   { opacity: 1; }
   }
-  
 `]
 })
 export class Page2Page {
@@ -48,7 +41,6 @@ export class Page2Page {
   offset=800;
   darkui:boolean = true;
   sitecount:number=-1;
-
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     private yifyprovider: YifyMoviesProvider,public homepage :HomePage,public toast:Toast) {
@@ -56,9 +48,7 @@ export class Page2Page {
       this.sitecount++;
     this.loadMovies(this.movielimit, this.moviepage, null);
   }
-
   loadMovies(limit: number, page: number, infiniteScroll: any) {
-
     try {
       if (!this.asyncCall) {
         if (this.movielist.length == 0) 
@@ -97,59 +87,38 @@ export class Page2Page {
               })
           }
           throw error;
-
         })
       }
-
-
     } catch (error) {
       if (infiniteScroll != null) infiniteScroll.complete();
     }
-
   }
-
-
-
-
   doInfinite(infiniteScroll) {
     console.log('Begin async operation');
-
     if (!this.asyncCall) {
       this.moviepage = this.moviepage + 1;
       this.loadMovies(this.movielimit, this.moviepage, infiniteScroll);
     } else {
       infiniteScroll.complete();
     }
-
   }
-
-
   openMoviePage(movie: Movies): void {
     this.viewmovie = movie;
     this.rootNavCtrl.push('MoviedetailsPage', { movie });
-
   }
-
-
   doRefresh(refresher) {
     this.moviepage = 1;
     this.movielist=[];
     refresher.complete();
     this.loadMovies(this.movielimit, this.moviepage, null);
-
   }
-
-
   scrollToTop(){
     this.isScrolled = false;
     this.content.scrollToTop(1000);
   }
-
   shareApp(){
     this.homepage.shareApp();
   }
-
-
 ngAfterViewInit() {
   this.content.ionScroll.subscribe((data)=>{
    if(data != null && data != undefined && data.scrollTop == 0){
@@ -159,21 +128,10 @@ ngAfterViewInit() {
      this.isScrolled = false;
      else
      this.isScrolled = true;
-
    }
   });
 }
-
-
 openSettings(){
   this.rootNavCtrl.push('AppSettingsPage');
 }
-
-
-
-
-
-
-
-
 }

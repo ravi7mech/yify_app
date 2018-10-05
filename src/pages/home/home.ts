@@ -3,8 +3,6 @@ import { IonicPage, NavController, PopoverController} from 'ionic-angular';
 import { PopoverPage } from '../home/popover';
 import { Storage } from "@ionic/storage";
 import { SocialSharing } from '@ionic-native/social-sharing';
-
-
 @IonicPage({
   segment: 'home/:type'
 })
@@ -20,15 +18,10 @@ import { SocialSharing } from '@ionic-native/social-sharing';
       transform-origin: right top 0px !important;
       transform: scale(1) !important;
       width: 252px !important;
-    
     }`
   ]
 })
-
-
-
 export class HomePage {
-  
   selectedTheme: String;
   rootNavCtrl: NavController;
   page1: any = 'Page1Page';
@@ -38,16 +31,12 @@ export class HomePage {
   badgecount:any;
   bookmarkcount:any;
   domain:string='ytsam';
-
-
   constructor(public navCtrl: NavController, public popoverCtrl: PopoverController, 
     public localstorage: Storage,public socialSharing: SocialSharing) {
-     
   }
   setBadgeCount(count: any): void {
     this.badgecount = count;
   }
-
   search(){
     this.navCtrl.push('SearchPage');    
   }
@@ -56,29 +45,17 @@ export class HomePage {
     popover.present({
       ev: myEvent
     });
-
-   
   }
-
   setBookMarkCount(count: any): void{
       this.bookmarkcount = count;
   }
-
   shareApp(){
-     
         this.socialSharing.share(null,null,null,this.playstoreappurl).then((res) => {
           console.log("shared");
           this.localstorage.set('shared', 'Y');
-    
         }).catch((e) => {
           this.localstorage.set('shared', 'N');
           this.localstorage.set('tried', 1);
         });
-        
       }
-
-  
-
-
-
 }

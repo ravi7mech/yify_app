@@ -2,7 +2,6 @@ import { Component,ViewEncapsulation } from '@angular/core';
 import { IonicPage, NavController, NavParams,AlertController } from 'ionic-angular';
 import { SpeechRecognition } from '@ionic-native/speech-recognition';
 import { HomePage } from '../home/home';
-
 @IonicPage()
 @Component({
   selector: 'page-advanced-search',
@@ -23,8 +22,6 @@ import { HomePage } from '../home/home';
     width: 100%;
     left: 0%;
 }
-
-
   `]
 })
 export class AdvancedSearchPage {
@@ -41,25 +38,15 @@ export class AdvancedSearchPage {
   hasMicAccess:boolean = false;
   hasRecognitionAvailable:boolean = false;
   darkui:boolean=true;
-  
-
-
   constructor(public navCtrl: NavController, 
     public speechRecognition: SpeechRecognition, 
     public navParams: NavParams,public homepage : HomePage,public alertcontroller:AlertController) {
     this.isRecognitionAvailable();
   }
-
   advancedSearch(){
-    
     let qstring = this.getQueryStringForAdvancedSearch();
     this.navCtrl.push('AdvanceSearchResultsPage', { qstring });
-
   }
-
-  
- 
-
   isRecognitionAvailable() {
     this.speechRecognition.isRecognitionAvailable()
       .then((available: boolean) => {
@@ -71,21 +58,16 @@ export class AdvancedSearchPage {
         }
       })
   }
-
-
   hasPermission() {
     this.speechRecognition.hasPermission()
       .then((hasPermission: boolean)=>{
         if(!hasPermission){
           this.hasMicAccess = false;
-        
         }else{
           this.hasMicAccess = true;
         }
       })
   }
-
-
   requestPermission() {
     this.speechRecognition.requestPermission()
       .then(
@@ -97,14 +79,9 @@ export class AdvancedSearchPage {
         this.hasMicAccess= false;
       }
       )
-
   }
-
-
-
   getQueryStringForAdvancedSearch(){
         let qstring = '';
-       
         if(this.genre != undefined && this.genre != null && this.genre !=''){
           qstring = qstring.concat('genre='+this.genre)
           qstring = qstring.concat('&')
@@ -129,27 +106,18 @@ export class AdvancedSearchPage {
           qstring = qstring.concat('query_term='+this.moviename)
           qstring = qstring.concat('&')
         }
-
         if (qstring != '' && qstring.charAt(qstring.length - 1) == '&') {
           qstring = qstring.substr(0, qstring.length - 1);
         }
-        
         return qstring;
-
     }
-
-
   getItems(val:string){
     console.log(this.moviename);
      if (val && val.trim() != '') {
-
      } else {
-
      }
   }
-
   listenmic() {
-    
         if(this.hasMicAccess){
           this.startListening();
         }else
@@ -157,36 +125,25 @@ export class AdvancedSearchPage {
           this.presentConfirm();
         }
       }
-
-
       presentConfirm() {
-
         this.requestPermission();
       }
-
   startListening() {
     this.speechRecognition.startListening(this.options)
       .subscribe(
       (matches: Array<string>) =>{
         console.log(matches);
         this.moviename = matches[0];
-
       } ,
       (onerror) => {
         console.log('error:', onerror);
       }
       )
-
   }
-
   shareApp(){
     this.homepage.shareApp();
   }
-
   openSettings(){
     this.navCtrl.push('AppSettingsPage');
   }
-
-  
-
 }

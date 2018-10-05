@@ -4,8 +4,6 @@ import { HomePage } from '../home/home';
 import { Movies } from '../../models/moviesjson';
 import { Storage } from "@ionic/storage";
 import { LazyLoadImageDirective } from 'ng-lazyload-image';
-
-
 @IonicPage()
 @Component({
   selector: 'page-page3',
@@ -19,7 +17,6 @@ import { LazyLoadImageDirective } from 'ng-lazyload-image';
       from { opacity: 0; }
       to   { opacity: 1; }
   }
-  
 `]
 })
 export class Page3Page {
@@ -37,8 +34,6 @@ export class Page3Page {
   isScrolled = false;
   offset=1000;
   darkui:boolean = true;
-
-
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     private homepage: HomePage, private localstorage: Storage,
@@ -46,15 +41,10 @@ export class Page3Page {
     this.rootNavCtrl = navParams.get('rootNavCtrl');
     this.loadMovies();
   }
-
-  
   loadMovies() {
-
     try {
       if (!this.asyncCall) {
         this.asyncCall = true;
-
-
         this.localstorage.get('bookmarklist').then((value) => {
           if (value == undefined || value == null || value.length == 0) {
             this.asyncCall = false;
@@ -65,48 +55,28 @@ export class Page3Page {
             this.asyncCall = false;
             this.showText = false;
             this.homepage.setBookMarkCount(this.movielist.length);
-
-
           }
         });
   }
-
-
     } catch (error) {
-
       console.log(error);
-
     }
-
   }
-
-
-
   shareApp(){
     this.homepage.shareApp();
   }
-
   scrollToTop(){
     this.isScrolled = false;
     this.content.scrollToTop(1000);
   }
-
-
-
   doRefresh(refresher) {
-
     this.movielist = [];
     refresher.complete();
     this.loadMovies();
-
   }
-
-
   openMoviePage(movie: Movies): void {
     this.rootNavCtrl.push('MoviedetailsPage', { movie });
-
   }
-
   presentToast(msg:string) {
     const toast = this.toastCtrl.create({
       message: msg,
@@ -114,19 +84,14 @@ export class Page3Page {
       closeButtonText:'Ok',
       showCloseButton:true
     });
-  
     toast.onDidDismiss(() => {
       console.log('Dismissed toast');
     });
-  
     toast.present();
 }
-
-
 ionViewWillEnter() {
   this.loadMovies();
 }
-
 ngAfterViewInit() {
   this.content.ionScroll.subscribe((data)=>{
    if(data != null && data != undefined && data.scrollTop == 0){
@@ -136,20 +101,10 @@ ngAfterViewInit() {
      this.isScrolled = false;
      else
      this.isScrolled = true;
-
    }
   });
 }
-
-
 openSettings(){
   this.rootNavCtrl.push('AppSettingsPage');
 }
-
-
-
-
-
-
-
 }

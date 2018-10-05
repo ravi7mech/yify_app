@@ -3,7 +3,6 @@ import { IonicPage, NavController, NavParams  } from 'ionic-angular';
 import { SubtitlesListPage } from '../subtitles-list/subtitles-list';
 import { SubsceneListPage } from '../subscene-list/subscene-list';
 import { Storage } from "@ionic/storage";
-
 @IonicPage()
 @Component({
   selector: 'page-subtitle-tabs',
@@ -21,5 +20,4 @@ export class SubtitleTabsPage {
     this.suburl = this.subdata.suburl;
     this.localstorage.set("suburl", this.suburl);
   }
-
 }

@@ -1,5 +1,3 @@
-
-
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController,AlertController } from 'ionic-angular';
 import { Response, SubsceneResults,SubsceneSubtitlesLinks} from '../../models/moviesjson';
@@ -10,8 +8,6 @@ import { Clipboard } from '@ionic-native/clipboard';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { Storage } from "@ionic/storage";
 import { Diagnostic } from '@ionic-native/diagnostic';
-
-
 @IonicPage()
 @Component({
   selector: 'page-sub-title-search-subs-scene',
@@ -30,7 +26,6 @@ import { Diagnostic } from '@ionic-native/diagnostic';
       vertical-align: baseline;
   }`
   ]
-
 })
 export class SubTitleSearchSubsScenePage {
   suburl: string;
@@ -43,7 +38,6 @@ export class SubTitleSearchSubsScenePage {
   filename:string;
   showheader:boolean = false;
   params:any = {showheader:false};
-
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private yifyProvider: YifyMoviesProvider, private transfer: FileTransfer, private file: File
     , public toastCtrl: ToastController, private clipboard: Clipboard, private socialSharing: SocialSharing,
@@ -56,11 +50,8 @@ export class SubTitleSearchSubsScenePage {
     this.localstorage.get('suburl').then((value) => {
        this.suburl = value;
         this.loadSubtitle();
-       
     });
-   
   }
-
   loadSubtitle() {
     try {
       this.asynccall = true;
@@ -78,22 +69,17 @@ export class SubTitleSearchSubsScenePage {
         }
         this.asynccall = false;
         this.sublist = this.subtitelist.down_links;
-
-
        }else{
         this.asynccall = false;
         this.msg = true;
        }      
-
       }) 
-      
     } catch (e) {
       console.log(e);
       this.asynccall = false;
       this.msg = true;
     }
   }
-
   handleSubDownload(index:number){
     this.sublist[index].downstart = true;
       this.yifyProvider.downloadSubsceneSubs(this.url).subscribe(res => {
@@ -104,11 +90,8 @@ export class SubTitleSearchSubsScenePage {
         }, (error) => {
          this.showOpenSettingsAlert()
         })
-
        })  
-    
   }
-
   showOpenSettingsAlert(){
     let alert = this.alert.create({
       title: 'Permission needed!',
@@ -124,7 +107,6 @@ export class SubTitleSearchSubsScenePage {
     });
     alert.present();
   }
-
   downloadfile(file: SubsceneSubtitlesLinks,index:number) {
     this.url = 'https://subscene.com'+file.link;
     this.filename = file.name+'.zip';   
@@ -133,7 +115,6 @@ export class SubTitleSearchSubsScenePage {
       else this.requestExternalStorageAuthorization(index)
     })
   }
-
   requestExternalStorageAuthorization(index:number){
     this.diagnostic.requestExternalStorageAuthorization().then(res =>{
       console.log("requestExternalStorageAuthorization ",res)
@@ -143,8 +124,6 @@ export class SubTitleSearchSubsScenePage {
       this.showOpenSettingsAlert()
     })
   }
-
- 
   presentToast(msg: string) {
     const toast = this.toastCtrl.create({
       message: msg,
@@ -152,13 +131,9 @@ export class SubTitleSearchSubsScenePage {
       closeButtonText: 'OK',
       showCloseButton: true
     })
-
     toast.onDidDismiss(() => {
       // this.showBanner()
     })
-
     toast.present()
   }
-
 }
-

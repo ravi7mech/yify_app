@@ -3,7 +3,6 @@ import { IonicPage, NavController, NavParams,ToastController } from 'ionic-angul
 import { Storage } from "@ionic/storage";
 import {MyApp} from '../../app/app.component';
 import { YifyMoviesProvider } from '../../providers/yify-movies/yify-movies';
-
 @IonicPage()
 @Component({
   selector: 'page-app-settings',
@@ -12,14 +11,12 @@ import { YifyMoviesProvider } from '../../providers/yify-movies/yify-movies';
 export class AppSettingsPage {
   public mode:string;
   public domain:string;
-
   constructor(public navCtrl: NavController,
      public navParams: NavParams,
      private localstorage: Storage,public toastCtrl: ToastController,public myapp:MyApp,
       public yifyprovider :YifyMoviesProvider) {
     this.checkAppThemeMode()
   }
-
   ionViewDidLoad() {
     console.log('ionViewDidLoad AppSettingsPage')
   }
@@ -28,7 +25,6 @@ export class AppSettingsPage {
     this.presentToast("Configured!!")
     this.setModeTheme(this.mode)
   }
-
   setModeTheme(mode:string){
     if(mode == "on"){
       this.myapp.selectedTheme = 'dark-theme'
@@ -46,17 +42,13 @@ export class AppSettingsPage {
         this.myapp.setStatusBarColor('#3F51B5')
       }
     }
-    
   }
-
   useAm(){
     this.yifyprovider.Url = 'https://yts.unblocked.lat/api/v2'
   }
-
   useMe(){
     this.yifyprovider.Url = 'https://yts.me/api/v2'
   }
-
   checkAppThemeMode(){
     this.localstorage.get("mode").then(res=>{
       if(res == null || res == undefined || res == ''){
@@ -66,25 +58,20 @@ export class AppSettingsPage {
       }
       this.setModeTheme(this.mode)
     })
-
     if(this.yifyprovider.Url && this.yifyprovider.Url.includes('yts.unblocked.lat')){
       this.domain = 'yts.unblocked.lat'
     }else{
       this.domain = 'yts.me'
     }
   }
-
   getYifydomain(){
     if(this.yifyprovider.Url.includes('yts.unblocked.lat')){
       this.domain = 'yts.unblocked.lat'
     }else{
       this.domain = 'yts.me'
     }
-
     return this.domain;
   }
-  
-
   presentToast(msg:string) {
     const toast = this.toastCtrl.create({
       message:msg,
@@ -93,11 +80,9 @@ export class AppSettingsPage {
       showCloseButton:false,
       duration:2000
     })
-  
     toast.onDidDismiss(() => {
       console.log('Dismissed toast')
     })
-  
     toast.present()
 }
 }

@@ -5,7 +5,6 @@ import { Movies } from '../../models/moviesjson';
 import { SpeechRecognition } from '@ionic-native/speech-recognition';
 import { LazyLoadImageDirective } from 'ng-lazyload-image';
 import { HomePage } from '../home/home';
-
 @IonicPage()
 @Component({
   selector: 'page-search',
@@ -19,8 +18,6 @@ import { HomePage } from '../home/home';
       from { opacity: 0; }
       to   { opacity: 1; }
   }
-
-  
 `]
 })
 export class SearchPage {
@@ -37,7 +34,6 @@ export class SearchPage {
   showText:boolean=false;
   defaultImage = 'https://i.imgur.com/DLkGimY.png';
   darkui:boolean = true;
-
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     private yifyprovider: YifyMoviesProvider,
@@ -45,9 +41,7 @@ export class SearchPage {
     public toastCtrl: ToastController,public homepage:HomePage,
     public alertcontroller :AlertController) {
       this.isRecognitionAvailable();
-
   }
-
   presentToast(msg:string) {
     const toast = this.toastCtrl.create({
       message: msg,
@@ -56,15 +50,11 @@ export class SearchPage {
       showCloseButton:true,
       duration:4000
     });
-  
     toast.onDidDismiss(() => {
       console.log('Dismissed toast');
     });
-  
     toast.present();
 }
-  
-
   startListening() {
     this.speechRecognition.startListening(this.options)
       .subscribe(
@@ -77,17 +67,10 @@ export class SearchPage {
         console.log('error:', onerror);
       }
       )
-
   }
-
-
   presentConfirm() {
     this.requestPermission();
   }
-
-
- 
-
 retryVoiceMessage(msg:string) {
   const toast = this.toastCtrl.create({
     message: msg,
@@ -96,19 +79,13 @@ retryVoiceMessage(msg:string) {
     showCloseButton:false,
     duration:3000
   });
-
   toast.onDidDismiss(() => {
     console.log('Dismissed toast');
     this.startListening();
   });
-
   toast.present();
 }
-
-
-
   listenmic() {
-
     if(this.hasMicAccess){
       this.startListening();
     }else
@@ -116,8 +93,6 @@ retryVoiceMessage(msg:string) {
       this.presentConfirm();
     }
   }
-    
-
   getSupportedLanguages() {
     this.speechRecognition.getSupportedLanguages()
       .then(
@@ -125,35 +100,28 @@ retryVoiceMessage(msg:string) {
       (error) => console.log(error)
       )
   }
-
-
   hasPermission() {
     this.speechRecognition.hasPermission()
       .then((hasPermission: boolean)=>{
         if(!hasPermission){
           this.hasMicAccess = false;
-        
         }else{
           this.hasMicAccess = true;
         }
       })
   }
-
   requestPermission() {
     this.speechRecognition.requestPermission()
       .then(
       () => {
         this.hasMicAccess = true;
         this.startListening();
-
       },
       () => {
         this.hasMicAccess= false;
       }
       )
-
   }
-
   isRecognitionAvailable() {
     this.speechRecognition.isRecognitionAvailable()
       .then((available: boolean) => {
@@ -165,18 +133,12 @@ retryVoiceMessage(msg:string) {
         }
       })
   }
-
-
-
-
   getItems(val:any) {
-   
    this.showText = false;
     if (val && val.trim() != '') {
       this.asyncCall = true;
       this.yifyprovider.searchYifyMovies(val).subscribe(res => {
         this.asyncCall = false;
-       
         if (res.status == 'ok') {
           this.movielist = res.data.movies;
           this.searchbar.setFocus();
@@ -185,34 +147,22 @@ retryVoiceMessage(msg:string) {
         this.showText = true;
         else
         this.showText = false;
-
       });
     } else {
       this.movielist = [];
       this.showText = false;
     }
   }
-
-
-
   ionViewDidLoad() {
     console.log('ionViewDidLoad SearchPage');
   }
-
-
   openMoviePage(movie: Movies): void {
     this.navCtrl.push('MoviedetailsPage', { movie });
-
   }
-
   shareApp(){
     this.homepage.shareApp();
   }
-
-
   openSettings(){
     this.navCtrl.push('AppSettingsPage');
   }
-
-
 }

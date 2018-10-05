@@ -12,7 +12,6 @@ import { Push, PushObject, PushOptions } from '@ionic-native/push';
 import { Toast } from '@ionic-native/toast';
 import { Market } from '@ionic-native/market';
 import { Network } from '@ionic-native/network';
-
 @Component({
   templateUrl: 'app.html',
   providers: [SettingsProvider, EmailComposer, Device, SocialSharing, AppAvailability, Push,
@@ -32,8 +31,6 @@ export class MyApp {
     'com.napolovd.piratecat', 'com.delphicoder.flud', 'com.frostwire.android', 'com.gabordemko.torrnado',
     'org.transdroid.lite', 'com.vuze.torrent.downloader', 'com.teeonsoft.ztorrent', 'com.bittorrent.client.pro'];
   version: string = 'v1.0.0';
-
-
   email = {
     app: 'gmail',
     to: 'phoenixcoders777@gmail.com',
@@ -41,7 +38,6 @@ export class MyApp {
     body: 'Attach some screenshots or type the details of the issue you are facing and send it...!!!',
     isHtml: true
   };
-
   menuItems: any[] = [
     {
       name: 'Home',
@@ -74,20 +70,17 @@ export class MyApp {
       page: 'RateUs',
       faclass: 'fa fa-star fa-lg'
     },
-
     {
       name: 'Privacy Policy',
       page: 'PrivacyPolicy',
       faclass: 'fa fa-file-text fa-lg'
     },
-
     {
       name: 'About',
       page: 'AboutPage',
       faclass: 'fa fa-info-circle fa-lg'
     }
   ];
-
   constructor(platform: Platform, splashScreen: SplashScreen, statusBar: StatusBar,
     private emailComposer: EmailComposer,
     private device: Device, private toastCtrl: ToastController,
@@ -95,7 +88,6 @@ export class MyApp {
     private appAvailability: AppAvailability, public settings: SettingsProvider,
     public alert: AlertController, public push: Push,
     private market: Market, public toast: Toast, private network: Network) {
-
     this.rootPage = this.menuItems[0].page
     this.rootParams = this.menuItems[0].params
     this.settings.getActiveTheme().subscribe(val => this.selectedTheme = val)
@@ -103,13 +95,9 @@ export class MyApp {
     this.platform = platform
     this.stb = statusBar
     platform.ready().then(() => {
-
-
       splashScreen.hide()
       statusBar.backgroundColorByHexString('#3F51B5')
-
       platform.registerBackButtonAction(() => {
-
         if (this.backButtonPressedOnceToExit) {
           this.platform.exitApp();
         } else if (this.nav.canGoBack()) {
@@ -121,64 +109,35 @@ export class MyApp {
             this.backButtonPressedOnceToExit = false;
           }, 2000)
         }
-
-
       });
-
     })
-
     this.localstorage.set("hastorapp", false);
     this.checkTorrentsAppAvailability();
     this.registerNetworkEvents();
-
-
-
   }
-
   registerNetworkEvents() {
     this.network.onDisconnect().subscribe(() => {
       this.showNetworkError("Disconnected!");
     })
-
     this.network.onConnect().subscribe(() => {
       this.showNetworkError("Connected!");
       this.showBanner()
     })
-
-
-
   }
-
-
-
   showNetworkError(msg: string) {
-
     this.toast.show("Network " + msg + "!", '3000', 'bottom').subscribe(
       toast => {
         console.log(toast);
       })
   }
-
   setPurchased(val: boolean) {
     this.isPurchased = val;
   }
-
-
-
   showBanner() {
-
-
   }
-
-
-
-
-
-
   setStatusBarColor(color: string) {
     this.stb.backgroundColorByHexString(color);
   }
-
   showRestartAlert() {
     let alert = this.alert.create({
       title: 'Thank you !!',
@@ -188,7 +147,6 @@ export class MyApp {
           text: 'LATER',
           role: 'cancel',
           handler: () => {
-
           }
         },
         {
@@ -202,19 +160,14 @@ export class MyApp {
     alert.present();
   }
   checkTorrentsAppAvailability(): void {
-
     for (var i = 0; i < this.torrentapps.length; i++) {
-
       this.appAvailability.check(this.torrentapps[i].toString())
         .then(
           (yes) => this.localstorage.set('hastorapp', true),
           (no) => console.log("not available")
         );
-
     }
-
   }
-
   checkAppThemeMode() {
     this.localstorage.get("mode").then(res => {
       if (res == null || res == undefined || res == '') {
@@ -224,7 +177,6 @@ export class MyApp {
       }
     })
   }
-
   setModeTheme(mode: string) {
     if (mode == "on") {
       this.selectedTheme = 'dark-theme'
@@ -242,25 +194,18 @@ export class MyApp {
         this.setStatusBarColor('#3F51B5')
       }
     }
-
   }
-
   showToast() {
     let toast = this.toastCtrl.create({
       message: 'Press Again to exit',
       duration: 2000,
       position: 'bottom'
     });
-
     toast.onDidDismiss(() => {
       console.log('Dismissed toast');
     });
-
     toast.present();
   }
-
-
-
   openPage(page) {
     if (page.page == 'HomePage' || page.page == 'AdvancedSearchPage'
       || page.page == 'SettingsPage' || page.page == 'AboutPage'
@@ -277,23 +222,16 @@ export class MyApp {
     } else if (page.page == 'RateUs') {
       this.market.open('com.project.yifybrowserandsubs')
     }
-
   }
-
   shareApp() {
-
     this.socialSharing.share(null, null, null, this.playstoreappurl).then((res) => {
       console.log("shared");
       this.localstorage.set('shared', 'Y');
-
     }).catch((e) => {
       this.localstorage.set('shared', 'N');
       this.localstorage.set('tried', 1);
     });
-
   }
-
-
   loadDeviceInfo() {
     let model = this.device.model;
     let platform = this.device.platform;
@@ -302,9 +240,4 @@ export class MyApp {
     let content = model + " " + platform + " " + manufacturer + " " + version;
     this.email.body = content;
   }
-
- 
-
-
-
 }

@@ -4,18 +4,14 @@ fab-toolbar.right {
         margin-right: 5px;
         float: right;
     }
-
 }
-
 fab-toolbar.left {
     left: 0;
     button[ion-fab] {
         margin-left: 5px;
         float: left;
     }
-    
 }
-
 fab-toolbar.bottom {
     bottom: 3%;
     right:0;
@@ -23,11 +19,7 @@ fab-toolbar.bottom {
         margin-bottom: 10px;
         float: right;
     }
-    
 }
-
-
-
 fab-toolbar {
     position: absolute;
     width: 68px;
@@ -73,14 +65,12 @@ fab-toolbar {
         }
     }
 }
-
 fab-toolbar:not(.activated) {
     width: 68px;
 }
 fab-toolbar.activated {
     width:  100%;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
-
     .backdrop {
         display: block;
         opacity: 0;
@@ -107,7 +97,6 @@ fab-toolbar.activated {
         }
     }
 }
-
 fab-toolbar.opened {
     .backdrop {
         opacity: 1;

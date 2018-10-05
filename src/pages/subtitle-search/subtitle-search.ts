@@ -7,7 +7,6 @@ import { LazyLoadImageDirective } from 'ng-lazyload-image';
 import { HomePage } from '../home/home';
 import { DatePipe } from '@angular/common';
 import { Storage } from "@ionic/storage";
-
 @IonicPage()
 @Component({
   selector: 'page-search',
@@ -21,8 +20,6 @@ import { Storage } from "@ionic/storage";
       from { opacity: 0; }
       to   { opacity: 1; }
   }
-
-  
 `]
 })
 export class SubtitleSearchPage {
@@ -51,9 +48,7 @@ export class SubtitleSearchPage {
     public toastCtrl: ToastController,public homepage:HomePage,
     public alertcontroller :AlertController, private localstorage: Storage) {
       this.isRecognitionAvailable();
-
   }
-
   presentToast(msg:string) {
     const toast = this.toastCtrl.create({
       message: msg,
@@ -62,20 +57,14 @@ export class SubtitleSearchPage {
       showCloseButton:false,
       duration:2000
     });
-  
     toast.onDidDismiss(() => {
       console.log('Dismissed toast');
     });
-  
     toast.present();
 }
-  
 getMoviePoster(movie:TMDbMovieResults){
-
   return "https://image.tmdb.org/t/p/w500"+((movie.poster_path == null || movie.poster_path == undefined) ? movie.backdrop_path : movie.poster_path);
-  
 }
-
 getNativeLanguage(movie:TMDbMovieResults){
   let lang = movie.original_language;
   let english_name='';
@@ -100,19 +89,10 @@ getNativeLanguage(movie:TMDbMovieResults){
         console.log('error:', onerror);
       }
       )
-
   }
-
-
   presentConfirm() {
     this.requestPermission();
   }
-
-  
-
-
- 
-
 retryVoiceMessage(msg:string) {
   const toast = this.toastCtrl.create({
     message: msg,
@@ -121,19 +101,13 @@ retryVoiceMessage(msg:string) {
     showCloseButton:false,
     duration:3000
   });
-
   toast.onDidDismiss(() => {
     console.log('Dismissed toast');
     this.startListening();
   });
-
   toast.present();
 }
-
-
-
   listenmic() {
-
     if(this.hasMicAccess){
       this.startListening();
     }else
@@ -141,8 +115,6 @@ retryVoiceMessage(msg:string) {
       this.presentConfirm();
     }
   }
-    
-
   getSupportedLanguages() {
     this.speechRecognition.getSupportedLanguages()
       .then(
@@ -150,35 +122,28 @@ retryVoiceMessage(msg:string) {
       (error) => console.log(error)
       )
   }
-
-
   hasPermission() {
     this.speechRecognition.hasPermission()
       .then((hasPermission: boolean)=>{
         if(!hasPermission){
           this.hasMicAccess = false;
-        
         }else{
           this.hasMicAccess = true;
         }
       })
   }
-
   requestPermission() {
     this.speechRecognition.requestPermission()
       .then(
       () => {
         this.hasMicAccess = true;
         this.startListening();
-
       },
       () => {
         this.hasMicAccess= false;
       }
       )
-
   }
-
   isRecognitionAvailable() {
     this.speechRecognition.isRecognitionAvailable()
       .then((available: boolean) => {
@@ -190,7 +155,6 @@ retryVoiceMessage(msg:string) {
         }
       })
   }
-
   getItems(val:any) {
    this.showText = false;
     if (val && val.trim() != '') {
@@ -204,7 +168,6 @@ retryVoiceMessage(msg:string) {
         else
         this.showText = true;
         console.log(this.submovielist)  
-
         this.searchbar.setFocus();
      })
     } else {
@@ -212,7 +175,6 @@ retryVoiceMessage(msg:string) {
       this.showText = false;
     }
   }
-
   doInfinite(infiniteScroll) {
     console.log('Begin async operation');
     if (!this.asyncCall) {
@@ -230,10 +192,7 @@ retryVoiceMessage(msg:string) {
     } else {
       infiniteScroll.complete();
     }
-
   }
-
-
   openMoviePage(movie: TMDbMovieResults): void {
    let title = movie.title;
    title = title.toLocaleLowerCase().replace(/[&\/\\#,+()$~%.'":*?!<>{}]/g, ''); 
@@ -243,15 +202,10 @@ retryVoiceMessage(msg:string) {
    const ANIMATION = { animate: true, direction: 'forward' };
    this.navCtrl.push('SubTitleSearchSubsScenePage', {params} , ANIMATION);
   }
-
   shareApp(){
     this.homepage.shareApp();
   }
-
-
   openSettings(){
     this.navCtrl.push('AppSettingsPage');
   }
-
-
 }
