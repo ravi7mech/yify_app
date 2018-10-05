@@ -20,8 +20,6 @@ import { SettingsProvider } from '../providers/settings/settings';
 import { SubtitlesListPage } from '../pages/subtitles-list/subtitles-list';
 import { SubsceneListPage } from '../pages/subscene-list/subscene-list';
 import { DomSanitizer } from '@angular/platform-browser';
-//import { ScrollHideDirective } from '../directives/scroll-hide/scroll-hide';
-import { ElasticHeaderModule } from "ionic2-elastic-header/dist";
 
 enableProdMode();
 
@@ -30,7 +28,7 @@ enableProdMode();
     MyApp,PopoverPage,SubtitlesListPage,SubsceneListPage
   ],
   imports: [
-    BrowserModule,ElasticHeaderModule,
+    BrowserModule,
     BrowserAnimationsModule,
     HttpModule,
     SuperTabsModule.forRoot(),

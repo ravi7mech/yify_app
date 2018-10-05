@@ -1,1 +1,40 @@
-webpackJsonp([13],{538:function(t,e,o){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var i=o(1),n=(o(24),o(115)),_=function(){return function(){}}(),r=o(20),u=o(39),s=o(147),a=o(247),l=o(248),c=o(249),h=o(250),d=o(251),p=o(252),f=o(257),b=o(74);o.d(e,"SubtitlesListPageModuleNgFactory",function(){return M});var g,y=this&&this.__extends||(g=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(t,e){t.__proto__=e}||function(t,e){for(var o in e)e.hasOwnProperty(o)&&(t[o]=e[o])},function(t,e){function o(){this.constructor=t}g(t,e),t.prototype=null===e?Object.create(e):(o.prototype=e.prototype,new o)}),M=new i.NgModuleFactory(function(t){function e(e){return t.call(this,e,[a.a,l.a,c.a,h.a,d.a,p.a,f.a],[])||this}return y(e,t),Object.defineProperty(e.prototype,"_NgLocalization_7",{get:function(){return null==this.__NgLocalization_7&&(this.__NgLocalization_7=new r.j(this.parent.get(i.LOCALE_ID))),this.__NgLocalization_7},enumerable:!0,configurable:!0}),Object.defineProperty(e.prototype,"_ɵi_8",{get:function(){return null==this.__ɵi_8&&(this.__ɵi_8=new u.k),this.__ɵi_8},enumerable:!0,configurable:!0}),Object.defineProperty(e.prototype,"_FormBuilder_9",{get:function(){return null==this.__FormBuilder_9&&(this.__FormBuilder_9=new u.c),this.__FormBuilder_9},enumerable:!0,configurable:!0}),e.prototype.createInternal=function(){return this._CommonModule_0=new r.b,this._ɵba_1=new u.j,this._FormsModule_2=new u.d,this._ReactiveFormsModule_3=new u.i,this._IonicModule_4=new s.a,this._IonicPageModule_5=new s.b,this._SubtitlesListPageModule_6=new _,this._LAZY_LOADED_TOKEN_10=n.a,this._SubtitlesListPageModule_6},e.prototype.getInternal=function(t,e){return t===r.b?this._CommonModule_0:t===u.j?this._ɵba_1:t===u.d?this._FormsModule_2:t===u.i?this._ReactiveFormsModule_3:t===s.a?this._IonicModule_4:t===s.b?this._IonicPageModule_5:t===_?this._SubtitlesListPageModule_6:t===r.k?this._NgLocalization_7:t===u.k?this._ɵi_8:t===u.c?this._FormBuilder_9:t===b.a?this._LAZY_LOADED_TOKEN_10:e},e.prototype.destroyInternal=function(){},e}(i["ɵNgModuleInjector"]),_)}});
+webpackJsonp([13],{
+
+/***/ 610:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SubtitlesListPageModule", function() { return SubtitlesListPageModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__subtitles_list__ = __webpack_require__(143);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+var SubtitlesListPageModule = (function () {
+    function SubtitlesListPageModule() {
+    }
+    return SubtitlesListPageModule;
+}());
+SubtitlesListPageModule = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
+        declarations: [],
+        imports: [
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__subtitles_list__["a" /* SubtitlesListPage */]),
+        ],
+    })
+], SubtitlesListPageModule);
+
+//# sourceMappingURL=subtitles-list.module.js.map
+
+/***/ })
+
+});
+//# sourceMappingURL=13.js.map

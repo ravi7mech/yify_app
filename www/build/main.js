@@ -1,1 +1,1299 @@
-webpackJsonp([15],{111:function(e,t,n){"use strict";n.d(t,"a",function(){return l});n(1),n(24),n(106),n(53),n(107),n(105),n(236),n(31),n(237),n(171),n(80),n(238),n(239),n(161),n(240),n(241);var l=function(){function e(e,t,n,l,i,o,r,a,s,u,c,d,_,h,p,f,g){var m=this;this.emailComposer=l,this.device=i,this.toastCtrl=o,this.localstorage=r,this.socialSharing=a,this.appRate=s,this.appAvailability=u,this.settings=c,this.alert=d,this.push=_,this.firebaseAnalytics=h,this.market=p,this.toast=f,this.network=g,this.isPurchased=!1,this.backButtonPressedOnceToExit=!1,this.playstoreappurl="https://play.google.com/store/apps/details?id=com.project.yifybrowserandsubs",this.torrentapps=["com.utorrent.client","com.mobilityflow.torrent","com.bittorrent.client","com.napolovd.piratecat","com.delphicoder.flud","com.frostwire.android","com.gabordemko.torrnado","org.transdroid.lite","com.vuze.torrent.downloader","com.teeonsoft.ztorrent","com.bittorrent.client.pro"],this.version="v1.0.0",this.email={app:"gmail",to:"phoenixcoders777@gmail.com",subject:"Feedback",body:"Attach some screenshots or type the details of the issue you are facing and send it...!!!",isHtml:!0},this.menuItems=[{name:"Home",page:"HomePage",faclass:"fa fa-home fa-lg",params:{type:"all"}},{name:"Subtitles",page:"SubtitleSearchPage",faclass:"fa fa-file-archive-o fa-lg"},{name:"Advanced Search",page:"AdvancedSearchPage",faclass:"fa fa-search-plus fa-lg"},{name:"Share",page:"SharePage",faclass:"fa fa-share-alt fa-lg"},{name:"Settings",page:"AppSettingsPage",faclass:"fa fa-cog fa-lg"},{name:"Rate Us",page:"RateUs",faclass:"fa fa-star fa-lg"},{name:"Privacy Policy",page:"PrivacyPolicy",faclass:"fa fa-file-text fa-lg"},{name:"About",page:"AboutPage",faclass:"fa fa-info-circle fa-lg"}],this.rootPage=this.menuItems[0].page,this.rootParams=this.menuItems[0].params,this.settings.getActiveTheme().subscribe(function(e){return m.selectedTheme=e}),this.checkAppThemeMode(),this.platform=e,this.stb=n,e.ready().then(function(){t.hide(),n.backgroundColorByHexString("#3F51B5"),e.registerBackButtonAction(function(){m.backButtonPressedOnceToExit?m.platform.exitApp():m.nav.canGoBack()?m.nav.pop({}):(m.showToast(),m.backButtonPressedOnceToExit=!0,setTimeout(function(){m.backButtonPressedOnceToExit=!1},2e3))}),m.appRate.preferences={displayAppName:"this app",usesUntilPrompt:5,promptAgainForEachNewVersion:!1,storeAppURL:{android:"market://details?id=com.project.yifybrowserandsubs"},customLocale:{title:"Would you mind rating %@?",message:"It won’t take more than a minute and helps to promote our app. Thanks for your support!",cancelButtonLabel:"No,Thanks",laterButtonLabel:"Later",rateButtonLabel:"Rate Now",yesButtonLabel:"Yes!",noButtonLabel:"Not really",appRatePromptTitle:"Do you like using %@",feedbackPromptTitle:"Mind giving us some feedback?"},callbacks:{handleNegativeFeedback:function(){this.appRate.promptForRating(!1)},onRateDialogShow:function(e){this.appRate.promptForRating(!1)},onButtonClicked:function(e){this.appRate.promptForRating(!1)}}},m.appRate.promptForRating(!1)}),this.localstorage.set("hastorapp",!1),this.checkTorrentsAppAvailability(),this.pushsetup(),this.firebaseAnalytics.logEvent("page_view",{page:"dashboard"}).then(function(e){return console.log(e)}).catch(function(e){return console.error(e)}),this.registerNetworkEvents()}return e.prototype.registerNetworkEvents=function(){var e=this;this.network.onDisconnect().subscribe(function(){e.showNetworkError("Disconnected!")}),this.network.onConnect().subscribe(function(){e.showNetworkError("Connected!"),e.showBanner()})},e.prototype.showNetworkError=function(e){this.toast.show("Network "+e+"!","3000","bottom").subscribe(function(e){console.log(e)})},e.prototype.setPurchased=function(e){this.isPurchased=e},e.prototype.showBanner=function(){},e.prototype.pushsetup=function(){var e=this,t=this.push.init({android:{sound:!0,icon:"icon",senderID:"923651047024"}});t.on("notification").subscribe(function(t){t.additionalData.foreground&&e.alert.create({title:"New Push notification",message:t.message,buttons:["Dismiss"]}).present()}),t.on("registration").subscribe(function(t){e.localstorage.set("regid",t)}),t.on("error").subscribe(function(e){return alert("Error with Push plugin"+e)})},e.prototype.setStatusBarColor=function(e){this.stb.backgroundColorByHexString(e)},e.prototype.showRestartAlert=function(){var e=this;this.alert.create({title:"Thank you !!",message:"Apps needs to get restarted to apply changes!!",buttons:[{text:"LATER",role:"cancel",handler:function(){}},{text:"RESTART",handler:function(){e.platform.exitApp()}}]}).present()},e.prototype.checkTorrentsAppAvailability=function(){for(var e=this,t=0;t<this.torrentapps.length;t++)this.appAvailability.check(this.torrentapps[t].toString()).then(function(t){return e.localstorage.set("hastorapp",!0)},function(e){return console.log("not available")})},e.prototype.checkAppThemeMode=function(){var e=this;this.localstorage.get("mode").then(function(t){e.setModeTheme(null==t||null==t||""==t?"off":t)})},e.prototype.setModeTheme=function(e){if("on"==e)this.selectedTheme="dark-theme",this.setStatusBarColor("#060a1f");else if("off"==e)this.selectedTheme="light-theme",this.setStatusBarColor("#3F51B5");else if("auto"==e){var t=new Date;t.getHours()>=18||6>=t.getHours()?(this.selectedTheme="dark-theme",this.setStatusBarColor("#060a1f")):(this.selectedTheme="light-theme",this.setStatusBarColor("#3F51B5"))}},e.prototype.showToast=function(){var e=this.toastCtrl.create({message:"Press Again to exit",duration:2e3,position:"bottom"});e.onDidDismiss(function(){console.log("Dismissed toast")}),e.present()},e.prototype.openPage=function(e){"HomePage"==e.page||"AdvancedSearchPage"==e.page||"SettingsPage"==e.page||"AboutPage"==e.page||"SubtitleSearchPage"==e.page||"AppSettingsPage"==e.page?this.nav.setRoot(e.page,e.params):"ReportPage"==e.page?(this.emailComposer.addAlias("gmail","com.google.android.gm"),this.loadDeviceInfo(),this.emailComposer.open(this.email)):"PrivacyPolicy"==e.page?window.open("https://sites.google.com/view/yifyhdmovies/home","_system","location=yes"):"SharePage"==e.page?this.shareApp():"RateUs"==e.page&&this.market.open("com.project.yifybrowserandsubs")},e.prototype.shareApp=function(){var e=this;this.socialSharing.share(null,null,null,this.playstoreappurl).then(function(t){console.log("shared"),e.localstorage.set("shared","Y")}).catch(function(t){e.localstorage.set("shared","N"),e.localstorage.set("tried",1)})},e.prototype.loadDeviceInfo=function(){this.email.body=this.device.model+" "+this.device.platform+" "+this.device.manufacturer+" "+this.device.version},e.prototype.promptRatingDialog=function(){this.appRate.promptForRating(!0)},e}()},114:function(e,t,n){"use strict";n.d(t,"a",function(){return l});n(1),n(24),n(50),n(81),n(82),n(78),n(31),n(53),n(83);var l=function(){function e(e,t,n,l,i,o,r,a,s,u,c){var d=this;this.navCtrl=e,this.navParams=t,this.yifyProvider=n,this.transfer=l,this.file=i,this.toastCtrl=o,this.clipboard=r,this.socialSharing=a,this.localstorage=s,this.alert=u,this.diagnostic=c,this.sublist=[],this.showheader=!1,this.params={showheader:!1},this.fileTransfer=this.transfer.create(),this.params=t.get("params"),null!=this.params&&null!=this.params&&(this.showheader=this.params.showheader),this.localstorage.get("suburl").then(function(e){d.suburl=e,d.loadSubtitle()})}return e.prototype.loadSubtitle=function(){var e=this;try{this.asynccall=!0,this.yifyProvider.getSubSceneSubTitles(this.suburl).subscribe(function(t){if(e.subtitelist=t,e.subtitelist.langs_names.length>0){for(var n=0,l=0;l<e.subtitelist.langs_names.length;l++)l%2==0?e.subtitelist.down_links[n].lang=e.subtitelist.langs_names[l].lang_name:(e.subtitelist.down_links[n].name=e.subtitelist.langs_names[l].lang_name,n++);e.asynccall=!1,e.sublist=e.subtitelist.down_links}else e.asynccall=!1,e.msg=!0})}catch(e){console.log(e),this.asynccall=!1,this.msg=!0}},e.prototype.handleSubDownload=function(e){var t=this;this.sublist[e].downstart=!0,this.yifyProvider.downloadSubsceneSubs(this.url).subscribe(function(n){t.fileTransfer.download("https://subscene.com"+n.downlink[0].link,t.file.externalRootDirectory+"YIFY_Torrent_Browser/"+t.filename).then(function(n){t.sublist[e].downstart=!1,t.sublist[e].downcomplete=!0,t.presentToast("File saved in : "+t.file.externalRootDirectory.replace("file:///","")+"YIFY_Torrent_Browser/"+t.filename)},function(e){t.showOpenSettingsAlert()})})},e.prototype.showOpenSettingsAlert=function(){var e=this;this.alert.create({title:"Permission needed!",message:"This permission is needed to save the downloaded subtitle to disk!",buttons:[{text:"OPEN SETTINGS",handler:function(){e.diagnostic.switchToSettings()}}]}).present()},e.prototype.downloadfile=function(e,t){var n=this;this.url="https://subscene.com"+e.link,this.filename=e.name+".zip",this.diagnostic.isExternalStorageAuthorized().then(function(e){e?n.handleSubDownload(t):n.requestExternalStorageAuthorization(t)})},e.prototype.requestExternalStorageAuthorization=function(e){var t=this;this.diagnostic.requestExternalStorageAuthorization().then(function(n){console.log("requestExternalStorageAuthorization ",n),n?t.handleSubDownload(e):t.showOpenSettingsAlert()},function(e){t.showOpenSettingsAlert()})},e.prototype.presentToast=function(e){var t=this.toastCtrl.create({message:e,position:"bottom",closeButtonText:"OK",showCloseButton:!0});t.onDidDismiss(function(){}),t.present()},e}()},115:function(e,t,n){"use strict";n.d(t,"a",function(){return l});n(1),n(24),n(50),n(81),n(82),n(78),n(31),n(83),n(166);var l=function(){function e(e,t,n,l,i,o,r,a,s,u,c){this.navCtrl=e,this.navParams=t,this.yifyProvider=n,this.transfer=l,this.file=i,this.toastCtrl=o,this.clipboard=r,this.socialSharing=a,this.subtabs=s,this.alert=u,this.diagnostic=c,this.filteredsubnames=[],this.sublist=[],this.imdb_code=s.imdb_code,this.fileTransfer=this.transfer.create(),this.loadSubtitle()}return e.prototype.showOpenSettingsAlert=function(){var e=this;this.alert.create({title:"Permission needed!",message:"This permission is needed to save the downloaded subtitle to disk!",buttons:[{text:"OPEN SETTINGS",handler:function(){e.diagnostic.switchToSettings()}}]}).present()},e.prototype.loadSubtitle=function(){var e=this;try{this.asynccall=!0,this.yifyProvider.getYifySUbTitles(this.imdb_code).subscribe(function(t){if(e.yifyresult=t,console.log(e.yifyresult),e.yifyresult.lang_list.length>0){for(var n=0;n<e.yifyresult.sub_names.length;n++)if(e.yifyresult.sub_names[n].subname.includes("subtitle")){var l={subname:e.yifyresult.sub_names[n].subname.substring(9,e.yifyresult.sub_names[n].subname.length)};e.filteredsubnames.push(l)}for(n=0;n<e.yifyresult.rating_list.length;n++){var i={lang:e.yifyresult.lang_list[n].lang,link:"https://www.yifysubtitles.com"+e.yifyresult.sub_links[n].download_link.replace("subtitles","subtitle")+".zip",rating:e.yifyresult.rating_list[n].rating,name:e.filteredsubnames[n].subname,downstart:!1,downcomplete:!1};e.sublist.push(i)}e.asynccall=!1}else e.asynccall=!1,e.msg=!0})}catch(e){console.log(e),this.asynccall=!1,this.msg=!0}},e.prototype.handleSubDownload=function(e){var t=this;this.sublist[e].downstart=!0,this.fileTransfer.download(this.url,this.file.externalRootDirectory+"YIFY_Torrent_Browser/"+this.filename).then(function(n){t.sublist[e].downstart=!1,t.sublist[e].downcomplete=!0,t.presentToast("File saved in : "+t.file.externalRootDirectory.replace("file:///","")+"YIFY_Torrent_Browser/"+t.filename)},function(e){t.showOpenSettingsAlert()})},e.prototype.downloadfile=function(e,t){var n=this;this.url=e.link,this.filename=this.url.split("/").pop(),this.diagnostic.isExternalStorageAuthorized().then(function(e){e?n.handleSubDownload(t):n.requestExternalStorageAuthorization(t)})},e.prototype.requestExternalStorageAuthorization=function(e){var t=this;this.diagnostic.requestExternalStorageAuthorization().then(function(n){console.log("requestExternalStorageAuthorization ",n),n?t.handleSubDownload(e):t.showOpenSettingsAlert()},function(e){t.showOpenSettingsAlert()})},e.prototype.copylink=function(e){this.clipboard.copy(e.link),this.presentToast("Copied!!")},e.prototype.sharelink=function(e){this.socialSharing.share(null,null,null,e.link).then(function(e){}).catch(function(e){console.log(e)})},e.prototype.presentToast=function(e){var t=this.toastCtrl.create({message:e,position:"bottom",closeButtonText:"OK",showCloseButton:!0});t.onDidDismiss(function(){}),t.present()},e}()},143:function(e,t,n){"use strict";n.d(t,"a",function(){return l});n(1),n(24),n(144),n(105);var l=function(){function e(e,t,n,l){this.viewCtrl=e,this.homepage=t,this.navCtrl=n,this.emailComposer=l,this.email={app:"gmail",to:"storm7breaker@gmail.com",subject:"Feedback",body:"Attach some screenshots or type the details of the issue you are facing and send it...!!!",isHtml:!0}}return e.prototype.close=function(){this.viewCtrl.dismiss()},e.prototype.search=function(){this.navCtrl.push("SearchPage")},e.prototype.report=function(){this.emailComposer.addAlias("gmail","com.google.android.gm"),this.emailComposer.open(this.email)},e.prototype.shareApp=function(){this.homepage.shareApp()},e}()},144:function(e,t,n){"use strict";n.d(t,"a",function(){return i});n(1),n(24);var l=n(143),i=(n(53),n(31),function(){function e(e,t,n,l){this.navCtrl=e,this.popoverCtrl=t,this.localstorage=n,this.socialSharing=l,this.page1="Page1Page",this.page2="Page2Page",this.page3="Page3Page",this.playstoreappurl="https://play.google.com/store/apps/details?id=com.project.yifybrowserandsubs",this.domain="ytsam"}return e.prototype.setBadgeCount=function(e){this.badgecount=e},e.prototype.search=function(){this.navCtrl.push("SearchPage")},e.prototype.openPopover=function(e){this.popoverCtrl.create(l.a).present({ev:e})},e.prototype.setBookMarkCount=function(e){this.bookmarkcount=e},e.prototype.shareApp=function(){var e=this;this.socialSharing.share(null,null,null,this.playstoreappurl).then(function(t){console.log("shared"),e.localstorage.set("shared","Y")}).catch(function(t){e.localstorage.set("shared","N"),e.localstorage.set("tried",1)})},e}())},166:function(e,t,n){"use strict";n.d(t,"a",function(){return o});n(1),n(24);var l=n(115),i=n(114),o=(n(53),function(){return function(e,t,n){this.navCtrl=e,this.navParams=t,this.localstorage=n,this.yifySubs=l.a,this.subsceneSubs=i.a,this.subdata=t.get("imdb"),this.imdb_code=this.subdata.imdbcode,this.suburl=this.subdata.suburl,this.localstorage.set("suburl",this.suburl)}}())},185:function(e,t){function n(e){return Promise.resolve().then(function(){throw new Error("Cannot find module '"+e+"'.")})}n.keys=function(){return[]},n.resolve=n,e.exports=n,n.id=185},193:function(e,t,n){var l={"../pages/about/about.module.ngfactory":[524,11],"../pages/advance-search-results/advance-search-results.module.ngfactory":[525,3],"../pages/advanced-search/advanced-search.module.ngfactory":[526,2],"../pages/app-settings/app-settings.module.ngfactory":[527,10],"../pages/home/home.module.ngfactory":[528,1],"../pages/moviedetails/moviedetails.module.ngfactory":[529,7],"../pages/page1/page1.module.ngfactory":[530,6],"../pages/page2/page2.module.ngfactory":[531,5],"../pages/page3/page3.module.ngfactory":[532,8],"../pages/search/search.module.ngfactory":[533,12],"../pages/sub-title-search-subs-scene/sub-title-search-subs-scene.module.ngfactory":[534,9],"../pages/subscene-list/subscene-list.module.ngfactory":[535,14],"../pages/subtitle-search/subtitle-search.module.ngfactory":[536,4],"../pages/subtitle-tabs/subtitle-tabs.module.ngfactory":[537,0],"../pages/subtitles-list/subtitles-list.module.ngfactory":[538,13]};function i(e){var t=l[e];return t?n.e(t[1]).then(function(){return n(t[0])}):Promise.reject(new Error("Cannot find module '"+e+"'."))}i.keys=function(){return Object.keys(l)},i.id=193,e.exports=i},256:function(e,t,n){"use strict";n.d(t,"a",function(){return V});var l=n(1),i=n(58),o=n(27),r=n(23),a=n(2),s=n(34),u=n(44),c=n(146),d=n(55),_=n(43),h=n(79),p=n(49),f=n(25),g=n(20),m=n(108),b=n(29),y=n(7),v=n(12),w=n(10),S=n(30),R=n(8),P=n(26),A=n(114),C=n(50),k=n(61),E=n(81),T=n(82),O=n(78),j=n(83),I=n(19),M=n(51),D=n(31),N=n(56),L=n(52),x=l["ɵcrt"]({encapsulation:0,styles:["ion-badge[_ngcontent-%COMP%] {\n      padding: 8px 11px;\n      text-align: center;\n      display: inline-block;\n      min-width: 10px;\n      font-size: 1.3rem;\n      font-weight: bold;\n      line-height: 1;\n      white-space: nowrap;\n      vertical-align: baseline;\n  }"],data:{}});function F(e){return l["ɵvid"](0,[(e()(),l["ɵeld"](0,null,null,6,"div",[["class","subspinner"]],null,null,null,null,null)),(e()(),l["ɵted"](null,["\n    "])),(e()(),l["ɵeld"](0,null,null,3,":svg:svg",[["class","spinner"],["height","55px"],["viewBox","0 0 66 66"],["width","55px"],["xmlns","http://www.w3.org/2000/svg"]],null,null,null,null,null)),(e()(),l["ɵted"](null,["\n    "])),(e()(),l["ɵeld"](0,null,null,0,":svg:circle",[["class","path"],["cx","33"],["cy","33"],["fill","none"],["r","30"],["stroke-linecap","round"],["stroke-width","6"]],null,null,null,null,null)),(e()(),l["ɵted"](null,["\n  "])),(e()(),l["ɵted"](null,["\n  "]))],null,null)}function H(e){return l["ɵvid"](0,[(e()(),l["ɵeld"](0,null,null,6,"ion-item",[["class","item item-block"],["text-wrap",""]],null,null,null,i.b,i.a)),l["ɵdid"](1097728,null,3,o.a,[r.a,a.a,l.ElementRef,l.Renderer,[2,s.a]],null,null),l["ɵqud"](335544320,1,{contentLabel:0}),l["ɵqud"](603979776,2,{_buttons:1}),l["ɵqud"](603979776,3,{_icons:1}),l["ɵdid"](16384,null,0,u.a,[],null,null),(e()(),l["ɵted"](2,["Subtitles not found for this movie, Try after some times !!!"]))],null,null)}function B(e){return l["ɵvid"](0,[(e()(),l["ɵeld"](0,null,null,1,"ion-spinner",[["class","spinner-dark"],["icon","dots"],["style","color: #387ef5;"]],[[2,"spinner-paused",null]],null,null,c.b,c.a)),l["ɵdid"](114688,null,0,d.a,[a.a,l.ElementRef,l.Renderer],null,null)],function(e,t){e(t,1,0)},function(e,t){e(t,0,0,l["ɵnov"](t,1)._paused)})}function q(e){return l["ɵvid"](0,[(e()(),l["ɵeld"](0,null,null,1,"ion-icon",[["ios","ios-checkmark"],["md","md-checkmark"],["role","img"],["style","font-size: 28px; color: green;"]],[[2,"hide",null]],null,null,null,null)),l["ɵdid"](147456,null,0,_.a,[a.a,l.ElementRef,l.Renderer],{ios:[0,"ios"],md:[1,"md"]},null)],function(e,t){e(t,1,0,"ios-checkmark","md-checkmark")},function(e,t){e(t,0,0,l["ɵnov"](t,1)._hidden)})}function z(e){return l["ɵvid"](0,[(e()(),l["ɵeld"](0,null,null,1,"span",[["style"," color: green;"]],null,null,null,null,null)),(e()(),l["ɵted"](null,["Downloaded!"]))],null,null)}function U(e){return l["ɵvid"](0,[(e()(),l["ɵeld"](0,null,null,58,"ion-card",[],null,null,null,null,null)),l["ɵdid"](16384,null,0,h.a,[a.a,l.ElementRef,l.Renderer],null,null),(e()(),l["ɵted"](null,["\n    \n      "])),(e()(),l["ɵeld"](0,null,null,12,"ion-item",[["class","item item-block"]],null,null,null,i.b,i.a)),l["ɵdid"](1097728,null,3,o.a,[r.a,a.a,l.ElementRef,l.Renderer,[2,s.a]],null,null),l["ɵqud"](335544320,4,{contentLabel:0}),l["ɵqud"](603979776,5,{_buttons:1}),l["ɵqud"](603979776,6,{_icons:1}),l["ɵdid"](16384,null,0,u.a,[],null,null),(e()(),l["ɵted"](2,["\n        "])),(e()(),l["ɵeld"](0,null,0,1,"ion-icon",[["item-start",""],["large",""],["name","map"],["role","img"],["style","color: #387ef5;"]],[[2,"hide",null]],null,null,null,null)),l["ɵdid"](147456,[[6,4]],0,_.a,[a.a,l.ElementRef,l.Renderer],{name:[0,"name"]},null),(e()(),l["ɵted"](2,["\n        "])),(e()(),l["ɵeld"](0,null,2,1,"h2",[],null,null,null,null,null)),(e()(),l["ɵted"](null,["","  "])),(e()(),l["ɵted"](2,["\n      "])),(e()(),l["ɵted"](null,["\n    \n  \n      "])),(e()(),l["ɵeld"](0,null,null,12,"ion-item",[["class","item item-block"]],null,null,null,i.b,i.a)),l["ɵdid"](1097728,null,3,o.a,[r.a,a.a,l.ElementRef,l.Renderer,[2,s.a]],null,null),l["ɵqud"](335544320,7,{contentLabel:0}),l["ɵqud"](603979776,8,{_buttons:1}),l["ɵqud"](603979776,9,{_icons:1}),l["ɵdid"](16384,null,0,u.a,[],null,null),(e()(),l["ɵted"](2,["\n        "])),(e()(),l["ɵeld"](0,null,0,1,"ion-icon",[["item-left",""],["large",""],["name","document"],["role","img"],["style","color: #387ef5;"]],[[2,"hide",null]],null,null,null,null)),l["ɵdid"](147456,[[9,4]],0,_.a,[a.a,l.ElementRef,l.Renderer],{name:[0,"name"]},null),(e()(),l["ɵted"](2,["\n        "])),(e()(),l["ɵeld"](0,null,2,1,"h2",[],null,null,null,null,null)),(e()(),l["ɵted"](null,["",""])),(e()(),l["ɵted"](2,["\n       \n      "])),(e()(),l["ɵted"](null,["\n  \n      "])),(e()(),l["ɵeld"](0,null,null,26,"ion-item",[["class","item item-block"]],null,null,null,i.b,i.a)),l["ɵdid"](1097728,null,3,o.a,[r.a,a.a,l.ElementRef,l.Renderer,[2,s.a]],null,null),l["ɵqud"](335544320,10,{contentLabel:0}),l["ɵqud"](603979776,11,{_buttons:1}),l["ɵqud"](603979776,12,{_icons:1}),l["ɵdid"](16384,null,0,u.a,[],null,null),(e()(),l["ɵted"](2,["\n          "])),(e()(),l["ɵeld"](0,null,0,11,"button",[["clear",""],["icon-left",""],["ion-button",""],["item-start",""]],null,null,null,p.b,p.a)),l["ɵdid"](1097728,[[11,4]],0,f.a,[[8,""],a.a,l.ElementRef,l.Renderer],{clear:[0,"clear"]},null),(e()(),l["ɵted"](0,["\n              "])),(e()(),l["ɵand"](16777216,null,0,1,null,B)),l["ɵdid"](16384,null,0,g.i,[l.ViewContainerRef,l.TemplateRef],{ngIf:[0,"ngIf"]},null),(e()(),l["ɵted"](0,["\n              "])),(e()(),l["ɵand"](16777216,null,0,1,null,q)),l["ɵdid"](16384,null,0,g.i,[l.ViewContainerRef,l.TemplateRef],{ngIf:[0,"ngIf"]},null),(e()(),l["ɵted"](0,[" "])),(e()(),l["ɵand"](16777216,null,0,1,null,z)),l["ɵdid"](16384,null,0,g.i,[l.ViewContainerRef,l.TemplateRef],{ngIf:[0,"ngIf"]},null),(e()(),l["ɵted"](0,["\n            \n            "])),(e()(),l["ɵted"](2,[" \n\n        "])),(e()(),l["ɵeld"](0,null,4,5,"button",[["clear",""],["icon-left",""],["ion-button",""],["item-end",""]],null,[[null,"click"]],function(e,t,n){var l=!0;"click"===t&&(l=!1!==e.component.downloadfile(e.context.$implicit,e.context.index)&&l);return l},p.b,p.a)),l["ɵdid"](1097728,[[11,4]],0,f.a,[[8,""],a.a,l.ElementRef,l.Renderer],{clear:[0,"clear"]},null),(e()(),l["ɵted"](0,["\n            "])),(e()(),l["ɵeld"](0,null,0,1,"ion-icon",[["name","download"],["role","img"]],[[2,"hide",null]],null,null,null,null)),l["ɵdid"](147456,null,0,_.a,[a.a,l.ElementRef,l.Renderer],{name:[0,"name"]},null),(e()(),l["ɵted"](0,["\n            Download\n          "])),(e()(),l["ɵted"](2,["\n      "])),(e()(),l["ɵted"](null,["\n    \n    "]))],function(e,t){e(t,11,0,"map");e(t,25,0,"document");e(t,39,0,""),e(t,42,0,t.context.$implicit.downstart),e(t,45,0,t.context.$implicit.downcomplete),e(t,48,0,t.context.$implicit.downcomplete);e(t,52,0,"");e(t,55,0,"download")},function(e,t){e(t,10,0,l["ɵnov"](t,11)._hidden),e(t,14,0,t.context.$implicit.lang),e(t,24,0,l["ɵnov"](t,25)._hidden),e(t,28,0,t.context.$implicit.name),e(t,54,0,l["ɵnov"](t,55)._hidden)})}function G(e){return l["ɵvid"](0,[(e()(),l["ɵted"](null,["\n"])),(e()(),l["ɵeld"](0,null,null,11,"ion-content",[["padding",""]],[[2,"statusbar-padding",null],[2,"has-refresher",null]],null,null,m.b,m.a)),l["ɵdid"](4374528,null,0,b.a,[a.a,y.a,v.a,l.ElementRef,l.Renderer,w.a,S.a,l.NgZone,[2,R.a],[2,P.a]],null,null),(e()(),l["ɵted"](1,["\n  "])),(e()(),l["ɵand"](16777216,null,1,1,null,F)),l["ɵdid"](16384,null,0,g.i,[l.ViewContainerRef,l.TemplateRef],{ngIf:[0,"ngIf"]},null),(e()(),l["ɵted"](1,["\n  "])),(e()(),l["ɵand"](16777216,null,1,1,null,H)),l["ɵdid"](16384,null,0,g.i,[l.ViewContainerRef,l.TemplateRef],{ngIf:[0,"ngIf"]},null),(e()(),l["ɵted"](1,["\n  \n  "])),(e()(),l["ɵand"](16777216,null,1,1,null,U)),l["ɵdid"](802816,null,0,g.h,[l.ViewContainerRef,l.TemplateRef,l.IterableDiffers],{ngForOf:[0,"ngForOf"]},null),(e()(),l["ɵted"](1,["\n  \n  \n  "])),(e()(),l["ɵted"](null,["\n  "]))],function(e,t){var n=t.component;e(t,5,0,n.asynccall),e(t,8,0,n.msg),e(t,11,0,n.sublist)},function(e,t){e(t,1,0,l["ɵnov"](t,2).statusbarPadding,l["ɵnov"](t,2)._hasRefresher)})}var V=l["ɵccf"]("page-subscene-list",A.a,function(e){return l["ɵvid"](0,[(e()(),l["ɵeld"](0,null,null,6,"page-subscene-list",[],null,null,null,G,x)),l["ɵprd"](512,null,C.a,C.a,[k.e]),l["ɵprd"](512,null,E.a,E.a,[]),l["ɵprd"](512,null,T.a,T.a,[]),l["ɵprd"](512,null,O.a,O.a,[]),l["ɵprd"](512,null,j.a,j.a,[]),l["ɵdid"](49152,null,0,A.a,[P.a,I.a,C.a,E.a,T.a,M.a,O.a,D.a,N.a,L.a,j.a],null,null)],null,null)},{},{},[])},257:function(e,t,n){"use strict";n.d(t,"a",function(){return Y});var l=n(1),i=n(58),o=n(27),r=n(23),a=n(2),s=n(34),u=n(44),c=n(146),d=n(55),_=n(43),h=n(79),p=n(113),f=n(49),g=n(25),m=n(20),b=n(108),y=n(29),v=n(7),w=n(12),S=n(10),R=n(30),P=n(8),A=n(26),C=n(115),k=n(50),E=n(61),T=n(81),O=n(82),j=n(78),I=n(83),M=n(19),D=n(51),N=n(31),L=n(166),x=n(52),F=l["ɵcrt"]({encapsulation:0,styles:["ion-badge[_ngcontent-%COMP%] {\n      padding: 8px 11px;\n      text-align: center;\n      display: inline-block;\n      min-width: 10px;\n      font-size: 1.3rem;\n      font-weight: bold;\n      line-height: 1;\n      white-space: nowrap;\n      vertical-align: baseline;\n  }"],data:{}});function H(e){return l["ɵvid"](0,[(e()(),l["ɵeld"](0,null,null,6,"div",[["class","subspinner"]],null,null,null,null,null)),(e()(),l["ɵted"](null,["\n  "])),(e()(),l["ɵeld"](0,null,null,3,":svg:svg",[["class","spinner1"],["height","55px"],["viewBox","0 0 66 66"],["width","55px"],["xmlns","http://www.w3.org/2000/svg"]],null,null,null,null,null)),(e()(),l["ɵted"](null,["\n  "])),(e()(),l["ɵeld"](0,null,null,0,":svg:circle",[["class","path"],["cx","33"],["cy","33"],["fill","none"],["r","30"],["stroke-linecap","round"],["stroke-width","6"]],null,null,null,null,null)),(e()(),l["ɵted"](null,["\n"])),(e()(),l["ɵted"](null,["\n"]))],null,null)}function B(e){return l["ɵvid"](0,[(e()(),l["ɵeld"](0,null,null,6,"ion-item",[["class","item item-block"],["text-wrap",""]],null,null,null,i.b,i.a)),l["ɵdid"](1097728,null,3,o.a,[r.a,a.a,l.ElementRef,l.Renderer,[2,s.a]],null,null),l["ɵqud"](335544320,1,{contentLabel:0}),l["ɵqud"](603979776,2,{_buttons:1}),l["ɵqud"](603979776,3,{_icons:1}),l["ɵdid"](16384,null,0,u.a,[],null,null),(e()(),l["ɵted"](2,["Subtitles not found for this movie, Try after some times !!!"]))],null,null)}function q(e){return l["ɵvid"](0,[(e()(),l["ɵeld"](0,null,null,1,"ion-spinner",[["class","spinner-dark"],["icon","dots"],["style","color: #387ef5;"]],[[2,"spinner-paused",null]],null,null,c.b,c.a)),l["ɵdid"](114688,null,0,d.a,[a.a,l.ElementRef,l.Renderer],null,null)],function(e,t){e(t,1,0)},function(e,t){e(t,0,0,l["ɵnov"](t,1)._paused)})}function z(e){return l["ɵvid"](0,[(e()(),l["ɵeld"](0,null,null,1,"ion-icon",[["ios","ios-checkmark"],["md","md-checkmark"],["role","img"],["style","font-size: 28px; color: green;"]],[[2,"hide",null]],null,null,null,null)),l["ɵdid"](147456,null,0,_.a,[a.a,l.ElementRef,l.Renderer],{ios:[0,"ios"],md:[1,"md"]},null)],function(e,t){e(t,1,0,"ios-checkmark","md-checkmark")},function(e,t){e(t,0,0,l["ɵnov"](t,1)._hidden)})}function U(e){return l["ɵvid"](0,[(e()(),l["ɵeld"](0,null,null,1,"span",[["style"," color: green;"]],null,null,null,null,null)),(e()(),l["ɵted"](null,["Downloaded!"]))],null,null)}function G(e){return l["ɵvid"](0,[(e()(),l["ɵeld"](0,null,null,88,"ion-card",[],null,null,null,null,null)),l["ɵdid"](16384,null,0,h.a,[a.a,l.ElementRef,l.Renderer],null,null),(e()(),l["ɵted"](null,["\n  \n    "])),(e()(),l["ɵeld"](0,null,null,12,"ion-item",[["class","item item-block"]],null,null,null,i.b,i.a)),l["ɵdid"](1097728,null,3,o.a,[r.a,a.a,l.ElementRef,l.Renderer,[2,s.a]],null,null),l["ɵqud"](335544320,4,{contentLabel:0}),l["ɵqud"](603979776,5,{_buttons:1}),l["ɵqud"](603979776,6,{_icons:1}),l["ɵdid"](16384,null,0,u.a,[],null,null),(e()(),l["ɵted"](2,["\n      "])),(e()(),l["ɵeld"](0,null,0,1,"ion-icon",[["item-start",""],["large",""],["name","map"],["role","img"],["style","color: #387ef5;"]],[[2,"hide",null]],null,null,null,null)),l["ɵdid"](147456,[[6,4]],0,_.a,[a.a,l.ElementRef,l.Renderer],{name:[0,"name"]},null),(e()(),l["ɵted"](2,["\n      "])),(e()(),l["ɵeld"](0,null,2,1,"h2",[],null,null,null,null,null)),(e()(),l["ɵted"](null,["","  "])),(e()(),l["ɵted"](2,["\n    "])),(e()(),l["ɵted"](null,["\n  \n    "])),(e()(),l["ɵeld"](0,null,null,14,"ion-item",[["class","item item-block"]],null,null,null,i.b,i.a)),l["ɵdid"](1097728,null,3,o.a,[r.a,a.a,l.ElementRef,l.Renderer,[2,s.a]],null,null),l["ɵqud"](335544320,7,{contentLabel:0}),l["ɵqud"](603979776,8,{_buttons:1}),l["ɵqud"](603979776,9,{_icons:1}),l["ɵdid"](16384,null,0,u.a,[],null,null),(e()(),l["ɵted"](2,["\n        "])),(e()(),l["ɵeld"](0,null,0,1,"ion-icon",[["item-left",""],["large",""],["name","star"],["role","img"],["style","color: #387ef5;"]],[[2,"hide",null]],null,null,null,null)),l["ɵdid"](147456,[[9,4]],0,_.a,[a.a,l.ElementRef,l.Renderer],{name:[0,"name"]},null),(e()(),l["ɵted"](2,["\n        "])),(e()(),l["ɵeld"](0,null,2,3,"h2",[],null,null,null,null,null)),(e()(),l["ɵeld"](0,null,null,2,"ion-badge",[["id","cart-badge"]],null,null,null,null,null)),l["ɵdid"](16384,null,0,p.a,[a.a,l.ElementRef,l.Renderer],null,null),(e()(),l["ɵted"](null,[" "," "])),(e()(),l["ɵted"](2,["\n       \n    "])),(e()(),l["ɵted"](null,["\n\n    "])),(e()(),l["ɵeld"](0,null,null,12,"ion-item",[["class","item item-block"]],null,null,null,i.b,i.a)),l["ɵdid"](1097728,null,3,o.a,[r.a,a.a,l.ElementRef,l.Renderer,[2,s.a]],null,null),l["ɵqud"](335544320,10,{contentLabel:0}),l["ɵqud"](603979776,11,{_buttons:1}),l["ɵqud"](603979776,12,{_icons:1}),l["ɵdid"](16384,null,0,u.a,[],null,null),(e()(),l["ɵted"](2,["\n      "])),(e()(),l["ɵeld"](0,null,0,1,"ion-icon",[["item-left",""],["large",""],["name","document"],["role","img"],["style","color: #387ef5;"]],[[2,"hide",null]],null,null,null,null)),l["ɵdid"](147456,[[12,4]],0,_.a,[a.a,l.ElementRef,l.Renderer],{name:[0,"name"]},null),(e()(),l["ɵted"](2,["\n      "])),(e()(),l["ɵeld"](0,null,2,1,"h2",[],null,null,null,null,null)),(e()(),l["ɵted"](null,["",""])),(e()(),l["ɵted"](2,["\n     \n    "])),(e()(),l["ɵted"](null,["\n    "])),(e()(),l["ɵeld"](0,null,null,40,"ion-item",[["class","item item-block"]],null,null,null,i.b,i.a)),l["ɵdid"](1097728,null,3,o.a,[r.a,a.a,l.ElementRef,l.Renderer,[2,s.a]],null,null),l["ɵqud"](335544320,13,{contentLabel:0}),l["ɵqud"](603979776,14,{_buttons:1}),l["ɵqud"](603979776,15,{_icons:1}),l["ɵdid"](16384,null,0,u.a,[],null,null),(e()(),l["ɵted"](2,["\n        "])),(e()(),l["ɵeld"](0,null,0,11,"button",[["clear",""],["icon-left",""],["ion-button",""],["item-start",""]],null,null,null,f.b,f.a)),l["ɵdid"](1097728,[[14,4]],0,g.a,[[8,""],a.a,l.ElementRef,l.Renderer],{clear:[0,"clear"]},null),(e()(),l["ɵted"](0,["\n            "])),(e()(),l["ɵand"](16777216,null,0,1,null,q)),l["ɵdid"](16384,null,0,m.i,[l.ViewContainerRef,l.TemplateRef],{ngIf:[0,"ngIf"]},null),(e()(),l["ɵted"](0,["\n            "])),(e()(),l["ɵand"](16777216,null,0,1,null,z)),l["ɵdid"](16384,null,0,m.i,[l.ViewContainerRef,l.TemplateRef],{ngIf:[0,"ngIf"]},null),(e()(),l["ɵted"](0,[" "])),(e()(),l["ɵand"](16777216,null,0,1,null,U)),l["ɵdid"](16384,null,0,m.i,[l.ViewContainerRef,l.TemplateRef],{ngIf:[0,"ngIf"]},null),(e()(),l["ɵted"](0,["\n          \n          "])),(e()(),l["ɵted"](2,["  \n        "])),(e()(),l["ɵeld"](0,null,4,5,"button",[["clear",""],["icon-left",""],["ion-button",""],["item-end",""]],null,[[null,"click"]],function(e,t,n){var l=!0;"click"===t&&(l=!1!==e.component.copylink(e.context.$implicit)&&l);return l},f.b,f.a)),l["ɵdid"](1097728,[[14,4]],0,g.a,[[8,""],a.a,l.ElementRef,l.Renderer],{clear:[0,"clear"]},null),(e()(),l["ɵted"](0,["\n            "])),(e()(),l["ɵeld"](0,null,0,1,"ion-icon",[["name","copy"],["role","img"]],[[2,"hide",null]],null,null,null,null)),l["ɵdid"](147456,null,0,_.a,[a.a,l.ElementRef,l.Renderer],{name:[0,"name"]},null),(e()(),l["ɵted"](0,["\n            Copy\n          "])),(e()(),l["ɵted"](2,["\n      "])),(e()(),l["ɵeld"](0,null,4,5,"button",[["clear",""],["icon-left",""],["ion-button",""],["item-end",""]],null,[[null,"click"]],function(e,t,n){var l=!0;"click"===t&&(l=!1!==e.component.sharelink(e.context.$implicit)&&l);return l},f.b,f.a)),l["ɵdid"](1097728,[[14,4]],0,g.a,[[8,""],a.a,l.ElementRef,l.Renderer],{clear:[0,"clear"]},null),(e()(),l["ɵted"](0,["\n        "])),(e()(),l["ɵeld"](0,null,0,1,"ion-icon",[["name","share"],["role","img"]],[[2,"hide",null]],null,null,null,null)),l["ɵdid"](147456,null,0,_.a,[a.a,l.ElementRef,l.Renderer],{name:[0,"name"]},null),(e()(),l["ɵted"](0,["\n        Share\n      "])),(e()(),l["ɵted"](2,["\n      "])),(e()(),l["ɵeld"](0,null,4,5,"button",[["clear",""],["icon-left",""],["ion-button",""],["item-end",""]],null,[[null,"click"]],function(e,t,n){var l=!0;"click"===t&&(l=!1!==e.component.downloadfile(e.context.$implicit,e.context.index)&&l);return l},f.b,f.a)),l["ɵdid"](1097728,[[14,4]],0,g.a,[[8,""],a.a,l.ElementRef,l.Renderer],{clear:[0,"clear"]},null),(e()(),l["ɵted"](0,["\n          "])),(e()(),l["ɵeld"](0,null,0,1,"ion-icon",[["name","download"],["role","img"]],[[2,"hide",null]],null,null,null,null)),l["ɵdid"](147456,null,0,_.a,[a.a,l.ElementRef,l.Renderer],{name:[0,"name"]},null),(e()(),l["ɵted"](0,["\n          Download\n        "])),(e()(),l["ɵted"](2,["\n    "])),(e()(),l["ɵted"](null,["\n  \n  "]))],function(e,t){e(t,11,0,"map");e(t,25,0,"star");e(t,41,0,"document");e(t,55,0,""),e(t,58,0,t.context.$implicit.downstart),e(t,61,0,t.context.$implicit.downcomplete),e(t,64,0,t.context.$implicit.downcomplete);e(t,68,0,"");e(t,71,0,"copy");e(t,75,0,"");e(t,78,0,"share");e(t,82,0,"");e(t,85,0,"download")},function(e,t){e(t,10,0,l["ɵnov"](t,11)._hidden),e(t,14,0,t.context.$implicit.lang),e(t,24,0,l["ɵnov"](t,25)._hidden),e(t,30,0,t.context.$implicit.rating),e(t,40,0,l["ɵnov"](t,41)._hidden),e(t,44,0,t.context.$implicit.name),e(t,70,0,l["ɵnov"](t,71)._hidden),e(t,77,0,l["ɵnov"](t,78)._hidden),e(t,84,0,l["ɵnov"](t,85)._hidden)})}function V(e){return l["ɵvid"](0,[(e()(),l["ɵeld"](0,null,null,11,"ion-content",[["padding",""]],[[2,"statusbar-padding",null],[2,"has-refresher",null]],null,null,b.b,b.a)),l["ɵdid"](4374528,null,0,y.a,[a.a,v.a,w.a,l.ElementRef,l.Renderer,S.a,R.a,l.NgZone,[2,P.a],[2,A.a]],null,null),(e()(),l["ɵted"](1,["\n"])),(e()(),l["ɵand"](16777216,null,1,1,null,H)),l["ɵdid"](16384,null,0,m.i,[l.ViewContainerRef,l.TemplateRef],{ngIf:[0,"ngIf"]},null),(e()(),l["ɵted"](1,["\n"])),(e()(),l["ɵand"](16777216,null,1,1,null,B)),l["ɵdid"](16384,null,0,m.i,[l.ViewContainerRef,l.TemplateRef],{ngIf:[0,"ngIf"]},null),(e()(),l["ɵted"](1,["\n\n"])),(e()(),l["ɵand"](16777216,null,1,1,null,G)),l["ɵdid"](802816,null,0,m.h,[l.ViewContainerRef,l.TemplateRef,l.IterableDiffers],{ngForOf:[0,"ngForOf"]},null),(e()(),l["ɵted"](1,["\n\n\n"])),(e()(),l["ɵted"](null,["\n"]))],function(e,t){var n=t.component;e(t,4,0,n.asynccall),e(t,7,0,n.msg),e(t,10,0,n.sublist)},function(e,t){e(t,0,0,l["ɵnov"](t,1).statusbarPadding,l["ɵnov"](t,1)._hasRefresher)})}var Y=l["ɵccf"]("page-subtitles-list",C.a,function(e){return l["ɵvid"](0,[(e()(),l["ɵeld"](0,null,null,6,"page-subtitles-list",[],null,null,null,V,F)),l["ɵprd"](512,null,k.a,k.a,[E.e]),l["ɵprd"](512,null,T.a,T.a,[]),l["ɵprd"](512,null,O.a,O.a,[]),l["ɵprd"](512,null,j.a,j.a,[]),l["ɵprd"](512,null,I.a,I.a,[]),l["ɵdid"](49152,null,0,C.a,[A.a,M.a,k.a,T.a,O.a,D.a,j.a,N.a,L.a,x.a,I.a],null,null)],null,null)},{},{},[])},258:function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var l=n(35),i=n(1),o=(n(24),n(111)),r=n(61),a=(n(254),n(107)),s=n(106),u=n(244),c=n(50),d=n(53),_=n(31),h=n(246),p=n(143),f=n(158),g=(n(253),n(39)),m=n(80),b=(n(115),n(114),n(173));Object(i.enableProdMode)();var y=function(){return function(){}}(),v=n(20),w=n(243),S=n(12),R=n(33),P=n(10),A=n(9),C=n(127),k=n(147),E=n(172),T=n(153),O=n(129),j=n(77),I=n(52),M=n(128),D=n(23),N=n(96),L=n(30),x=n(76),F=n(131),H=n(51),B=n(40),q=n(247),z=n(248),U=n(249),G=n(250),V=n(251),Y=n(252),X=n(58),$=n(27),Z=n(2),K=n(34),J=n(44),Q=n(125),W=n(522),ee=n(95),te=n(7),ne=n(45),le=n(108),ie=n(29),oe=n(8),re=n(26),ae=n(84),se=n(57),ue=n(523),ce=n(67),de=n(32),_e=n(105),he=n(236),pe=n(237),fe=n(171),ge=n(238),me=n(239),be=n(240),ye=n(161),ve=n(241),we=n(56),Se=i["ɵcrt"]({encapsulation:2,styles:[],data:{}});function Re(e){return i["ɵvid"](0,[(e()(),i["ɵeld"](0,null,null,12,"button",[["class","item item-block"],["ion-item",""],["menuClose",""]],null,[[null,"click"]],function(e,t,n){var l=!0,o=e.component;"click"===t&&(l=!1!==i["ɵnov"](e,6).close()&&l);"click"===t&&(l=!1!==o.openPage(e.context.$implicit)&&l);return l},X.b,X.a)),i["ɵdid"](1097728,null,3,$.a,[D.a,Z.a,i.ElementRef,i.Renderer,[2,K.a]],null,null),i["ɵqud"](335544320,7,{contentLabel:0}),i["ɵqud"](603979776,8,{_buttons:1}),i["ɵqud"](603979776,9,{_icons:1}),i["ɵdid"](16384,null,0,J.a,[],null,null),i["ɵdid"](16384,null,0,Q.a,[R.a],{menuClose:[0,"menuClose"]},null),(e()(),i["ɵted"](2,["\n            \n              "])),(e()(),i["ɵeld"](0,null,2,0,"i",[["aria-hidden","true"],["style","color:#387ef5"]],[[8,"className",0]],null,null,null,null)),(e()(),i["ɵted"](2,["\n              "])),(e()(),i["ɵeld"](0,null,2,1,"span",[["style","padding-left: 25px;font-size: 16px;"]],null,null,null,null,null)),(e()(),i["ɵted"](null,["",""])),(e()(),i["ɵted"](2,[" \n          \n          "]))],function(e,t){e(t,6,0,"")},function(e,t){e(t,8,0,t.context.$implicit.faclass),e(t,11,0,t.context.$implicit.name)})}function Pe(e){return i["ɵvid"](0,[i["ɵqud"](402653184,1,{nav:0}),(e()(),i["ɵted"](null,["  "])),(e()(),i["ɵeld"](0,null,null,27,"ion-menu",[["role","navigation"]],[[8,"className",0]],null,null,W.b,W.a)),i["ɵdid"](245760,null,2,ee.a,[R.a,i.ElementRef,Z.a,te.a,i.Renderer,L.a,A.j,S.a,P.a],{content:[0,"content"]},null),i["ɵqud"](335544320,2,{menuContent:0}),i["ɵqud"](335544320,3,{menuNav:0}),i["ɵprd"](6144,null,ne.a,null,[ee.a]),(e()(),i["ɵted"](0,["\n    "])),(e()(),i["ɵeld"](0,null,0,20,"ion-content",[],[[2,"statusbar-padding",null],[2,"has-refresher",null]],null,null,le.b,le.a)),i["ɵdid"](4374528,[[2,4]],0,ie.a,[Z.a,te.a,S.a,i.ElementRef,i.Renderer,P.a,L.a,i.NgZone,[2,oe.a],[2,re.a]],null,null),(e()(),i["ɵted"](1,["\n      "])),(e()(),i["ɵeld"](0,null,1,1,"div",[["class","bgbar"]],null,null,null,null,null)),(e()(),i["ɵted"](null,["\n\n         \n            \n      "])),(e()(),i["ɵted"](1,["\n      "])),(e()(),i["ɵeld"](0,null,1,6,"ion-list-header",[["class","item"]],null,null,null,X.b,X.a)),i["ɵdid"](1097728,null,3,$.a,[D.a,Z.a,i.ElementRef,i.Renderer,[2,K.a]],null,null),i["ɵqud"](335544320,4,{contentLabel:0}),i["ɵqud"](603979776,5,{_buttons:1}),i["ɵqud"](603979776,6,{_icons:1}),i["ɵdid"](16384,null,0,ae.a,[Z.a,i.Renderer,i.ElementRef,[8,null]],null,null),(e()(),i["ɵted"](2,["\n        Browser for YIFY\n      "])),(e()(),i["ɵted"](1,["\n\n      "])),(e()(),i["ɵeld"](0,null,1,5,"ion-list",[["no-lines",""]],null,null,null,null,null)),i["ɵdid"](16384,null,0,se.a,[Z.a,i.ElementRef,i.Renderer,te.a,A.j,S.a],null,null),(e()(),i["ɵted"](null,["\n          "])),(e()(),i["ɵand"](16777216,null,null,1,null,Re)),i["ɵdid"](802816,null,0,v.h,[i.ViewContainerRef,i.TemplateRef,i.IterableDiffers],{ngForOf:[0,"ngForOf"]},null),(e()(),i["ɵted"](null,["         \n\n        "])),(e()(),i["ɵted"](1,["\n\n      \n    "])),(e()(),i["ɵted"](0,["\n  "])),(e()(),i["ɵted"](null,["\n  "])),(e()(),i["ɵeld"](0,null,null,2,"ion-nav",[["main",""]],[[8,"className",0]],null,null,ue.b,ue.a)),i["ɵdid"](4374528,[[1,4],["content",4]],0,ce.a,[[2,oe.a],[2,re.a],P.a,Z.a,te.a,i.ElementRef,i.NgZone,i.Renderer,i.ComponentFactoryResolver,A.j,B.a,[2,de.a],S.a,i.ErrorHandler],{root:[0,"root"],rootParams:[1,"rootParams"]},null),i["ɵprd"](6144,null,ne.a,null,[ce.a]),(e()(),i["ɵted"](null,["\n\n"]))],function(e,t){var n=t.component;e(t,3,0,i["ɵnov"](t,32)),e(t,26,0,n.menuItems),e(t,32,0,n.rootPage,n.rootParams)},function(e,t){var n=t.component;e(t,2,0,n.selectedTheme),e(t,8,0,i["ɵnov"](t,9).statusbarPadding,i["ɵnov"](t,9)._hasRefresher),e(t,31,0,n.selectedTheme)})}var Ae=i["ɵccf"]("ng-component",o.a,function(e){return i["ɵvid"](0,[(e()(),i["ɵeld"](0,null,null,12,"ng-component",[],null,null,null,Pe,Se)),i["ɵprd"](512,null,_e.a,_e.a,[]),i["ɵprd"](512,null,he.a,he.a,[]),i["ɵprd"](512,null,_.a,_.a,[]),i["ɵprd"](512,null,pe.a,pe.a,[]),i["ɵprd"](512,null,fe.a,fe.a,[]),i["ɵprd"](512,null,m.a,m.a,[]),i["ɵprd"](512,null,ge.a,ge.a,[]),i["ɵprd"](512,null,me.a,me.a,[]),i["ɵprd"](512,null,be.a,be.a,[]),i["ɵprd"](512,null,ye.a,ye.a,[]),i["ɵprd"](512,null,ve.a,ve.a,[]),i["ɵdid"](49152,null,0,o.a,[te.a,a.a,s.a,_e.a,he.a,H.a,we.a,_.a,pe.a,fe.a,m.a,I.a,ge.a,me.a,be.a,ye.a,ve.a],null,null)],null,null)},{},{},[]),Ce=n(144),ke=i["ɵcrt"]({encapsulation:2,styles:[],data:{}});function Ee(e){return i["ɵvid"](0,[(e()(),i["ɵted"](null,["\n      "])),(e()(),i["ɵeld"](0,null,null,13,"ion-list",[["no-lines",""],["style","margin: 0px 0 0px;"]],null,null,null,null,null)),i["ɵdid"](16384,null,0,se.a,[Z.a,i.ElementRef,i.Renderer,te.a,A.j,S.a],null,null),(e()(),i["ɵted"](null,["\n        "])),(e()(),i["ɵeld"](0,null,null,9,"button",[["class","item item-block"],["ion-item",""]],null,[[null,"click"]],function(e,t,n){var l=!0;"click"===t&&(l=!1!==e.component.shareApp()&&l);return l},X.b,X.a)),i["ɵdid"](1097728,null,3,$.a,[D.a,Z.a,i.ElementRef,i.Renderer,[2,K.a]],null,null),i["ɵqud"](335544320,1,{contentLabel:0}),i["ɵqud"](603979776,2,{_buttons:1}),i["ɵqud"](603979776,3,{_icons:1}),i["ɵdid"](16384,null,0,J.a,[],null,null),(e()(),i["ɵeld"](0,null,2,0,"i",[["aria-hidden","true"],["class","fa fa-share-alt"]],null,null,null,null,null)),(e()(),i["ɵted"](2,[" "])),(e()(),i["ɵeld"](0,null,2,1,"span",[["style","padding-left: 15px;"]],null,null,null,null,null)),(e()(),i["ɵted"](null,["Share"])),(e()(),i["ɵted"](null,["\n       \n      "])),(e()(),i["ɵted"](null,["\n    "]))],null,null)}var Te,Oe=i["ɵccf"]("ng-component",p.a,function(e){return i["ɵvid"](0,[(e()(),i["ɵeld"](0,null,null,3,"ng-component",[],null,null,null,Ee,ke)),i["ɵprd"](512,null,Ce.a,Ce.a,[re.a,x.a,we.a,_.a]),i["ɵprd"](512,null,_e.a,_e.a,[]),i["ɵdid"](49152,null,0,p.a,[oe.a,Ce.a,re.a,_e.a],null,null)],null,null)},{},{},[]),je=n(257),Ie=n(256),Me=n(91),De=n(130),Ne=n(74),Le=n(132),xe=n(245),Fe=n(64),He=this&&this.__extends||(Te=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(e,t){e.__proto__=t}||function(e,t){for(var n in t)t.hasOwnProperty(n)&&(e[n]=t[n])},function(e,t){function n(){this.constructor=e}Te(e,t),e.prototype=null===t?Object.create(t):(n.prototype=t.prototype,new n)}),Be=new i.NgModuleFactory(function(e){function t(t){return e.call(this,t,[q.a,z.a,U.a,G.a,V.a,Y.a,Ae,Oe,je.a,Ie.a],[U.a])||this}return He(t,e),Object.defineProperty(t.prototype,"_LOCALE_ID_31",{get:function(){return null==this.__LOCALE_ID_31&&(this.__LOCALE_ID_31=i["ɵn"](this.parent.get(i.LOCALE_ID,null))),this.__LOCALE_ID_31},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"_NgLocalization_32",{get:function(){return null==this.__NgLocalization_32&&(this.__NgLocalization_32=new v.j(this._LOCALE_ID_31)),this.__NgLocalization_32},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"_APP_ID_33",{get:function(){return null==this.__APP_ID_33&&(this.__APP_ID_33=i["ɵg"]()),this.__APP_ID_33},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"_IterableDiffers_34",{get:function(){return null==this.__IterableDiffers_34&&(this.__IterableDiffers_34=i["ɵl"]()),this.__IterableDiffers_34},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"_KeyValueDiffers_35",{get:function(){return null==this.__KeyValueDiffers_35&&(this.__KeyValueDiffers_35=i["ɵm"]()),this.__KeyValueDiffers_35},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"_DomSanitizer_36",{get:function(){return null==this.__DomSanitizer_36&&(this.__DomSanitizer_36=new l.s(this.parent.get(l.b))),this.__DomSanitizer_36},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"_Sanitizer_37",{get:function(){return null==this.__Sanitizer_37&&(this.__Sanitizer_37=this._DomSanitizer_36),this.__Sanitizer_37},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"_HAMMER_GESTURE_CONFIG_38",{get:function(){return null==this.__HAMMER_GESTURE_CONFIG_38&&(this.__HAMMER_GESTURE_CONFIG_38=new O.a),this.__HAMMER_GESTURE_CONFIG_38},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"_EVENT_MANAGER_PLUGINS_39",{get:function(){return null==this.__EVENT_MANAGER_PLUGINS_39&&(this.__EVENT_MANAGER_PLUGINS_39=[new l.l(this.parent.get(l.b)),new l.p(this.parent.get(l.b)),new l.o(this.parent.get(l.b),this._HAMMER_GESTURE_CONFIG_38)]),this.__EVENT_MANAGER_PLUGINS_39},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"_EventManager_40",{get:function(){return null==this.__EventManager_40&&(this.__EventManager_40=new l.e(this._EVENT_MANAGER_PLUGINS_39,this.parent.get(i.NgZone))),this.__EventManager_40},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"_ɵDomSharedStylesHost_41",{get:function(){return null==this.__ɵDomSharedStylesHost_41&&(this.__ɵDomSharedStylesHost_41=new l.n(this.parent.get(l.b))),this.__ɵDomSharedStylesHost_41},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"_ɵDomRendererFactory2_42",{get:function(){return null==this.__ɵDomRendererFactory2_42&&(this.__ɵDomRendererFactory2_42=new l.m(this._EventManager_40,this._ɵDomSharedStylesHost_41)),this.__ɵDomRendererFactory2_42},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"_AnimationDriver_43",{get:function(){return null==this.__AnimationDriver_43&&(this.__AnimationDriver_43=u.c()),this.__AnimationDriver_43},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"_ɵAnimationStyleNormalizer_44",{get:function(){return null==this.__ɵAnimationStyleNormalizer_44&&(this.__ɵAnimationStyleNormalizer_44=u.d()),this.__ɵAnimationStyleNormalizer_44},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"_ɵAnimationEngine_45",{get:function(){return null==this.__ɵAnimationEngine_45&&(this.__ɵAnimationEngine_45=new u.b(this._AnimationDriver_43,this._ɵAnimationStyleNormalizer_44)),this.__ɵAnimationEngine_45},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"_RendererFactory2_46",{get:function(){return null==this.__RendererFactory2_46&&(this.__RendererFactory2_46=u.e(this._ɵDomRendererFactory2_42,this._ɵAnimationEngine_45,this.parent.get(i.NgZone))),this.__RendererFactory2_46},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"_ɵSharedStylesHost_47",{get:function(){return null==this.__ɵSharedStylesHost_47&&(this.__ɵSharedStylesHost_47=this._ɵDomSharedStylesHost_41),this.__ɵSharedStylesHost_47},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"_Testability_48",{get:function(){return null==this.__Testability_48&&(this.__Testability_48=new i.Testability(this.parent.get(i.NgZone))),this.__Testability_48},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"_Meta_49",{get:function(){return null==this.__Meta_49&&(this.__Meta_49=new l.h(this.parent.get(l.b))),this.__Meta_49},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"_Title_50",{get:function(){return null==this.__Title_50&&(this.__Title_50=new l.j(this.parent.get(l.b))),this.__Title_50},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"_BrowserXhr_51",{get:function(){return null==this.__BrowserXhr_51&&(this.__BrowserXhr_51=new r.c),this.__BrowserXhr_51},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"_ResponseOptions_52",{get:function(){return null==this.__ResponseOptions_52&&(this.__ResponseOptions_52=new r.b),this.__ResponseOptions_52},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"_XSRFStrategy_53",{get:function(){return null==this.__XSRFStrategy_53&&(this.__XSRFStrategy_53=r.l()),this.__XSRFStrategy_53},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"_XHRBackend_54",{get:function(){return null==this.__XHRBackend_54&&(this.__XHRBackend_54=new r.j(this._BrowserXhr_51,this._ResponseOptions_52,this._XSRFStrategy_53)),this.__XHRBackend_54},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"_RequestOptions_55",{get:function(){return null==this.__RequestOptions_55&&(this.__RequestOptions_55=new r.a),this.__RequestOptions_55},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"_Http_56",{get:function(){return null==this.__Http_56&&(this.__Http_56=r.m(this._XHRBackend_54,this._RequestOptions_55)),this.__Http_56},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"_ɵi_57",{get:function(){return null==this.__ɵi_57&&(this.__ɵi_57=new g.k),this.__ɵi_57},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"_FormBuilder_58",{get:function(){return null==this.__FormBuilder_58&&(this.__FormBuilder_58=new g.c),this.__FormBuilder_58},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"_SuperTabsController_59",{get:function(){return null==this.__SuperTabsController_59&&(this.__SuperTabsController_59=new j.a),this.__SuperTabsController_59},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"_Storage_61",{get:function(){return null==this.__Storage_61&&(this.__Storage_61=we.c(this._StorageConfigToken_60)),this.__Storage_61},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"_AlertController_65",{get:function(){return null==this.__AlertController_65&&(this.__AlertController_65=new I.a(this._App_8,this._Config_5)),this.__AlertController_65},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"_Events_66",{get:function(){return null==this.__Events_66&&(this.__Events_66=new M.a),this.__Events_66},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"_Form_67",{get:function(){return null==this.__Form_67&&(this.__Form_67=new D.a),this.__Form_67},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"_Haptic_68",{get:function(){return null==this.__Haptic_68&&(this.__Haptic_68=new N.a(this._Platform_4)),this.__Haptic_68},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"_Keyboard_69",{get:function(){return null==this.__Keyboard_69&&(this.__Keyboard_69=new L.a(this._Config_5,this._Platform_4,this.parent.get(i.NgZone),this._DomController_6)),this.__Keyboard_69},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"_LocationStrategy_71",{get:function(){return null==this.__LocationStrategy_71&&(this.__LocationStrategy_71=k.c(this.parent.get(v.q),this._APP_BASE_HREF_63,this._Config_5)),this.__LocationStrategy_71},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"_Location_72",{get:function(){return null==this.__Location_72&&(this.__Location_72=new v.e(this._LocationStrategy_71)),this.__Location_72},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"_UrlSerializer_73",{get:function(){return null==this.__UrlSerializer_73&&(this.__UrlSerializer_73=Me.d(this._App_8,this._DeepLinkConfigToken_10)),this.__UrlSerializer_73},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"_DeepLinker_74",{get:function(){return null==this.__DeepLinker_74&&(this.__DeepLinker_74=de.b(this._App_8,this._UrlSerializer_73,this._Location_72,this._ModuleLoader_13,this.componentFactoryResolver)),this.__DeepLinker_74},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"_PopoverController_77",{get:function(){return null==this.__PopoverController_77&&(this.__PopoverController_77=new x.a(this._App_8,this._Config_5,this._DeepLinker_74)),this.__PopoverController_77},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"_TapClick_78",{get:function(){return null==this.__TapClick_78&&(this.__TapClick_78=new F.a(this._Config_5,this._Platform_4,this._DomController_6,this._App_8,this._GestureController_9)),this.__TapClick_78},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"_ToastController_79",{get:function(){return null==this.__ToastController_79&&(this.__ToastController_79=new H.a(this._App_8,this._Config_5)),this.__ToastController_79},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"_TransitionController_80",{get:function(){return null==this.__TransitionController_80&&(this.__TransitionController_80=new B.a(this._Platform_4,this._Config_5)),this.__TransitionController_80},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"_SplashScreen_81",{get:function(){return null==this.__SplashScreen_81&&(this.__SplashScreen_81=new a.a),this.__SplashScreen_81},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"_StatusBar_82",{get:function(){return null==this.__StatusBar_82&&(this.__StatusBar_82=new s.a),this.__StatusBar_82},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"_InAppBrowser_83",{get:function(){return null==this.__InAppBrowser_83&&(this.__InAppBrowser_83=new h.a),this.__InAppBrowser_83},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"_YifyMoviesProvider_84",{get:function(){return null==this.__YifyMoviesProvider_84&&(this.__YifyMoviesProvider_84=new c.a(this._Http_56)),this.__YifyMoviesProvider_84},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"_SocialSharing_85",{get:function(){return null==this.__SocialSharing_85&&(this.__SocialSharing_85=new _.a),this.__SocialSharing_85},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"_SpeechRecognition_86",{get:function(){return null==this.__SpeechRecognition_86&&(this.__SpeechRecognition_86=new f.a),this.__SpeechRecognition_86},enumerable:!0,configurable:!0}),Object.defineProperty(t.prototype,"_SettingsProvider_87",{get:function(){return null==this.__SettingsProvider_87&&(this.__SettingsProvider_87=new m.a),this.__SettingsProvider_87},enumerable:!0,configurable:!0}),t.prototype.createInternal=function(){return this._CommonModule_0=new v.b,this._ErrorHandler_1=new w.a,this._ConfigToken_2={pageTransition:"md-transition"},this._PlatformConfigToken_3=De.b(),this._Platform_4=te.b(this.parent.get(l.b),this._PlatformConfigToken_3,this.parent.get(i.NgZone)),this._Config_5=Z.c(this._ConfigToken_2,this._Platform_4),this._DomController_6=new S.a(this._Platform_4),this._MenuController_7=new R.a,this._App_8=new P.a(this._Config_5,this._Platform_4,this._MenuController_7),this._GestureController_9=new A.j(this._App_8),this._DeepLinkConfigToken_10={links:[{loadChildren:"../pages/about/about.module.ngfactory#AboutPageModuleNgFactory",name:"AboutPage",segment:"about",priority:"low",defaultHistory:[]},{loadChildren:"../pages/advance-search-results/advance-search-results.module.ngfactory#AdvanceSearchResultsPageModuleNgFactory",name:"AdvanceSearchResultsPage",segment:"advance-search-results",priority:"low",defaultHistory:[]},{loadChildren:"../pages/advanced-search/advanced-search.module.ngfactory#AdvancedSearchPageModuleNgFactory",name:"AdvancedSearchPage",segment:"advanced-search",priority:"low",defaultHistory:[]},{loadChildren:"../pages/app-settings/app-settings.module.ngfactory#AppSettingsPageModuleNgFactory",name:"AppSettingsPage",segment:"app-settings",priority:"low",defaultHistory:[]},{loadChildren:"../pages/home/home.module.ngfactory#ModuleNgFactory",name:"HomePage",segment:"home/:type",priority:"low",defaultHistory:[]},{loadChildren:"../pages/moviedetails/moviedetails.module.ngfactory#MoviedetailsPageModuleNgFactory",name:"MoviedetailsPage",segment:"moviedetails",priority:"low",defaultHistory:[]},{loadChildren:"../pages/page1/page1.module.ngfactory#ModuleNgFactory",name:"Page1Page",segment:"page1",priority:"low",defaultHistory:[]},{loadChildren:"../pages/page2/page2.module.ngfactory#ModuleNgFactory",name:"Page2Page",segment:"page2",priority:"low",defaultHistory:[]},{loadChildren:"../pages/page3/page3.module.ngfactory#ModuleNgFactory",name:"Page3Page",segment:"page3",priority:"low",defaultHistory:[]},{loadChildren:"../pages/search/search.module.ngfactory#SearchPageModuleNgFactory",name:"SearchPage",segment:"search",priority:"low",defaultHistory:[]},{loadChildren:"../pages/sub-title-search-subs-scene/sub-title-search-subs-scene.module.ngfactory#SubTitleSearchSubsScenePageModuleNgFactory",name:"SubTitleSearchSubsScenePage",segment:"sub-title-search-subs-scene",priority:"low",defaultHistory:[]},{loadChildren:"../pages/subscene-list/subscene-list.module.ngfactory#SubsceneListPageModuleNgFactory",name:"SubsceneListPage",segment:"subscene-list",priority:"low",defaultHistory:[]},{loadChildren:"../pages/subtitle-search/subtitle-search.module.ngfactory#SubtitleSearchPageModuleNgFactory",name:"SubtitleSearchPage",segment:"subtitle-search",priority:"low",defaultHistory:[]},{loadChildren:"../pages/subtitle-tabs/subtitle-tabs.module.ngfactory#SubtitleTabsPageModuleNgFactory",name:"SubtitleTabsPage",segment:"subtitle-tabs",priority:"low",defaultHistory:[]},{loadChildren:"../pages/subtitles-list/subtitles-list.module.ngfactory#SubtitlesListPageModuleNgFactory",name:"SubtitlesListPage",segment:"subtitles-list",priority:"low",defaultHistory:[]}]},this._Compiler_11=new i.Compiler,this._NgModuleLoader_12=new C.a(this._Compiler_11),this._ModuleLoader_13=Ne.c(this._NgModuleLoader_12,this),this._APP_INITIALIZER_14=[i["ɵo"],l.r(this.parent.get(l.i,null),this.parent.get(i.NgProbeToken,null)),Le.a(this._Config_5),M.b(this._Platform_4,this._DomController_6),F.b(this._Config_5,this._Platform_4,this._DomController_6,this._App_8,this._GestureController_9),Ne.d(this._Config_5,this._DeepLinkConfigToken_10,this._ModuleLoader_13,this.parent.get(i.NgZone))],this._ApplicationInitStatus_15=new i.ApplicationInitStatus(this._APP_INITIALIZER_14),this._ɵf_16=new i["ɵf"](this.parent.get(i.NgZone),this.parent.get(i["ɵConsole"]),this,this._ErrorHandler_1,this.componentFactoryResolver,this._ApplicationInitStatus_15),this._ApplicationRef_17=this._ɵf_16,this._ApplicationModule_18=new i.ApplicationModule(this._ApplicationRef_17),this._BrowserModule_19=new l.a(this.parent.get(l.a,null)),this._ElasticHeaderModule_20=new b.a,this._BrowserAnimationsModule_21=new u.a,this._HttpModule_22=new r.f,this._ɵba_23=new g.j,this._FormsModule_24=new g.d,this._ReactiveFormsModule_25=new g.i,this._IonicModule_26=new k.a,this._SuperTabsModule_27=new E.a,this._IonicStorageModule_28=new d.a,this._LazyLoadImageModule_29=new T.LazyLoadImageModule,this._AppModule_30=new y,this._StorageConfigToken_60=null,this._AppRootToken_62=o.a,this._APP_BASE_HREF_63="/",this._AppModule_30},t.prototype.getInternal=function(e,t){return e===v.b?this._CommonModule_0:e===i.ErrorHandler?this._ErrorHandler_1:e===Z.b?this._ConfigToken_2:e===De.a?this._PlatformConfigToken_3:e===te.a?this._Platform_4:e===Z.a?this._Config_5:e===S.a?this._DomController_6:e===R.a?this._MenuController_7:e===P.a?this._App_8:e===A.j?this._GestureController_9:e===Me.a?this._DeepLinkConfigToken_10:e===i.Compiler?this._Compiler_11:e===C.a?this._NgModuleLoader_12:e===Ne.b?this._ModuleLoader_13:e===i.APP_INITIALIZER?this._APP_INITIALIZER_14:e===i.ApplicationInitStatus?this._ApplicationInitStatus_15:e===i["ɵf"]?this._ɵf_16:e===i.ApplicationRef?this._ApplicationRef_17:e===i.ApplicationModule?this._ApplicationModule_18:e===l.a?this._BrowserModule_19:e===b.a?this._ElasticHeaderModule_20:e===u.a?this._BrowserAnimationsModule_21:e===r.f?this._HttpModule_22:e===g.j?this._ɵba_23:e===g.d?this._FormsModule_24:e===g.i?this._ReactiveFormsModule_25:e===k.a?this._IonicModule_26:e===E.a?this._SuperTabsModule_27:e===d.a?this._IonicStorageModule_28:e===T.LazyLoadImageModule?this._LazyLoadImageModule_29:e===y?this._AppModule_30:e===i.LOCALE_ID?this._LOCALE_ID_31:e===v.k?this._NgLocalization_32:e===i.APP_ID?this._APP_ID_33:e===i.IterableDiffers?this._IterableDiffers_34:e===i.KeyValueDiffers?this._KeyValueDiffers_35:e===l.c?this._DomSanitizer_36:e===i.Sanitizer?this._Sanitizer_37:e===l.f?this._HAMMER_GESTURE_CONFIG_38:e===l.d?this._EVENT_MANAGER_PLUGINS_39:e===l.e?this._EventManager_40:e===l.n?this._ɵDomSharedStylesHost_41:e===l.m?this._ɵDomRendererFactory2_42:e===xe.a?this._AnimationDriver_43:e===xe.c?this._ɵAnimationStyleNormalizer_44:e===xe.b?this._ɵAnimationEngine_45:e===i.RendererFactory2?this._RendererFactory2_46:e===l.q?this._ɵSharedStylesHost_47:e===i.Testability?this._Testability_48:e===l.h?this._Meta_49:e===l.j?this._Title_50:e===r.c?this._BrowserXhr_51:e===r.h?this._ResponseOptions_52:e===r.k?this._XSRFStrategy_53:e===r.j?this._XHRBackend_54:e===r.g?this._RequestOptions_55:e===r.e?this._Http_56:e===g.k?this._ɵi_57:e===g.c?this._FormBuilder_58:e===j.a?this._SuperTabsController_59:e===we.b?this._StorageConfigToken_60:e===we.a?this._Storage_61:e===Fe.a?this._AppRootToken_62:e===v.a?this._APP_BASE_HREF_63:e===I.a?this._AlertController_65:e===M.a?this._Events_66:e===D.a?this._Form_67:e===N.a?this._Haptic_68:e===L.a?this._Keyboard_69:e===v.f?this._LocationStrategy_71:e===v.e?this._Location_72:e===Me.b?this._UrlSerializer_73:e===de.a?this._DeepLinker_74:e===x.a?this._PopoverController_77:e===F.a?this._TapClick_78:e===H.a?this._ToastController_79:e===B.a?this._TransitionController_80:e===a.a?this._SplashScreen_81:e===s.a?this._StatusBar_82:e===h.a?this._InAppBrowser_83:e===c.a?this._YifyMoviesProvider_84:e===_.a?this._SocialSharing_85:e===f.a?this._SpeechRecognition_86:e===m.a?this._SettingsProvider_87:t},t.prototype.destroyInternal=function(){this._ɵf_16.ngOnDestroy(),this.__ɵDomSharedStylesHost_41&&this._ɵDomSharedStylesHost_41.ngOnDestroy()},t}(i["ɵNgModuleInjector"]),y);Object(i.enableProdMode)(),Object(l.k)().bootstrapModuleFactory(Be)},50:function(e,t,n){"use strict";n.d(t,"a",function(){return d});var l,i=n(1),o=n(61),r=n(201),a=(n.n(r),n(141)),s=(n.n(a),n(139)),u=(n.n(s),this&&this.__decorate||function(e,t,n,l){var i,o=arguments.length,r=o<3?t:null===l?l=Object.getOwnPropertyDescriptor(t,n):l;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)r=Reflect.decorate(e,t,n,l);else for(var a=e.length-1;a>=0;a--)(i=e[a])&&(r=(o<3?i(r):o>3?i(t,n,r):i(t,n))||r);return o>3&&r&&Object.defineProperty(t,n,r),r}),c=this&&this.__metadata||function(e,t){if("object"==typeof Reflect&&"function"==typeof Reflect.metadata)return Reflect.metadata(e,t)},d=function(){function e(e){this.http=e,this.yifysites=["https://yts.am/api/v2","https://yts.unblocked.lat/api/v2","https://yts.bypassed.org/api/v2","https://yts.pe/api/v2/","https://yifymovie.co/api/v2","https://yifytorrent.to/api/v2/","https://yts.me/api/v2"],this.sitecount=-1,this.yifysubUrl="https://www.yifysubtitles.com/movie-imdb/",this.storeurl="/storeurl",this.queryjson={rating_list:[{elem:".container .row .table-responsive .other-subs tbody .rating-cell ",rating:"text"}],lang_list:[{elem:".container .row .table-responsive .other-subs tbody .flag-cell .sub-lang ",lang:"text"}],sub_links:[{elem:".container .row .table-responsive .other-subs tbody  .download-cell a",download_link:"href"}],sub_names:[{elem:".container .row .table-responsive .other-subs tbody td",subname:"text"}]},this.subscene_queryjson={down_links:[{elem:".a1 > a:first-of-type",link:"href"}],langs_names:[{elem:".a1 > a:first-of-type span",link:"href",lang_name:"text"}]},this.subscene_download_json={downlink:[{elem:".download > a:first-of-type",link:"href"}]},this.Tmdburl="https://api.themoviedb.org/3/search/movie?include_adult=false&api_key=fa286812af448bf2745c5c960c7b964e",this.ServerIp="http://18.217.205.247:7070/"}return e.prototype.loadYifyMovies=function(e,t,n){return this.http.get(this.yifysites[n]+"/list_movies.jsonp?limit="+e+"&page="+t).map(function(e){return e.json()}).catch(function(e){return r.Observable.throw(new Error(e.status))})},e.prototype.loadYifyTopRatedMovies=function(e,t,n){return this.http.get(this.yifysites[n]+"/list_movies.jsonp?sort_by=rating&limit="+e+"&page="+t).map(function(e){return e.json()}).catch(function(e){return r.Observable.throw(new Error(e.status))})},e.prototype.setUrl=function(e){this.Url=this.yifysites[e],console.log(this.Url)},e.prototype.getUrl=function(){return this.Url},e.prototype.loadYifyMovieDetails=function(e){return this.http.get(this.Url+"/movie_details.json?movie_id="+e+"&with_images=true&with_cast=true").map(function(e){return e.json()}).catch(function(e){return r.Observable.throw(new Error(e.status))})},e.prototype.searchYifyMovies=function(e){return this.http.get(this.Url+"/list_movies.jsonp?sort_by=rating&limit=30&query_term="+e).map(function(e){return e.json()}).catch(function(e){return r.Observable.throw(new Error(e.status))})},e.prototype.advancedSearchYifyMovies=function(e,t,n){return this.http.get(this.Url+"/list_movies.jsonp?limit="+e+"&page="+t+"&"+n).map(function(e){return e.json()}).catch(function(e){return r.Observable.throw(new Error(e.status))})},e.prototype.getYifySUbTitles=function(e){var t=new o.d({"Content-Type":"application/x-www-form-urlencoded",Accept:"application/json"}),n=new o.g({headers:t}),l=new o.i;return l.set("url",""+this.yifysubUrl+e),l.set("json_data",JSON.stringify(this.queryjson)),this.http.post(""+this.ServerIp,l,n).map(function(e){return e.json()}).catch(function(e){return r.Observable.throw(new Error(e.status))})},e.prototype.getSubSceneSubTitles=function(e){var t=new o.d({"Content-Type":"application/x-www-form-urlencoded",Accept:"application/json"}),n=new o.g({headers:t}),l=new o.i;return l.set("url",e),l.set("json_data",JSON.stringify(this.subscene_queryjson)),this.http.post(""+this.ServerIp,l,n).map(function(e){return e.json()}).catch(function(e){return r.Observable.throw(new Error(e.status))})},e.prototype.downloadSubsceneSubs=function(e){var t=new o.d({"Content-Type":"application/x-www-form-urlencoded",Accept:"application/json"}),n=new o.g({headers:t}),l=new o.i;return l.set("url",e),l.set("json_data",JSON.stringify(this.subscene_download_json)),this.http.post(""+this.ServerIp,l,n).map(function(e){return e.json()}).catch(function(e){return r.Observable.throw(new Error(e.status))})},e.prototype.searchTMDbQueryData=function(e,t){return this.http.get(this.Tmdburl+"&query="+e+"&page="+t).map(function(e){return e.json()}).catch(function(e){return r.Observable.throw(new Error(e.status))})},e}();d=u([Object(i.Injectable)(),c("design:paramtypes",["function"==typeof(l=void 0!==o.e&&o.e)&&l||Object])],d)},80:function(e,t,n){"use strict";n.d(t,"a",function(){return a});var l=n(1),i=n(201),o=(n.n(i),this&&this.__decorate||function(e,t,n,l){var i,o=arguments.length,r=o<3?t:null===l?l=Object.getOwnPropertyDescriptor(t,n):l;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)r=Reflect.decorate(e,t,n,l);else for(var a=e.length-1;a>=0;a--)(i=e[a])&&(r=(o<3?i(r):o>3?i(t,n,r):i(t,n))||r);return o>3&&r&&Object.defineProperty(t,n,r),r}),r=this&&this.__metadata||function(e,t){if("object"==typeof Reflect&&"function"==typeof Reflect.metadata)return Reflect.metadata(e,t)},a=function(){function e(){this.theme=new i.BehaviorSubject("light-theme")}return e.prototype.setActiveTheme=function(e){this.theme.next(e)},e.prototype.getActiveTheme=function(){return this.theme.asObservable()},e.prototype.getSavedTheme=function(){return""},e}();a=o([Object(l.Injectable)(),r("design:paramtypes",[])],a)}},[258]);
+webpackJsonp([15],{
+
+/***/ 139:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SubsceneListPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_yify_movies_yify_movies__ = __webpack_require__(79);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_file_transfer__ = __webpack_require__(140);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_file__ = __webpack_require__(141);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_clipboard__ = __webpack_require__(138);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_social_sharing__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_storage__ = __webpack_require__(44);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ionic_native_diagnostic__ = __webpack_require__(142);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+
+
+
+var SubsceneListPage = (function () {
+    function SubsceneListPage(navCtrl, navParams, yifyProvider, transfer, file, toastCtrl, clipboard, socialSharing, localstorage, alert, diagnostic) {
+        var _this = this;
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.yifyProvider = yifyProvider;
+        this.transfer = transfer;
+        this.file = file;
+        this.toastCtrl = toastCtrl;
+        this.clipboard = clipboard;
+        this.socialSharing = socialSharing;
+        this.localstorage = localstorage;
+        this.alert = alert;
+        this.diagnostic = diagnostic;
+        this.sublist = [];
+        this.showheader = false;
+        this.params = { showheader: false };
+        this.fileTransfer = this.transfer.create();
+        this.params = navParams.get('params');
+        if (this.params != null && this.params != undefined)
+            this.showheader = this.params.showheader;
+        this.localstorage.get('suburl').then(function (value) {
+            _this.suburl = value;
+            _this.loadSubtitle();
+        });
+    }
+    /* showBanner() {
+  
+      let interaddConfig: AdMobFreeBannerConfig = {
+        autoShow: true,
+        id: 'ca-app-pub-8173350460907694/2714806253'
+  
+      };
+  
+      this.admob.interstitial.config(interaddConfig);
+      this.admob.interstitial.prepare();
+      this.admob.interstitial.show();
+  
+    } */
+    SubsceneListPage.prototype.loadSubtitle = function () {
+        var _this = this;
+        try {
+            this.asynccall = true;
+            this.yifyProvider.getSubSceneSubTitles(this.suburl).subscribe(function (res) {
+                _this.subtitelist = res;
+                if (_this.subtitelist.langs_names.length > 0) {
+                    var j = 0;
+                    for (var i = 0; i < _this.subtitelist.langs_names.length; i++) {
+                        if (i % 2 === 0) {
+                            _this.subtitelist.down_links[j].lang = _this.subtitelist.langs_names[i].lang_name;
+                        }
+                        else {
+                            _this.subtitelist.down_links[j].name = _this.subtitelist.langs_names[i].lang_name;
+                            j++;
+                        }
+                    }
+                    _this.asynccall = false;
+                    _this.sublist = _this.subtitelist.down_links;
+                }
+                else {
+                    _this.asynccall = false;
+                    _this.msg = true;
+                }
+            });
+        }
+        catch (e) {
+            console.log(e);
+            this.asynccall = false;
+            this.msg = true;
+        }
+    };
+    SubsceneListPage.prototype.handleSubDownload = function (index) {
+        var _this = this;
+        this.sublist[index].downstart = true;
+        this.yifyProvider.downloadSubsceneSubs(this.url).subscribe(function (res) {
+            _this.fileTransfer.download('https://subscene.com' + res.downlink[0].link, _this.file.externalRootDirectory + 'YIFY_Torrent_Browser/' + _this.filename).then(function (entry) {
+                _this.sublist[index].downstart = false;
+                _this.sublist[index].downcomplete = true;
+                _this.presentToast("File saved in : " + _this.file.externalRootDirectory.replace('file:///', '') + "YIFY_Torrent_Browser/" + _this.filename);
+            }, function (error) {
+                _this.showOpenSettingsAlert();
+            });
+        });
+    };
+    SubsceneListPage.prototype.showOpenSettingsAlert = function () {
+        var _this = this;
+        var alert = this.alert.create({
+            title: 'Permission needed!',
+            message: 'This permission is needed to save the downloaded subtitle to disk!',
+            buttons: [
+                {
+                    text: 'OPEN SETTINGS',
+                    handler: function () {
+                        _this.diagnostic.switchToSettings();
+                    }
+                }
+            ]
+        });
+        alert.present();
+    };
+    SubsceneListPage.prototype.downloadfile = function (file, index) {
+        var _this = this;
+        this.url = 'https://subscene.com' + file.link;
+        this.filename = file.name + '.zip';
+        this.diagnostic.isExternalStorageAuthorized().then(function (res) {
+            if (res)
+                _this.handleSubDownload(index);
+            else
+                _this.requestExternalStorageAuthorization(index);
+        });
+    };
+    SubsceneListPage.prototype.requestExternalStorageAuthorization = function (index) {
+        var _this = this;
+        this.diagnostic.requestExternalStorageAuthorization().then(function (res) {
+            console.log("requestExternalStorageAuthorization ", res);
+            if (res)
+                _this.handleSubDownload(index);
+            else
+                _this.showOpenSettingsAlert();
+        }, function (err) {
+            _this.showOpenSettingsAlert();
+        });
+    };
+    SubsceneListPage.prototype.presentToast = function (msg) {
+        var toast = this.toastCtrl.create({
+            message: msg,
+            position: 'bottom',
+            closeButtonText: 'OK',
+            showCloseButton: true
+        });
+        toast.onDidDismiss(function () {
+            // this.showBanner()
+        });
+        toast.present();
+    };
+    return SubsceneListPage;
+}());
+SubsceneListPage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* IonicPage */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'page-subscene-list',template:/*ion-inline-start:"/media/ravikumar/Soft_Workspace/My GithHub/yify-browser/src/pages/subscene-list/subscene-list.html"*/'\n<ion-content padding>\n  <div *ngIf = "asynccall" class="subspinner">\n    <svg class="spinner" width="55px" height="55px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">\n    <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>\n  </svg>\n  </div>\n  <ion-item text-wrap *ngIf="msg">Subtitles not found for this movie, Try after some times !!!</ion-item>\n  \n  <ion-card *ngFor="let sub of sublist ; index as i">\n    \n      <ion-item>\n        <ion-icon style="color: #387ef5;" name="map" item-start large></ion-icon>\n        <h2>{{sub.lang}}  </h2>\n      </ion-item>\n    \n  \n      <ion-item>\n        <ion-icon style="color: #387ef5;" name="document" item-left large ></ion-icon>\n        <h2>{{sub.name}}</h2>\n       \n      </ion-item>\n  \n      <ion-item>\n          <button ion-button icon-left clear item-start>\n              <ion-spinner *ngIf = "sub.downstart" style= "color: #387ef5;" icon="dots" \n              class="spinner-dark"></ion-spinner>\n              <ion-icon *ngIf = "sub.downcomplete" style="font-size: 28px; color: green;" \n              ios="ios-checkmark" md="md-checkmark"></ion-icon> <span *ngIf = "sub.downcomplete" \n              style=" color: green;" >Downloaded!</span>\n            \n            </button> \n\n        <button ion-button icon-left clear item-end (click) = "downloadfile(sub, i)">\n            <ion-icon name="download"></ion-icon>\n            Download\n          </button>\n      </ion-item>\n    \n    </ion-card>\n  \n  \n  </ion-content>\n  '/*ion-inline-end:"/media/ravikumar/Soft_Workspace/My GithHub/yify-browser/src/pages/subscene-list/subscene-list.html"*/,
+        providers: [__WEBPACK_IMPORTED_MODULE_2__providers_yify_movies_yify_movies__["a" /* YifyMoviesProvider */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_file_transfer__["a" /* FileTransfer */], __WEBPACK_IMPORTED_MODULE_4__ionic_native_file__["a" /* File */], __WEBPACK_IMPORTED_MODULE_5__ionic_native_clipboard__["a" /* Clipboard */], __WEBPACK_IMPORTED_MODULE_8__ionic_native_diagnostic__["a" /* Diagnostic */]],
+        styles: [
+            "ion-badge {\n      padding: 8px 11px;\n      text-align: center;\n      display: inline-block;\n      min-width: 10px;\n      font-size: 1.3rem;\n      font-weight: bold;\n      line-height: 1;\n      white-space: nowrap;\n      vertical-align: baseline;\n  }"
+        ]
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* NavParams */],
+        __WEBPACK_IMPORTED_MODULE_2__providers_yify_movies_yify_movies__["a" /* YifyMoviesProvider */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_file_transfer__["a" /* FileTransfer */], __WEBPACK_IMPORTED_MODULE_4__ionic_native_file__["a" /* File */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* ToastController */], __WEBPACK_IMPORTED_MODULE_5__ionic_native_clipboard__["a" /* Clipboard */], __WEBPACK_IMPORTED_MODULE_6__ionic_native_social_sharing__["a" /* SocialSharing */],
+        __WEBPACK_IMPORTED_MODULE_7__ionic_storage__["b" /* Storage */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_8__ionic_native_diagnostic__["a" /* Diagnostic */]])
+], SubsceneListPage);
+
+//# sourceMappingURL=subscene-list.js.map
+
+/***/ }),
+
+/***/ 143:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SubtitlesListPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_yify_movies_yify_movies__ = __webpack_require__(79);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_file_transfer__ = __webpack_require__(140);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_file__ = __webpack_require__(141);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_clipboard__ = __webpack_require__(138);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_social_sharing__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_diagnostic__ = __webpack_require__(142);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__subtitle_tabs_subtitle_tabs__ = __webpack_require__(291);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+
+
+
+var SubtitlesListPage = (function () {
+    function SubtitlesListPage(navCtrl, navParams, yifyProvider, transfer, file, toastCtrl, clipboard, socialSharing, subtabs, alert, diagnostic) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.yifyProvider = yifyProvider;
+        this.transfer = transfer;
+        this.file = file;
+        this.toastCtrl = toastCtrl;
+        this.clipboard = clipboard;
+        this.socialSharing = socialSharing;
+        this.subtabs = subtabs;
+        this.alert = alert;
+        this.diagnostic = diagnostic;
+        this.filteredsubnames = [];
+        this.sublist = [];
+        this.imdb_code = subtabs.imdb_code;
+        this.fileTransfer = this.transfer.create();
+        ;
+        this.loadSubtitle();
+    }
+    /* showBanner() {
+  
+      let interaddConfig: AdMobFreeBannerConfig = {
+        autoShow: true,
+        id: 'ca-app-pub-8173350460907694/2714806253'
+  
+      };
+  
+      this.admob.interstitial.config(interaddConfig);
+      this.admob.interstitial.prepare();
+      this.admob.interstitial.show();
+  
+    } */
+    SubtitlesListPage.prototype.showOpenSettingsAlert = function () {
+        var _this = this;
+        var alert = this.alert.create({
+            title: 'Permission needed!',
+            message: 'This permission is needed to save the downloaded subtitle to disk!',
+            buttons: [
+                {
+                    text: 'OPEN SETTINGS',
+                    handler: function () {
+                        _this.diagnostic.switchToSettings();
+                    }
+                }
+            ]
+        });
+        alert.present();
+    };
+    SubtitlesListPage.prototype.loadSubtitle = function () {
+        var _this = this;
+        try {
+            this.asynccall = true;
+            this.yifyProvider.getYifySUbTitles(this.imdb_code).subscribe(function (res) {
+                _this.yifyresult = res;
+                console.log(_this.yifyresult);
+                if (_this.yifyresult.lang_list.length > 0) {
+                    for (var i = 0; i < _this.yifyresult.sub_names.length; i++) {
+                        if (_this.yifyresult.sub_names[i].subname.includes('subtitle')) {
+                            var subname = { subname: _this.yifyresult.sub_names[i].subname.substring(9, _this.yifyresult.sub_names[i].subname.length) };
+                            _this.filteredsubnames.push(subname);
+                        }
+                        ;
+                    }
+                    for (var i = 0; i < _this.yifyresult.rating_list.length; i++) {
+                        var subobj = {
+                            lang: _this.yifyresult.lang_list[i].lang,
+                            link: 'https://www.yifysubtitles.com' + _this.yifyresult.sub_links[i].download_link.replace('subtitles', 'subtitle') + '.zip',
+                            rating: _this.yifyresult.rating_list[i].rating,
+                            name: _this.filteredsubnames[i].subname,
+                            downstart: false,
+                            downcomplete: false
+                        };
+                        _this.sublist.push(subobj);
+                    }
+                    _this.asynccall = false;
+                }
+                else {
+                    _this.asynccall = false;
+                    _this.msg = true;
+                }
+            });
+        }
+        catch (e) {
+            console.log(e);
+            this.asynccall = false;
+            this.msg = true;
+        }
+    };
+    SubtitlesListPage.prototype.handleSubDownload = function (index) {
+        var _this = this;
+        this.sublist[index].downstart = true;
+        this.fileTransfer.download(this.url, this.file.externalRootDirectory + 'YIFY_Torrent_Browser/' + this.filename).then(function (entry) {
+            _this.sublist[index].downstart = false;
+            _this.sublist[index].downcomplete = true;
+            _this.presentToast("File saved in : " + _this.file.externalRootDirectory.replace('file:///', '') + "YIFY_Torrent_Browser/" + _this.filename);
+        }, function (error) {
+            _this.showOpenSettingsAlert();
+        });
+    };
+    SubtitlesListPage.prototype.downloadfile = function (file, index) {
+        var _this = this;
+        this.url = file.link;
+        this.filename = this.url.split("/").pop();
+        this.diagnostic.isExternalStorageAuthorized().then(function (res) {
+            if (res)
+                _this.handleSubDownload(index);
+            else
+                _this.requestExternalStorageAuthorization(index);
+        });
+    };
+    SubtitlesListPage.prototype.requestExternalStorageAuthorization = function (index) {
+        var _this = this;
+        this.diagnostic.requestExternalStorageAuthorization().then(function (res) {
+            console.log("requestExternalStorageAuthorization ", res);
+            if (res)
+                _this.handleSubDownload(index);
+            else
+                _this.showOpenSettingsAlert();
+        }, function (err) {
+            _this.showOpenSettingsAlert();
+        });
+    };
+    SubtitlesListPage.prototype.copylink = function (file) {
+        this.clipboard.copy(file.link);
+        this.presentToast('Copied!!');
+    };
+    SubtitlesListPage.prototype.sharelink = function (file) {
+        var message = file.link;
+        this.socialSharing.share(null, null, null, message).then(function (res) {
+            // this.showBanner();
+        }).catch(function (e) {
+            console.log(e);
+        });
+    };
+    SubtitlesListPage.prototype.presentToast = function (msg) {
+        var toast = this.toastCtrl.create({
+            message: msg,
+            position: 'bottom',
+            closeButtonText: 'OK',
+            showCloseButton: true
+        });
+        toast.onDidDismiss(function () {
+            // this.showBanner();
+        });
+        toast.present();
+    };
+    return SubtitlesListPage;
+}());
+SubtitlesListPage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* IonicPage */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'page-subtitles-list',template:/*ion-inline-start:"/media/ravikumar/Soft_Workspace/My GithHub/yify-browser/src/pages/subtitles-list/subtitles-list.html"*/'<ion-content padding>\n<div *ngIf = "asynccall" class="subspinner">\n  <svg class="spinner1" width="55px" height="55px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">\n  <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>\n</svg>\n</div>\n<ion-item text-wrap *ngIf="msg">Subtitles not found for this movie, Try after some times !!!</ion-item>\n\n<ion-card *ngFor="let sub of sublist ; index as i">\n  \n    <ion-item>\n      <ion-icon style="color: #387ef5;" name="map" item-start large></ion-icon>\n      <h2>{{sub.lang}}  </h2>\n    </ion-item>\n  \n    <ion-item>\n        <ion-icon style="color: #387ef5;" name="star" item-left large ></ion-icon>\n        <h2><ion-badge id="cart-badge"> {{sub.rating}} </ion-badge></h2>\n       \n    </ion-item>\n\n    <ion-item>\n      <ion-icon style="color: #387ef5;" name="document" item-left large ></ion-icon>\n      <h2>{{sub.name}}</h2>\n     \n    </ion-item>\n    <ion-item>\n        <button ion-button icon-left clear item-start>\n            <ion-spinner *ngIf = "sub.downstart" style= "color: #387ef5;" icon="dots" \n            class="spinner-dark"></ion-spinner>\n            <ion-icon *ngIf = "sub.downcomplete" style="font-size: 28px; color: green;" \n            ios="ios-checkmark" md="md-checkmark"></ion-icon> <span *ngIf = "sub.downcomplete" \n            style=" color: green;" >Downloaded!</span>\n          \n          </button>  \n        <button ion-button icon-left clear item-end (click) = "copylink(sub)">\n            <ion-icon name="copy"></ion-icon>\n            Copy\n          </button>\n      <button ion-button icon-left clear item-end (click) = "sharelink(sub)">\n        <ion-icon name="share"></ion-icon>\n        Share\n      </button>\n      <button ion-button icon-left clear item-end (click) = "downloadfile(sub,i)">\n          <ion-icon name="download"></ion-icon>\n          Download\n        </button>\n    </ion-item>\n  \n  </ion-card>\n\n\n</ion-content>\n'/*ion-inline-end:"/media/ravikumar/Soft_Workspace/My GithHub/yify-browser/src/pages/subtitles-list/subtitles-list.html"*/,
+        providers: [__WEBPACK_IMPORTED_MODULE_2__providers_yify_movies_yify_movies__["a" /* YifyMoviesProvider */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_file_transfer__["a" /* FileTransfer */], __WEBPACK_IMPORTED_MODULE_4__ionic_native_file__["a" /* File */], __WEBPACK_IMPORTED_MODULE_5__ionic_native_clipboard__["a" /* Clipboard */], __WEBPACK_IMPORTED_MODULE_7__ionic_native_diagnostic__["a" /* Diagnostic */]],
+        styles: [
+            "ion-badge {\n      padding: 8px 11px;\n      text-align: center;\n      display: inline-block;\n      min-width: 10px;\n      font-size: 1.3rem;\n      font-weight: bold;\n      line-height: 1;\n      white-space: nowrap;\n      vertical-align: baseline;\n  }"
+        ]
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* NavParams */],
+        __WEBPACK_IMPORTED_MODULE_2__providers_yify_movies_yify_movies__["a" /* YifyMoviesProvider */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_file_transfer__["a" /* FileTransfer */], __WEBPACK_IMPORTED_MODULE_4__ionic_native_file__["a" /* File */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* ToastController */], __WEBPACK_IMPORTED_MODULE_5__ionic_native_clipboard__["a" /* Clipboard */], __WEBPACK_IMPORTED_MODULE_6__ionic_native_social_sharing__["a" /* SocialSharing */],
+        __WEBPACK_IMPORTED_MODULE_8__subtitle_tabs_subtitle_tabs__["a" /* SubtitleTabsPage */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_7__ionic_native_diagnostic__["a" /* Diagnostic */]])
+], SubtitlesListPage);
+
+//# sourceMappingURL=subtitles-list.js.map
+
+/***/ }),
+
+/***/ 144:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SettingsProvider; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__ = __webpack_require__(209);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var SettingsProvider = (function () {
+    function SettingsProvider() {
+        this.theme = new __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["BehaviorSubject"]('light-theme');
+    }
+    SettingsProvider.prototype.setActiveTheme = function (val) {
+        this.theme.next(val);
+    };
+    SettingsProvider.prototype.getActiveTheme = function () {
+        return this.theme.asObservable();
+    };
+    SettingsProvider.prototype.getSavedTheme = function () {
+        return '';
+    };
+    return SettingsProvider;
+}());
+SettingsProvider = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+    __metadata("design:paramtypes", [])
+], SettingsProvider);
+
+//# sourceMappingURL=settings.js.map
+
+/***/ }),
+
+/***/ 154:
+/***/ (function(module, exports) {
+
+function webpackEmptyAsyncContext(req) {
+	// Here Promise.resolve().then() is used instead of new Promise() to prevent
+	// uncatched exception popping up in devtools
+	return Promise.resolve().then(function() {
+		throw new Error("Cannot find module '" + req + "'.");
+	});
+}
+webpackEmptyAsyncContext.keys = function() { return []; };
+webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
+module.exports = webpackEmptyAsyncContext;
+webpackEmptyAsyncContext.id = 154;
+
+/***/ }),
+
+/***/ 197:
+/***/ (function(module, exports, __webpack_require__) {
+
+var map = {
+	"../pages/about/about.module": [
+		611,
+		10
+	],
+	"../pages/advance-search-results/advance-search-results.module": [
+		612,
+		9
+	],
+	"../pages/advanced-search/advanced-search.module": [
+		613,
+		8
+	],
+	"../pages/app-settings/app-settings.module": [
+		614,
+		7
+	],
+	"../pages/home/home.module": [
+		607,
+		12
+	],
+	"../pages/moviedetails/moviedetails.module": [
+		615,
+		1
+	],
+	"../pages/page1/page1.module": [
+		617,
+		0
+	],
+	"../pages/page2/page2.module": [
+		616,
+		6
+	],
+	"../pages/page3/page3.module": [
+		618,
+		5
+	],
+	"../pages/search/search.module": [
+		619,
+		4
+	],
+	"../pages/sub-title-search-subs-scene/sub-title-search-subs-scene.module": [
+		620,
+		3
+	],
+	"../pages/subscene-list/subscene-list.module": [
+		608,
+		14
+	],
+	"../pages/subtitle-search/subtitle-search.module": [
+		621,
+		2
+	],
+	"../pages/subtitle-tabs/subtitle-tabs.module": [
+		609,
+		11
+	],
+	"../pages/subtitles-list/subtitles-list.module": [
+		610,
+		13
+	]
+};
+function webpackAsyncContext(req) {
+	var ids = map[req];
+	if(!ids)
+		return Promise.reject(new Error("Cannot find module '" + req + "'."));
+	return __webpack_require__.e(ids[1]).then(function() {
+		return __webpack_require__(ids[0]);
+	});
+};
+webpackAsyncContext.keys = function webpackAsyncContextKeys() {
+	return Object.keys(map);
+};
+webpackAsyncContext.id = 197;
+module.exports = webpackAsyncContext;
+
+/***/ }),
+
+/***/ 198:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PopoverPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home__ = __webpack_require__(286);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_email_composer__ = __webpack_require__(199);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var PopoverPage = (function () {
+    function PopoverPage(viewCtrl, homepage, navCtrl, emailComposer) {
+        this.viewCtrl = viewCtrl;
+        this.homepage = homepage;
+        this.navCtrl = navCtrl;
+        this.emailComposer = emailComposer;
+        this.email = {
+            app: 'gmail',
+            to: 'storm7breaker@gmail.com',
+            subject: 'Feedback',
+            body: 'Attach some screenshots or type the details of the issue you are facing and send it...!!!',
+            isHtml: true
+        };
+    }
+    PopoverPage.prototype.close = function () {
+        this.viewCtrl.dismiss();
+    };
+    PopoverPage.prototype.search = function () {
+        this.navCtrl.push('SearchPage');
+        // this.viewCtrl.dismiss();
+    };
+    PopoverPage.prototype.report = function () {
+        this.emailComposer.addAlias('gmail', 'com.google.android.gm');
+        this.emailComposer.open(this.email);
+    };
+    PopoverPage.prototype.shareApp = function () {
+        this.homepage.shareApp();
+    };
+    return PopoverPage;
+}());
+PopoverPage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        template: "\n      <ion-list no-lines style=\"margin: 0px 0 0px;\">\n        <button ion-item (click)=\"shareApp()\"><i class=\"fa fa-share-alt\" aria-hidden=\"true\"></i> <span style=\"padding-left: 15px;\">Share</span></button>\n       \n      </ion-list>\n    ",
+        providers: [__WEBPACK_IMPORTED_MODULE_2__home__["a" /* HomePage */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_email_composer__["a" /* EmailComposer */]]
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* ViewController */], __WEBPACK_IMPORTED_MODULE_2__home__["a" /* HomePage */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_email_composer__["a" /* EmailComposer */]])
+], PopoverPage);
+
+//# sourceMappingURL=popover.js.map
+
+/***/ }),
+
+/***/ 286:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home_popover__ = __webpack_require__(198);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(44);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_social_sharing__ = __webpack_require__(45);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var HomePage = (function () {
+    function HomePage(navCtrl, popoverCtrl, localstorage, socialSharing) {
+        this.navCtrl = navCtrl;
+        this.popoverCtrl = popoverCtrl;
+        this.localstorage = localstorage;
+        this.socialSharing = socialSharing;
+        this.page1 = 'Page1Page';
+        this.page2 = 'Page2Page';
+        this.page3 = 'Page3Page';
+        this.playstoreappurl = "https://play.google.com/store/apps/details?id=com.project.yifybrowserandsubs";
+        this.domain = 'ytsam';
+    }
+    HomePage.prototype.setBadgeCount = function (count) {
+        this.badgecount = count;
+    };
+    HomePage.prototype.search = function () {
+        this.navCtrl.push('SearchPage');
+    };
+    HomePage.prototype.openPopover = function (myEvent) {
+        var popover = this.popoverCtrl.create(__WEBPACK_IMPORTED_MODULE_2__home_popover__["a" /* PopoverPage */]);
+        popover.present({
+            ev: myEvent
+        });
+    };
+    HomePage.prototype.setBookMarkCount = function (count) {
+        this.bookmarkcount = count;
+    };
+    HomePage.prototype.shareApp = function () {
+        var _this = this;
+        this.socialSharing.share(null, null, null, this.playstoreappurl).then(function (res) {
+            console.log("shared");
+            _this.localstorage.set('shared', 'Y');
+        }).catch(function (e) {
+            _this.localstorage.set('shared', 'N');
+            _this.localstorage.set('tried', 1);
+        });
+    };
+    return HomePage;
+}());
+HomePage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* IonicPage */])({
+        segment: 'home/:type'
+    }),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'page-home',template:/*ion-inline-start:"/media/ravikumar/Soft_Workspace/My GithHub/yify-browser/src/pages/home/home.html"*/'\n<ion-header>\n  \n    <ion-navbar>\n      <ion-buttons start>\n        <button ion-button (click)="search()">\n          <ion-icon name="search" style="font-size: 2.4rem;" ></ion-icon>\n        </button>\n      </ion-buttons>\n      <button ion-button menuToggle style="font-size: 2.4rem;">\n        <ion-icon name="menu"></ion-icon>\n      </button>\n      <ion-title>\n       Browser for YIFY (Yts)  \n      </ion-title>\n      <ion-buttons end>\n        <button ion-button (click)="openPopover($event)" style="font-size: 2.4rem;">\n          <ion-icon name="more"></ion-icon>\n        </button>\n      </ion-buttons>\n    </ion-navbar>\n  \n  </ion-header>\n\n  \n\n\n<ion-content no-bounce >\n  <super-tabs>\n    <super-tab [root]="page1" title="LATEST"></super-tab>\n    <super-tab [root]="page2" title="TOP RATED"></super-tab>\n    <super-tab [root]="page3" title="SAVED" badge="{{bookmarkcount}}" ></super-tab>\n  </super-tabs>\n</ion-content>\n'/*ion-inline-end:"/media/ravikumar/Soft_Workspace/My GithHub/yify-browser/src/pages/home/home.html"*/,
+        providers: [__WEBPACK_IMPORTED_MODULE_4__ionic_native_social_sharing__["a" /* SocialSharing */]],
+        styles: [
+            ".mypopover-content{\n      box-shadow: 0 3px 0px 2px rgba(0, 0, 0, 0.3) !important;\n      top: 52px !important;\n      left: 70px !important;\n      transform-origin: right top 0px !important;\n      transform: scale(1) !important;\n      width: 252px !important;\n    \n    }"
+        ]
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* PopoverController */],
+        __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */], __WEBPACK_IMPORTED_MODULE_4__ionic_native_social_sharing__["a" /* SocialSharing */]])
+], HomePage);
+
+//# sourceMappingURL=home.js.map
+
+/***/ }),
+
+/***/ 288:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(244);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(44);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_splash_screen__ = __webpack_require__(245);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_email_composer__ = __webpack_require__(199);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_device__ = __webpack_require__(582);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_social_sharing__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ionic_native_app_availability__ = __webpack_require__(292);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_settings_settings__ = __webpack_require__(144);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__ionic_native_push__ = __webpack_require__(583);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__ionic_native_toast__ = __webpack_require__(289);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__ionic_native_market__ = __webpack_require__(584);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__ionic_native_network__ = __webpack_require__(585);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var MyApp = (function () {
+    function MyApp(platform, splashScreen, statusBar, emailComposer, device, toastCtrl, localstorage, socialSharing, appAvailability, settings, alert, push, market, toast, network) {
+        var _this = this;
+        this.emailComposer = emailComposer;
+        this.device = device;
+        this.toastCtrl = toastCtrl;
+        this.localstorage = localstorage;
+        this.socialSharing = socialSharing;
+        this.appAvailability = appAvailability;
+        this.settings = settings;
+        this.alert = alert;
+        this.push = push;
+        this.market = market;
+        this.toast = toast;
+        this.network = network;
+        this.isPurchased = false;
+        this.backButtonPressedOnceToExit = false;
+        this.playstoreappurl = "https://play.google.com/store/apps/details?id=com.project.yifybrowserandsubs";
+        this.torrentapps = ['com.utorrent.client', 'com.mobilityflow.torrent', 'com.bittorrent.client',
+            'com.napolovd.piratecat', 'com.delphicoder.flud', 'com.frostwire.android', 'com.gabordemko.torrnado',
+            'org.transdroid.lite', 'com.vuze.torrent.downloader', 'com.teeonsoft.ztorrent', 'com.bittorrent.client.pro'];
+        this.version = 'v1.0.0';
+        this.email = {
+            app: 'gmail',
+            to: 'phoenixcoders777@gmail.com',
+            subject: 'Feedback',
+            body: 'Attach some screenshots or type the details of the issue you are facing and send it...!!!',
+            isHtml: true
+        };
+        this.menuItems = [
+            {
+                name: 'Home',
+                page: 'HomePage',
+                faclass: 'fa fa-home fa-lg',
+                params: { type: 'all' }
+            },
+            {
+                name: 'Subtitles',
+                page: 'SubtitleSearchPage',
+                faclass: 'fa fa-file-archive-o fa-lg'
+            },
+            {
+                name: 'Advanced Search',
+                page: 'AdvancedSearchPage',
+                faclass: 'fa fa-search-plus fa-lg'
+            },
+            {
+                name: 'Share',
+                page: 'SharePage',
+                faclass: 'fa fa-share-alt fa-lg'
+            },
+            {
+                name: 'Settings',
+                page: 'AppSettingsPage',
+                faclass: 'fa fa-cog fa-lg'
+            },
+            {
+                name: 'Rate Us',
+                page: 'RateUs',
+                faclass: 'fa fa-star fa-lg'
+            },
+            {
+                name: 'Privacy Policy',
+                page: 'PrivacyPolicy',
+                faclass: 'fa fa-file-text fa-lg'
+            },
+            {
+                name: 'About',
+                page: 'AboutPage',
+                faclass: 'fa fa-info-circle fa-lg'
+            }
+        ];
+        this.rootPage = this.menuItems[0].page;
+        this.rootParams = this.menuItems[0].params;
+        this.settings.getActiveTheme().subscribe(function (val) { return _this.selectedTheme = val; });
+        this.checkAppThemeMode();
+        this.platform = platform;
+        this.stb = statusBar;
+        platform.ready().then(function () {
+            splashScreen.hide();
+            statusBar.backgroundColorByHexString('#3F51B5');
+            platform.registerBackButtonAction(function () {
+                if (_this.backButtonPressedOnceToExit) {
+                    _this.platform.exitApp();
+                }
+                else if (_this.nav.canGoBack()) {
+                    _this.nav.pop({});
+                }
+                else {
+                    _this.showToast();
+                    _this.backButtonPressedOnceToExit = true;
+                    setTimeout(function () {
+                        _this.backButtonPressedOnceToExit = false;
+                    }, 2000);
+                }
+            });
+        });
+        this.localstorage.set("hastorapp", false);
+        this.checkTorrentsAppAvailability();
+        this.registerNetworkEvents();
+    }
+    MyApp.prototype.registerNetworkEvents = function () {
+        var _this = this;
+        this.network.onDisconnect().subscribe(function () {
+            _this.showNetworkError("Disconnected!");
+        });
+        this.network.onConnect().subscribe(function () {
+            _this.showNetworkError("Connected!");
+            _this.showBanner();
+        });
+    };
+    MyApp.prototype.showNetworkError = function (msg) {
+        this.toast.show("Network " + msg + "!", '3000', 'bottom').subscribe(function (toast) {
+            console.log(toast);
+        });
+    };
+    MyApp.prototype.setPurchased = function (val) {
+        this.isPurchased = val;
+    };
+    MyApp.prototype.showBanner = function () {
+    };
+    MyApp.prototype.setStatusBarColor = function (color) {
+        this.stb.backgroundColorByHexString(color);
+    };
+    MyApp.prototype.showRestartAlert = function () {
+        var _this = this;
+        var alert = this.alert.create({
+            title: 'Thank you !!',
+            message: 'Apps needs to get restarted to apply changes!!',
+            buttons: [
+                {
+                    text: 'LATER',
+                    role: 'cancel',
+                    handler: function () {
+                    }
+                },
+                {
+                    text: 'RESTART',
+                    handler: function () {
+                        _this.platform.exitApp();
+                    }
+                }
+            ]
+        });
+        alert.present();
+    };
+    MyApp.prototype.checkTorrentsAppAvailability = function () {
+        var _this = this;
+        for (var i = 0; i < this.torrentapps.length; i++) {
+            this.appAvailability.check(this.torrentapps[i].toString())
+                .then(function (yes) { return _this.localstorage.set('hastorapp', true); }, function (no) { return console.log("not available"); });
+        }
+    };
+    MyApp.prototype.checkAppThemeMode = function () {
+        var _this = this;
+        this.localstorage.get("mode").then(function (res) {
+            if (res == null || res == undefined || res == '') {
+                _this.setModeTheme("off");
+            }
+            else {
+                _this.setModeTheme(res);
+            }
+        });
+    };
+    MyApp.prototype.setModeTheme = function (mode) {
+        if (mode == "on") {
+            this.selectedTheme = 'dark-theme';
+            this.setStatusBarColor('#060a1f');
+        }
+        else if (mode == "off") {
+            this.selectedTheme = 'light-theme';
+            this.setStatusBarColor('#3F51B5');
+        }
+        else if (mode == "auto") {
+            var d = new Date();
+            if (d.getHours() >= 18 || (6 >= d.getHours())) {
+                this.selectedTheme = 'dark-theme';
+                this.setStatusBarColor('#060a1f');
+            }
+            else {
+                this.selectedTheme = 'light-theme';
+                this.setStatusBarColor('#3F51B5');
+            }
+        }
+    };
+    MyApp.prototype.showToast = function () {
+        var toast = this.toastCtrl.create({
+            message: 'Press Again to exit',
+            duration: 2000,
+            position: 'bottom'
+        });
+        toast.onDidDismiss(function () {
+            console.log('Dismissed toast');
+        });
+        toast.present();
+    };
+    MyApp.prototype.openPage = function (page) {
+        if (page.page == 'HomePage' || page.page == 'AdvancedSearchPage'
+            || page.page == 'SettingsPage' || page.page == 'AboutPage'
+            || page.page == 'SubtitleSearchPage' || page.page == 'AppSettingsPage') {
+            this.nav.setRoot(page.page, page.params);
+        }
+        else if (page.page == 'ReportPage') {
+            this.emailComposer.addAlias('gmail', 'com.google.android.gm');
+            this.loadDeviceInfo();
+            this.emailComposer.open(this.email);
+        }
+        else if (page.page == 'PrivacyPolicy') {
+            window.open('https://sites.google.com/view/yifyhdmovies/home', '_system', "location=yes");
+        }
+        else if (page.page == 'SharePage') {
+            this.shareApp();
+        }
+        else if (page.page == 'RateUs') {
+            this.market.open('com.project.yifybrowserandsubs');
+        }
+    };
+    MyApp.prototype.shareApp = function () {
+        var _this = this;
+        this.socialSharing.share(null, null, null, this.playstoreappurl).then(function (res) {
+            console.log("shared");
+            _this.localstorage.set('shared', 'Y');
+        }).catch(function (e) {
+            _this.localstorage.set('shared', 'N');
+            _this.localstorage.set('tried', 1);
+        });
+    };
+    MyApp.prototype.loadDeviceInfo = function () {
+        var model = this.device.model;
+        var platform = this.device.platform;
+        var manufacturer = this.device.manufacturer;
+        var version = this.device.version;
+        var content = model + " " + platform + " " + manufacturer + " " + version;
+        this.email.body = content;
+    };
+    return MyApp;
+}());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Nav */]),
+    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* Nav */])
+], MyApp.prototype, "nav", void 0);
+MyApp = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({template:/*ion-inline-start:"/media/ravikumar/Soft_Workspace/My GithHub/yify-browser/src/app/app.html"*/'  <ion-menu [content]="content" [class]="selectedTheme">\n    <ion-content>\n      <div class = "bgbar">\n\n         \n            \n      </div>\n      <ion-list-header>\n        Browser for YIFY\n      </ion-list-header>\n\n      <ion-list no-lines>\n          <button ion-item menuClose *ngFor="let item of menuItems" (click)="openPage(item)">\n            \n              <i [class]="item.faclass" aria-hidden="true" style="color:#387ef5"></i>\n              <span style="padding-left: 25px;font-size: 16px;">{{ item.name }}</span> \n          \n          </button>         \n\n        </ion-list>\n\n      \n    </ion-content>\n  </ion-menu>\n  <ion-nav [root]="rootPage" [class]="selectedTheme" [rootParams]="rootParams" main #content></ion-nav>\n\n'/*ion-inline-end:"/media/ravikumar/Soft_Workspace/My GithHub/yify-browser/src/app/app.html"*/,
+        providers: [__WEBPACK_IMPORTED_MODULE_9__providers_settings_settings__["a" /* SettingsProvider */], __WEBPACK_IMPORTED_MODULE_5__ionic_native_email_composer__["a" /* EmailComposer */], __WEBPACK_IMPORTED_MODULE_6__ionic_native_device__["a" /* Device */], __WEBPACK_IMPORTED_MODULE_7__ionic_native_social_sharing__["a" /* SocialSharing */], __WEBPACK_IMPORTED_MODULE_8__ionic_native_app_availability__["a" /* AppAvailability */], __WEBPACK_IMPORTED_MODULE_10__ionic_native_push__["a" /* Push */],
+            __WEBPACK_IMPORTED_MODULE_11__ionic_native_toast__["a" /* Toast */], __WEBPACK_IMPORTED_MODULE_12__ionic_native_market__["a" /* Market */], __WEBPACK_IMPORTED_MODULE_13__ionic_native_network__["a" /* Network */]]
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* Platform */], __WEBPACK_IMPORTED_MODULE_4__ionic_native_splash_screen__["a" /* SplashScreen */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */],
+        __WEBPACK_IMPORTED_MODULE_5__ionic_native_email_composer__["a" /* EmailComposer */],
+        __WEBPACK_IMPORTED_MODULE_6__ionic_native_device__["a" /* Device */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* ToastController */],
+        __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */], __WEBPACK_IMPORTED_MODULE_7__ionic_native_social_sharing__["a" /* SocialSharing */],
+        __WEBPACK_IMPORTED_MODULE_8__ionic_native_app_availability__["a" /* AppAvailability */], __WEBPACK_IMPORTED_MODULE_9__providers_settings_settings__["a" /* SettingsProvider */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_10__ionic_native_push__["a" /* Push */],
+        __WEBPACK_IMPORTED_MODULE_12__ionic_native_market__["a" /* Market */], __WEBPACK_IMPORTED_MODULE_11__ionic_native_toast__["a" /* Toast */], __WEBPACK_IMPORTED_MODULE_13__ionic_native_network__["a" /* Network */]])
+], MyApp);
+
+//# sourceMappingURL=app.component.js.map
+
+/***/ }),
+
+/***/ 291:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SubtitleTabsPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__subtitles_list_subtitles_list__ = __webpack_require__(143);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__subscene_list_subscene_list__ = __webpack_require__(139);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_storage__ = __webpack_require__(44);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var SubtitleTabsPage = (function () {
+    function SubtitleTabsPage(navCtrl, navParams, localstorage) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.localstorage = localstorage;
+        this.yifySubs = __WEBPACK_IMPORTED_MODULE_2__subtitles_list_subtitles_list__["a" /* SubtitlesListPage */];
+        this.subsceneSubs = __WEBPACK_IMPORTED_MODULE_3__subscene_list_subscene_list__["a" /* SubsceneListPage */];
+        this.subdata = navParams.get('imdb');
+        this.imdb_code = this.subdata.imdbcode;
+        this.suburl = this.subdata.suburl;
+        this.localstorage.set("suburl", this.suburl);
+    }
+    return SubtitleTabsPage;
+}());
+SubtitleTabsPage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* IonicPage */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'page-subtitle-tabs',template:/*ion-inline-start:"/media/ravikumar/Soft_Workspace/My GithHub/yify-browser/src/pages/subtitle-tabs/subtitle-tabs.html"*/'\n<ion-header>\n  <ion-navbar>\n    <ion-title>Subtitles</ion-title>\n  </ion-navbar>\n</ion-header>\n<ion-content no-bounce>\n  <super-tabs>\n      <super-tab [root]="yifySubs" title="YIFY"></super-tab>\n      <super-tab [root]="subsceneSubs" title="SUBSCENE"></super-tab>\n    </super-tabs>  \n</ion-content>\n\n'/*ion-inline-end:"/media/ravikumar/Soft_Workspace/My GithHub/yify-browser/src/pages/subtitle-tabs/subtitle-tabs.html"*/
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* NavParams */], __WEBPACK_IMPORTED_MODULE_4__ionic_storage__["b" /* Storage */]])
+], SubtitleTabsPage);
+
+//# sourceMappingURL=subtitle-tabs.js.map
+
+/***/ }),
+
+/***/ 293:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(294);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(298);
+
+
+Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_1__app_module__["a" /* AppModule */]);
+//# sourceMappingURL=main.js.map
+
+/***/ }),
+
+/***/ 298:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_component__ = __webpack_require__(288);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_http__ = __webpack_require__(208);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ionic2_super_tabs__ = __webpack_require__(290);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_splash_screen__ = __webpack_require__(245);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_status_bar__ = __webpack_require__(244);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_platform_browser_animations__ = __webpack_require__(603);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_yify_movies_yify_movies__ = __webpack_require__(79);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__ionic_storage__ = __webpack_require__(44);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__ionic_native_social_sharing__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__ionic_native_in_app_browser__ = __webpack_require__(606);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_home_popover__ = __webpack_require__(198);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__ionic_native_speech_recognition__ = __webpack_require__(287);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_ng_lazyload_image__ = __webpack_require__(285);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_ng_lazyload_image___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_15_ng_lazyload_image__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__angular_forms__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__providers_settings_settings__ = __webpack_require__(144);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_subtitles_list_subtitles_list__ = __webpack_require__(143);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pages_subscene_list_subscene_list__ = __webpack_require__(139);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["enableProdMode"])();
+var AppModule = (function () {
+    function AppModule() {
+    }
+    return AppModule;
+}());
+AppModule = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
+        declarations: [
+            __WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* MyApp */], __WEBPACK_IMPORTED_MODULE_13__pages_home_popover__["a" /* PopoverPage */], __WEBPACK_IMPORTED_MODULE_18__pages_subtitles_list_subtitles_list__["a" /* SubtitlesListPage */], __WEBPACK_IMPORTED_MODULE_19__pages_subscene_list_subscene_list__["a" /* SubsceneListPage */]
+        ],
+        imports: [
+            __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["a" /* BrowserModule */],
+            __WEBPACK_IMPORTED_MODULE_8__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
+            __WEBPACK_IMPORTED_MODULE_4__angular_http__["c" /* HttpModule */],
+            __WEBPACK_IMPORTED_MODULE_5_ionic2_super_tabs__["a" /* SuperTabsModule */].forRoot(),
+            __WEBPACK_IMPORTED_MODULE_10__ionic_storage__["a" /* IonicStorageModule */].forRoot(), __WEBPACK_IMPORTED_MODULE_15_ng_lazyload_image__["LazyLoadImageModule"], __WEBPACK_IMPORTED_MODULE_16__angular_forms__["a" /* FormsModule */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* MyApp */], { pageTransition: 'md-transition' }, {
+                links: [
+                    { loadChildren: '../pages/home/home.module#Module', name: 'HomePage', segment: 'home/:type', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/subscene-list/subscene-list.module#SubsceneListPageModule', name: 'SubsceneListPage', segment: 'subscene-list', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/subtitle-tabs/subtitle-tabs.module#SubtitleTabsPageModule', name: 'SubtitleTabsPage', segment: 'subtitle-tabs', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/subtitles-list/subtitles-list.module#SubtitlesListPageModule', name: 'SubtitlesListPage', segment: 'subtitles-list', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/about/about.module#AboutPageModule', name: 'AboutPage', segment: 'about', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/advance-search-results/advance-search-results.module#AdvanceSearchResultsPageModule', name: 'AdvanceSearchResultsPage', segment: 'advance-search-results', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/advanced-search/advanced-search.module#AdvancedSearchPageModule', name: 'AdvancedSearchPage', segment: 'advanced-search', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/app-settings/app-settings.module#AppSettingsPageModule', name: 'AppSettingsPage', segment: 'app-settings', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/moviedetails/moviedetails.module#MoviedetailsPageModule', name: 'MoviedetailsPage', segment: 'moviedetails', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/page2/page2.module#Module', name: 'Page2Page', segment: 'page2', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/page1/page1.module#Module', name: 'Page1Page', segment: 'page1', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/page3/page3.module#Module', name: 'Page3Page', segment: 'page3', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/search/search.module#SearchPageModule', name: 'SearchPage', segment: 'search', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/sub-title-search-subs-scene/sub-title-search-subs-scene.module#SubTitleSearchSubsScenePageModule', name: 'SubTitleSearchSubsScenePage', segment: 'sub-title-search-subs-scene', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/subtitle-search/subtitle-search.module#SubtitleSearchPageModule', name: 'SubtitleSearchPage', segment: 'subtitle-search', priority: 'low', defaultHistory: [] }
+                ]
+            })
+        ],
+        bootstrap: [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["h" /* IonicApp */]],
+        entryComponents: [
+            __WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* MyApp */], __WEBPACK_IMPORTED_MODULE_13__pages_home_popover__["a" /* PopoverPage */], __WEBPACK_IMPORTED_MODULE_18__pages_subtitles_list_subtitles_list__["a" /* SubtitlesListPage */], __WEBPACK_IMPORTED_MODULE_19__pages_subscene_list_subscene_list__["a" /* SubsceneListPage */]
+        ],
+        providers: [
+            __WEBPACK_IMPORTED_MODULE_6__ionic_native_splash_screen__["a" /* SplashScreen */],
+            __WEBPACK_IMPORTED_MODULE_7__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_12__ionic_native_in_app_browser__["a" /* InAppBrowser */],
+            { provide: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ErrorHandler"], useClass: __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["i" /* IonicErrorHandler */] },
+            __WEBPACK_IMPORTED_MODULE_9__providers_yify_movies_yify_movies__["a" /* YifyMoviesProvider */], __WEBPACK_IMPORTED_MODULE_11__ionic_native_social_sharing__["a" /* SocialSharing */], __WEBPACK_IMPORTED_MODULE_14__ionic_native_speech_recognition__["a" /* SpeechRecognition */],
+            __WEBPACK_IMPORTED_MODULE_17__providers_settings_settings__["a" /* SettingsProvider */]
+        ]
+    })
+], AppModule);
+
+//# sourceMappingURL=app.module.js.map
+
+/***/ }),
+
+/***/ 79:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return YifyMoviesProvider; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(208);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__ = __webpack_require__(209);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(115);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_catch__ = __webpack_require__(114);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_catch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_catch__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var YifyMoviesProvider = (function () {
+    /* https://api.themoviedb.org/3/find/tt5997666?api_key=fa286812af448bf2745c5c960c7b964e&language=en-US&external_source=imdb_id */
+    function YifyMoviesProvider(http) {
+        this.http = http;
+        this.yifysites = ['https://yts.am/api/v2', 'https://yts.unblocked.lat/api/v2', 'https://yts.bypassed.org/api/v2', 'https://yts.pe/api/v2/',
+            'https://yifymovie.co/api/v2', 'https://yifytorrent.to/api/v2/', 'https://yts.me/api/v2', 'https://yts.gs/api/v2'];
+        this.sitecount = -1;
+        this.yifysubUrl = 'https://www.yifysubtitles.com/movie-imdb/';
+        this.storeurl = '/storeurl';
+        this.queryjson = { "rating_list": [{ "elem": ".container .row .table-responsive .other-subs tbody .rating-cell ", "rating": "text" }], "lang_list": [{ "elem": ".container .row .table-responsive .other-subs tbody .flag-cell .sub-lang ", "lang": "text" }], "sub_links": [{ "elem": ".container .row .table-responsive .other-subs tbody  .download-cell a", "download_link": "href" }], "sub_names": [{ "elem": ".container .row .table-responsive .other-subs tbody td", "subname": "text" }] };
+        this.subscene_queryjson = { "down_links": [{ "elem": ".a1 > a:first-of-type", "link": "href" }], "langs_names": [{ "elem": ".a1 > a:first-of-type span", "link": "href", "lang_name": "text" }] };
+        this.subscene_download_json = { "downlink": [{ "elem": ".download > a:first-of-type", "link": "href" }] };
+        this.Tmdburl = 'https://api.themoviedb.org/3/search/movie?include_adult=false&api_key=fa286812af448bf2745c5c960c7b964e';
+        this.ServerIp = 'http://18.217.205.247:7070/';
+    }
+    YifyMoviesProvider.prototype.loadYifyMovies = function (limit, page, sitecount) {
+        return this.http.get(this.yifysites[sitecount] + "/list_movies.jsonp?limit=" + limit + "&page=" + page)
+            .map(function (res) { return res.json(); })
+            .catch(function (error) {
+            return __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__["Observable"].throw(new Error(error.status));
+        });
+    };
+    YifyMoviesProvider.prototype.loadYifyTopRatedMovies = function (limit, page, sitecount) {
+        return this.http.get(this.yifysites[sitecount] + "/list_movies.jsonp?sort_by=rating&limit=" + limit + "&page=" + page)
+            .map(function (res) { return res.json(); })
+            .catch(function (error) {
+            return __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__["Observable"].throw(new Error(error.status));
+        });
+    };
+    YifyMoviesProvider.prototype.setUrl = function (index) {
+        this.Url = this.yifysites[index];
+        console.log(this.Url);
+    };
+    YifyMoviesProvider.prototype.getUrl = function () {
+        return this.Url;
+    };
+    YifyMoviesProvider.prototype.loadYifyMovieDetails = function (movie_id) {
+        return this.http.get(this.Url + "/movie_details.json?movie_id=" + movie_id + "&with_images=true&with_cast=true")
+            .map(function (res) { return res.json(); })
+            .catch(function (error) {
+            return __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__["Observable"].throw(new Error(error.status));
+        });
+    };
+    YifyMoviesProvider.prototype.searchYifyMovies = function (query_term) {
+        return this.http.get(this.Url + "/list_movies.jsonp?sort_by=rating&limit=30&query_term=" + query_term)
+            .map(function (res) { return res.json(); })
+            .catch(function (error) {
+            return __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__["Observable"].throw(new Error(error.status));
+        });
+    };
+    YifyMoviesProvider.prototype.advancedSearchYifyMovies = function (limit, page, criteria) {
+        return this.http.get(this.Url + "/list_movies.jsonp?limit=" + limit + "&page=" + page + "&" + criteria)
+            .map(function (res) { return res.json(); })
+            .catch(function (error) {
+            return __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__["Observable"].throw(new Error(error.status));
+        });
+    };
+    YifyMoviesProvider.prototype.getYifySUbTitles = function (imdb_code) {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/x-www-form-urlencoded', 'Accept': 'application/json' });
+        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({
+            headers: headers
+        });
+        var body = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["e" /* URLSearchParams */]();
+        body.set('url', "" + this.yifysubUrl + imdb_code);
+        body.set('json_data', JSON.stringify(this.queryjson));
+        return this.http.post("" + this.ServerIp, body, options).
+            map(function (res) { return res.json(); })
+            .catch(function (error) {
+            return __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__["Observable"].throw(new Error(error.status));
+        });
+    };
+    YifyMoviesProvider.prototype.getSubSceneSubTitles = function (suburl) {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/x-www-form-urlencoded', 'Accept': 'application/json' });
+        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({
+            headers: headers
+        });
+        var body = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["e" /* URLSearchParams */]();
+        body.set('url', suburl);
+        body.set('json_data', JSON.stringify(this.subscene_queryjson));
+        return this.http.post("" + this.ServerIp, body, options).
+            map(function (res) { return res.json(); })
+            .catch(function (error) {
+            return __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__["Observable"].throw(new Error(error.status));
+        });
+    };
+    YifyMoviesProvider.prototype.downloadSubsceneSubs = function (suburl) {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/x-www-form-urlencoded', 'Accept': 'application/json' });
+        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({
+            headers: headers
+        });
+        var body = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["e" /* URLSearchParams */]();
+        body.set('url', suburl);
+        body.set('json_data', JSON.stringify(this.subscene_download_json));
+        return this.http.post("" + this.ServerIp, body, options).
+            map(function (res) { return res.json(); })
+            .catch(function (error) {
+            return __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__["Observable"].throw(new Error(error.status));
+        });
+    };
+    YifyMoviesProvider.prototype.searchTMDbQueryData = function (query_term, page) {
+        return this.http.get(this.Tmdburl + "&query=" + query_term + "&page=" + page)
+            .map(function (res) { return res.json(); })
+            .catch(function (error) {
+            return __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__["Observable"].throw(new Error(error.status));
+        });
+    };
+    return YifyMoviesProvider;
+}());
+YifyMoviesProvider = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]])
+], YifyMoviesProvider);
+
+//# sourceMappingURL=yify-movies.js.map
+
+/***/ })
+
+},[293]);
+//# sourceMappingURL=main.js.map

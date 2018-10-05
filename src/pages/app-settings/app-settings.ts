@@ -67,7 +67,7 @@ export class AppSettingsPage {
       this.setModeTheme(this.mode)
     })
 
-    if(this.yifyprovider.Url.includes('yts.unblocked.lat')){
+    if(this.yifyprovider.Url && this.yifyprovider.Url.includes('yts.unblocked.lat')){
       this.domain = 'yts.unblocked.lat'
     }else{
       this.domain = 'yts.me'

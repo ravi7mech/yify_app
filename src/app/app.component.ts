@@ -6,22 +6,17 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { EmailComposer } from '@ionic-native/email-composer';
 import { Device } from '@ionic-native/device';
 import { SocialSharing } from '@ionic-native/social-sharing';
-import { AppRate } from '@ionic-native/app-rate';
 import { AppAvailability } from '@ionic-native/app-availability';
 import { SettingsProvider } from './../providers/settings/settings';
 import { Push, PushObject, PushOptions } from '@ionic-native/push';
-import { FirebaseAnalytics } from '@ionic-native/firebase-analytics';
 import { Toast } from '@ionic-native/toast';
 import { Market } from '@ionic-native/market';
 import { Network } from '@ionic-native/network';
 
-
-const updateUrl = 'https://s3.us-east-2.amazonaws.com/yifyupdateconfig/update.xml';
-
 @Component({
   templateUrl: 'app.html',
-  providers: [SettingsProvider, EmailComposer, Device, SocialSharing, AppRate, AppAvailability, Push,
-    FirebaseAnalytics, Toast, Market, Network]
+  providers: [SettingsProvider, EmailComposer, Device, SocialSharing, AppAvailability, Push,
+    Toast, Market, Network]
 })
 export class MyApp {
   isPurchased: boolean = false;
@@ -96,10 +91,10 @@ export class MyApp {
   constructor(platform: Platform, splashScreen: SplashScreen, statusBar: StatusBar,
     private emailComposer: EmailComposer,
     private device: Device, private toastCtrl: ToastController,
-    public localstorage: Storage, public socialSharing: SocialSharing, public appRate: AppRate,
+    public localstorage: Storage, public socialSharing: SocialSharing,
     private appAvailability: AppAvailability, public settings: SettingsProvider,
-    public alert: AlertController, public push: Push, private firebaseAnalytics: FirebaseAnalytics,
-     private market: Market, public toast: Toast, private network: Network) {
+    public alert: AlertController, public push: Push,
+    private market: Market, public toast: Toast, private network: Network) {
 
     this.rootPage = this.menuItems[0].page
     this.rootParams = this.menuItems[0].params
@@ -130,55 +125,11 @@ export class MyApp {
 
       });
 
-      this.appRate.preferences = {
-        displayAppName: 'this app',
-        usesUntilPrompt: 5,
-        promptAgainForEachNewVersion: false,
-        storeAppURL: {
-          android: 'market://details?id=com.project.yifybrowserandsubs'
-        },
-        customLocale: {
-          title: "Would you mind rating %@?",
-          message: "It won’t take more than a minute and helps to promote our app. Thanks for your support!",
-          cancelButtonLabel: "No,Thanks",
-          laterButtonLabel: "Later",
-          rateButtonLabel: "Rate Now",
-          yesButtonLabel: "Yes!",
-          noButtonLabel: "Not really",
-          appRatePromptTitle: 'Do you like using %@',
-          feedbackPromptTitle: 'Mind giving us some feedback?',
-        },
-        callbacks: {
-          handleNegativeFeedback: function () {
-            this.appRate.promptForRating(false)
-          },
-          onRateDialogShow: function (callback) {
-            this.appRate.promptForRating(false)
-          },
-          onButtonClicked: function (buttonIndex) {
-            this.appRate.promptForRating(false)
-          }
-        }
-      }
-
-      this.appRate.promptForRating(false)
-    
-
-
     })
-
-
 
     this.localstorage.set("hastorapp", false);
     this.checkTorrentsAppAvailability();
-    this.pushsetup();
-    this.firebaseAnalytics.logEvent('page_view', { page: "dashboard" })
-      .then((res: any) => console.log(res))
-      .catch((error: any) => console.error(error))
-
     this.registerNetworkEvents();
-
-
 
 
 
@@ -216,39 +167,11 @@ export class MyApp {
 
   showBanner() {
 
-  
+
   }
 
 
-  pushsetup() {
-    const options: PushOptions = {
-      android: {
-        sound: true,
-        icon: 'icon',
-        senderID: '923651047024'
-      }
-    }
 
-    const pushObject: PushObject = this.push.init(options);
-
-    pushObject.on('notification').subscribe((notification: any) => {
-      if (notification.additionalData.foreground) {
-        let youralert = this.alert.create({
-          title: 'New Push notification',
-          message: notification.message,
-          buttons: ['Dismiss']
-        });
-        youralert.present();
-      }
-    });
-
-    pushObject.on('registration').subscribe((registration: any) => {
-      this.localstorage.set("regid", registration);
-
-    });
-
-    pushObject.on('error').subscribe(error => alert('Error with Push plugin' + error));
-  }
 
 
 
@@ -380,11 +303,7 @@ export class MyApp {
     this.email.body = content;
   }
 
-  promptRatingDialog() {
-    this.appRate.promptForRating(true);
-  }
-
-
+ 
 
 
 

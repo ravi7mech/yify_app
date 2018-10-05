@@ -1,1 +1,460 @@
-webpackJsonp([0],{537:function(l,n,e){"use strict";Object.defineProperty(n,"__esModule",{value:!0});var t=e(1),o=(e(24),e(166)),u=e(548),a=function(){return function(){}}(),r=e(20),i=e(39),d=e(147),c=e(172),s=e(247),b=e(248),f=e(249),g=e(250),m=e(251),_=e(252),p=e(149),v=e(2),R=e(8),C=e(539),h=e(54),k=e(10),E=e(26),y=e(540),T=e(145),I=e(73),D=e(108),S=e(29),P=e(7),w=e(12),B=e(30),x=e(549),M=e(112),N=e(77),F=e(32),O=e(45),V=e(550),j=e(162),L=e(9),K=e(40),q=e(19),Z=e(56),A=t["ɵcrt"]({encapsulation:2,styles:[],data:{}});function Y(l){return t["ɵvid"](0,[(l()(),t["ɵted"](null,["\n"])),(l()(),t["ɵeld"](0,null,null,10,"ion-header",[],null,null,null,null,null)),t["ɵdid"](16384,null,0,p.a,[v.a,t.ElementRef,t.Renderer,[2,R.a]],null,null),(l()(),t["ɵted"](null,["\n  "])),(l()(),t["ɵeld"](0,null,null,6,"ion-navbar",[["class","toolbar"]],[[8,"hidden",0],[2,"statusbar-padding",null]],null,null,C.b,C.a)),t["ɵdid"](49152,null,0,h.a,[k.a,[2,R.a],[2,E.a],v.a,t.ElementRef,t.Renderer],null,null),(l()(),t["ɵted"](3,["\n    "])),(l()(),t["ɵeld"](0,null,3,2,"ion-title",[],null,null,null,y.b,y.a)),t["ɵdid"](49152,null,0,T.a,[v.a,t.ElementRef,t.Renderer,[2,I.a],[2,h.a]],null,null),(l()(),t["ɵted"](0,["Subtitles"])),(l()(),t["ɵted"](3,["\n  "])),(l()(),t["ɵted"](null,["\n"])),(l()(),t["ɵted"](null,["\n"])),(l()(),t["ɵeld"](0,null,null,13,"ion-content",[["no-bounce",""]],[[2,"statusbar-padding",null],[2,"has-refresher",null]],null,null,D.b,D.a)),t["ɵdid"](4374528,null,0,S.a,[v.a,P.a,w.a,t.ElementRef,t.Renderer,k.a,B.a,t.NgZone,[2,R.a],[2,E.a]],null,null),(l()(),t["ɵted"](1,["\n  "])),(l()(),t["ɵeld"](0,null,1,9,"super-tabs",[],null,null,null,x.b,x.a)),t["ɵdid"](5488640,null,0,M.a,[[2,E.a],[2,R.a],k.a,t.ElementRef,t.Renderer2,N.a,F.a,w.a,P.a],null,null),t["ɵprd"](6144,null,O.a,null,[M.a]),(l()(),t["ɵted"](0,["\n      "])),(l()(),t["ɵeld"](0,null,0,1,"super-tab",[["title","YIFY"]],null,null,null,V.b,V.a)),t["ɵdid"](4440064,null,0,j.a,[M.a,k.a,v.a,P.a,t.ElementRef,t.NgZone,t.Renderer,t.ComponentFactoryResolver,L.j,K.a,t.ErrorHandler,[2,F.a],w.a,t.ChangeDetectorRef],{title:[0,"title"],root:[1,"root"]},null),(l()(),t["ɵted"](0,["\n      "])),(l()(),t["ɵeld"](0,null,0,1,"super-tab",[["title","SUBSCENE"]],null,null,null,V.b,V.a)),t["ɵdid"](4440064,null,0,j.a,[M.a,k.a,v.a,P.a,t.ElementRef,t.NgZone,t.Renderer,t.ComponentFactoryResolver,L.j,K.a,t.ErrorHandler,[2,F.a],w.a,t.ChangeDetectorRef],{title:[0,"title"],root:[1,"root"]},null),(l()(),t["ɵted"](0,["\n    "])),(l()(),t["ɵted"](1,["  \n"])),(l()(),t["ɵted"](null,["\n\n"]))],function(l,n){var e=n.component;l(n,17,0);l(n,21,0,"YIFY",e.yifySubs);l(n,24,0,"SUBSCENE",e.subsceneSubs)},function(l,n){l(n,4,0,t["ɵnov"](n,5)._hidden,t["ɵnov"](n,5)._sbPadding),l(n,13,0,t["ɵnov"](n,14).statusbarPadding,t["ɵnov"](n,14)._hasRefresher)})}var z=t["ɵccf"]("page-subtitle-tabs",o.a,function(l){return t["ɵvid"](0,[(l()(),t["ɵeld"](0,null,null,1,"page-subtitle-tabs",[],null,null,null,Y,A)),t["ɵdid"](49152,null,0,o.a,[E.a,q.a,Z.a],null,null)],null,null)},{},{},[]),H=e(74);e.d(n,"SubtitleTabsPageModuleNgFactory",function(){return J});var $,U=this&&this.__extends||($=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(l,n){l.__proto__=n}||function(l,n){for(var e in n)n.hasOwnProperty(e)&&(l[e]=n[e])},function(l,n){function e(){this.constructor=l}$(l,n),l.prototype=null===n?Object.create(n):(e.prototype=n.prototype,new e)}),J=new t.NgModuleFactory(function(l){function n(n){return l.call(this,n,[s.a,b.a,f.a,g.a,m.a,_.a,z],[])||this}return U(n,l),Object.defineProperty(n.prototype,"_NgLocalization_9",{get:function(){return null==this.__NgLocalization_9&&(this.__NgLocalization_9=new r.j(this.parent.get(t.LOCALE_ID))),this.__NgLocalization_9},enumerable:!0,configurable:!0}),Object.defineProperty(n.prototype,"_ɵi_10",{get:function(){return null==this.__ɵi_10&&(this.__ɵi_10=new i.k),this.__ɵi_10},enumerable:!0,configurable:!0}),Object.defineProperty(n.prototype,"_FormBuilder_11",{get:function(){return null==this.__FormBuilder_11&&(this.__FormBuilder_11=new i.c),this.__FormBuilder_11},enumerable:!0,configurable:!0}),n.prototype.createInternal=function(){return this._CommonModule_0=new r.b,this._ɵba_1=new i.j,this._FormsModule_2=new i.d,this._ReactiveFormsModule_3=new i.i,this._IonicModule_4=new d.a,this._IonicPageModule_5=new d.b,this._SuperTabsModule_6=new c.a,this._SharedModule_7=new u.a,this._SubtitleTabsPageModule_8=new a,this._LAZY_LOADED_TOKEN_12=o.a,this._SubtitleTabsPageModule_8},n.prototype.getInternal=function(l,n){return l===r.b?this._CommonModule_0:l===i.j?this._ɵba_1:l===i.d?this._FormsModule_2:l===i.i?this._ReactiveFormsModule_3:l===d.a?this._IonicModule_4:l===d.b?this._IonicPageModule_5:l===c.a?this._SuperTabsModule_6:l===u.a?this._SharedModule_7:l===a?this._SubtitleTabsPageModule_8:l===r.k?this._NgLocalization_9:l===i.k?this._ɵi_10:l===i.c?this._FormBuilder_11:l===H.a?this._LAZY_LOADED_TOKEN_12:n},n.prototype.destroyInternal=function(){},n}(t["ɵNgModuleInjector"]),a)},539:function(l,n,e){"use strict";e.d(n,"a",function(){return f}),n.b=g;var t=e(1),o=e(20),u=e(54),a=e(49),r=e(25),i=e(2),d=e(43),c=e(10),s=e(8),b=e(26),f=t["ɵcrt"]({encapsulation:2,styles:[],data:{}});function g(l){return t["ɵvid"](0,[(l()(),t["ɵeld"](0,null,null,1,"div",[["class","toolbar-background"]],null,null,null,null,null)),t["ɵdid"](278528,null,0,o.g,[t.IterableDiffers,t.KeyValueDiffers,t.ElementRef,t.Renderer],{klass:[0,"klass"],ngClass:[1,"ngClass"]},null),(l()(),t["ɵeld"](0,null,null,8,"button",[["class","back-button"],["ion-button","bar-button"]],[[8,"hidden",0]],[[null,"click"]],function(l,n,e){var t=!0;"click"===n&&(t=!1!==l.component.backButtonClick(e)&&t);return t},a.b,a.a)),t["ɵdid"](278528,null,0,o.g,[t.IterableDiffers,t.KeyValueDiffers,t.ElementRef,t.Renderer],{klass:[0,"klass"],ngClass:[1,"ngClass"]},null),t["ɵdid"](1097728,null,0,r.a,[[8,"bar-button"],i.a,t.ElementRef,t.Renderer],null,null),(l()(),t["ɵeld"](0,null,0,2,"ion-icon",[["class","back-button-icon"],["role","img"]],[[2,"hide",null]],null,null,null,null)),t["ɵdid"](278528,null,0,o.g,[t.IterableDiffers,t.KeyValueDiffers,t.ElementRef,t.Renderer],{klass:[0,"klass"],ngClass:[1,"ngClass"]},null),t["ɵdid"](147456,null,0,d.a,[i.a,t.ElementRef,t.Renderer],{name:[0,"name"]},null),(l()(),t["ɵeld"](0,null,0,2,"span",[["class","back-button-text"]],null,null,null,null,null)),t["ɵdid"](278528,null,0,o.g,[t.IterableDiffers,t.KeyValueDiffers,t.ElementRef,t.Renderer],{klass:[0,"klass"],ngClass:[1,"ngClass"]},null),(l()(),t["ɵted"](null,["",""])),t["ɵncd"](null,0),t["ɵncd"](null,1),t["ɵncd"](null,2),(l()(),t["ɵeld"](0,null,null,2,"div",[["class","toolbar-content"]],null,null,null,null,null)),t["ɵdid"](278528,null,0,o.g,[t.IterableDiffers,t.KeyValueDiffers,t.ElementRef,t.Renderer],{klass:[0,"klass"],ngClass:[1,"ngClass"]},null),t["ɵncd"](null,3)],function(l,n){var e=n.component;l(n,1,0,"toolbar-background","toolbar-background-"+e._mode);l(n,3,0,"back-button","back-button-"+e._mode);l(n,6,0,"back-button-icon","back-button-icon-"+e._mode),l(n,7,0,e._bbIcon);l(n,9,0,"back-button-text","back-button-text-"+e._mode);l(n,15,0,"toolbar-content","toolbar-content-"+e._mode)},function(l,n){var e=n.component;l(n,2,0,e._hideBb),l(n,5,0,t["ɵnov"](n,7)._hidden),l(n,10,0,e._backText)})}t["ɵccf"]("ion-navbar",u.a,function(l){return t["ɵvid"](0,[(l()(),t["ɵeld"](0,null,null,1,"ion-navbar",[["class","toolbar"]],[[8,"hidden",0],[2,"statusbar-padding",null]],null,null,g,f)),t["ɵdid"](49152,null,0,u.a,[c.a,[2,s.a],[2,b.a],i.a,t.ElementRef,t.Renderer],null,null)],null,function(l,n){l(n,0,0,t["ɵnov"](n,1)._hidden,t["ɵnov"](n,1)._sbPadding)})},{color:"color",mode:"mode",hideBackButton:"hideBackButton"},{},["[menuToggle],ion-buttons[left]","ion-buttons[start]","ion-buttons[end],ion-buttons[right]","*"])},540:function(l,n,e){"use strict";e.d(n,"a",function(){return d}),n.b=c;var t=e(1),o=e(20),u=e(145),a=e(2),r=e(73),i=e(54),d=t["ɵcrt"]({encapsulation:2,styles:[],data:{}});function c(l){return t["ɵvid"](2,[(l()(),t["ɵeld"](0,null,null,2,"div",[["class","toolbar-title"]],null,null,null,null,null)),t["ɵdid"](278528,null,0,o.g,[t.IterableDiffers,t.KeyValueDiffers,t.ElementRef,t.Renderer],{klass:[0,"klass"],ngClass:[1,"ngClass"]},null),t["ɵncd"](null,0)],function(l,n){l(n,1,0,"toolbar-title","toolbar-title-"+n.component._mode)},null)}t["ɵccf"]("ion-title",u.a,function(l){return t["ɵvid"](0,[(l()(),t["ɵeld"](0,null,null,1,"ion-title",[],null,null,null,c,d)),t["ɵdid"](49152,null,0,u.a,[a.a,t.ElementRef,t.Renderer,[2,r.a],[2,i.a]],null,null)],null,null)},{color:"color",mode:"mode"},{},["*"])},546:function(l,n,e){"use strict";e.d(n,"a",function(){return r}),n.b=i;var t=e(1),o=e(20),u=e(73),a=e(2),r=t["ɵcrt"]({encapsulation:2,styles:[],data:{}});function i(l){return t["ɵvid"](2,[(l()(),t["ɵeld"](0,null,null,1,"div",[["class","toolbar-background"]],null,null,null,null,null)),t["ɵdid"](278528,null,0,o.g,[t.IterableDiffers,t.KeyValueDiffers,t.ElementRef,t.Renderer],{klass:[0,"klass"],ngClass:[1,"ngClass"]},null),t["ɵncd"](null,0),t["ɵncd"](null,1),t["ɵncd"](null,2),(l()(),t["ɵeld"](0,null,null,2,"div",[["class","toolbar-content"]],null,null,null,null,null)),t["ɵdid"](278528,null,0,o.g,[t.IterableDiffers,t.KeyValueDiffers,t.ElementRef,t.Renderer],{klass:[0,"klass"],ngClass:[1,"ngClass"]},null),t["ɵncd"](null,3)],function(l,n){var e=n.component;l(n,1,0,"toolbar-background","toolbar-background-"+e._mode);l(n,6,0,"toolbar-content","toolbar-content-"+e._mode)},null)}t["ɵccf"]("ion-toolbar",u.a,function(l){return t["ɵvid"](0,[(l()(),t["ɵeld"](0,null,null,1,"ion-toolbar",[["class","toolbar"]],[[2,"statusbar-padding",null]],null,null,i,r)),t["ɵdid"](49152,null,0,u.a,[a.a,t.ElementRef,t.Renderer],null,null)],null,function(l,n){l(n,0,0,t["ɵnov"](n,1)._sbPadding)})},{color:"color",mode:"mode"},{},["[menuToggle],ion-buttons[left]","ion-buttons[start]","ion-buttons[end],ion-buttons[right]","*"])},548:function(l,n,e){"use strict";e.d(n,"a",function(){return t});e(1),e(254);var t=function(){return function(){}}()},549:function(l,n,e){"use strict";var t=e(1),o=e(112),u=e(43),a=e(2),r=e(170),i=e(20),d=e(113),c=e(164),s=t["ɵcrt"]({encapsulation:2,styles:[],data:{}});function b(l){return t["ɵvid"](0,[(l()(),t["ɵeld"](0,null,null,1,"ion-icon",[["role","img"]],[[2,"hide",null]],null,null,null,null)),t["ɵdid"](147456,null,0,u.a,[a.a,t.ElementRef,t.Renderer],{color:[0,"color"],name:[1,"name"]},null)],function(l,n){var e=n.component;l(n,1,0,e.color,e.icon)},function(l,n){l(n,0,0,t["ɵnov"](n,1)._hidden)})}function f(l){return t["ɵvid"](0,[(l()(),t["ɵeld"](0,null,null,2,"span",[["class","title"],["ion-text",""]],null,null,null,null,null)),t["ɵdid"](16384,null,0,r.a,[a.a,t.ElementRef,t.Renderer],{color:[0,"color"]},null),(l()(),t["ɵted"](null,["",""]))],function(l,n){l(n,1,0,n.component.color)},function(l,n){l(n,2,0,n.component.title)})}function g(l){return t["ɵvid"](2,[(l()(),t["ɵted"](null,["\n    "])),(l()(),t["ɵand"](16777216,null,null,1,null,b)),t["ɵdid"](16384,null,0,i.i,[t.ViewContainerRef,t.TemplateRef],{ngIf:[0,"ngIf"]},null),(l()(),t["ɵted"](null,["\n    "])),(l()(),t["ɵand"](16777216,null,null,1,null,f)),t["ɵdid"](16384,null,0,i.i,[t.ViewContainerRef,t.TemplateRef],{ngIf:[0,"ngIf"]},null),(l()(),t["ɵted"](null,["\n    "])),(l()(),t["ɵeld"](0,null,null,2,"ion-badge",[["mode","md"]],null,null,null,null,null)),t["ɵdid"](16384,null,0,d.a,[a.a,t.ElementRef,t.Renderer],{color:[0,"color"],mode:[1,"mode"]},null),(l()(),t["ɵted"](null,["",""])),(l()(),t["ɵted"](null,["\n    "])),(l()(),t["ɵeld"](0,null,null,0,"div",[["class","button-effect"]],null,null,null,null,null)),(l()(),t["ɵted"](null,["\n  "]))],function(l,n){var e=n.component;l(n,2,0,!!e.icon),l(n,5,0,!!e.title);l(n,8,0,e.badgeColor,"md")},function(l,n){l(n,9,0,n.component.badge)})}t["ɵccf"]("super-tab-button",c.a,function(l){return t["ɵvid"](0,[(l()(),t["ɵeld"](0,null,null,1,"super-tab-button",[["role","button"],["tappable",""]],[[2,"selected",null],[2,"title-only",null],[2,"icon-only",null],[2,"title-and-icon",null]],[[null,"click"]],function(l,n,e){var o=!0;return"click"===n&&(o=!1!==t["ɵnov"](l,1).onClick()&&o),o},g,s)),t["ɵdid"](49152,null,0,c.a,[t.ElementRef],null,null)],null,function(l,n){l(n,0,0,t["ɵnov"](n,1).selected,!!t["ɵnov"](n,1).title&&!t["ɵnov"](n,1).icon,!t["ɵnov"](n,1).title&&!!t["ɵnov"](n,1).icon,!!t["ɵnov"](n,1).title&&!!t["ɵnov"](n,1).icon)})},{selected:"selected",title:"title",icon:"icon",badge:"badge",badgeColor:"badgeColor",color:"color"},{select:"select"},[]);var m=e(546),_=e(73),p=e(163),v=e(7),R=e(12),C=t["ɵcrt"]({encapsulation:2,styles:[],data:{}});function h(l){return t["ɵvid"](0,[(l()(),t["ɵeld"](0,[[3,0],["indicator",1]],null,0,"div",[],[[8,"className",0]],null,null,null,null))],null,function(l,n){l(n,0,0,t["ɵinlineInterpolate"](1,"indicator ","button-md-"+n.component.indicatorColor,""))})}function k(l){return t["ɵvid"](0,[(l()(),t["ɵeld"](0,null,null,1,"super-tab-button",[["role","button"],["tappable",""]],[[2,"selected",null],[2,"title-only",null],[2,"icon-only",null],[2,"title-and-icon",null]],[[null,"select"],[null,"click"]],function(l,n,e){var o=!0,u=l.component;"click"===n&&(o=!1!==t["ɵnov"](l,1).onClick()&&o);"select"===n&&(o=!1!==u.onTabSelect(l.context.index)&&o);return o},g,s)),t["ɵdid"](49152,[[1,4]],0,c.a,[t.ElementRef],{selected:[0,"selected"],title:[1,"title"],icon:[2,"icon"],badge:[3,"badge"],badgeColor:[4,"badgeColor"],color:[5,"color"]},{select:"select"})],function(l,n){var e=n.component;l(n,1,0,e.selectedTab===n.context.index,n.context.$implicit.title,n.context.$implicit.icon,n.context.$implicit.badge,e.badgeColor,e.tabsColor)},function(l,n){l(n,0,0,t["ɵnov"](n,1).selected,!!t["ɵnov"](n,1).title&&!t["ɵnov"](n,1).icon,!t["ɵnov"](n,1).title&&!!t["ɵnov"](n,1).icon,!!t["ɵnov"](n,1).title&&!!t["ɵnov"](n,1).icon)})}function E(l){return t["ɵvid"](0,[(l()(),t["ɵeld"](0,[[3,0],["indicator",1]],null,0,"div",[],[[8,"className",0]],null,null,null,null))],null,function(l,n){l(n,0,0,t["ɵinlineInterpolate"](1,"indicator ","button-md-"+n.component.indicatorColor,""))})}function y(l){return t["ɵvid"](0,[t["ɵqud"](671088640,1,{tabButtons:1}),t["ɵqud"](402653184,2,{tabButtonsContainer:0}),t["ɵqud"](671088640,3,{indicator:0}),t["ɵqud"](402653184,4,{tabButtonsBar:0}),(l()(),t["ɵted"](null,["\n    "])),(l()(),t["ɵeld"](0,null,null,17,"ion-toolbar",[["class","toolbar"],["mode","md"]],[[2,"scroll-tabs",null],[2,"statusbar-padding",null]],null,null,m.b,m.a)),t["ɵdid"](49152,null,0,_.a,[a.a,t.ElementRef,t.Renderer],{color:[0,"color"],mode:[1,"mode"]},null),(l()(),t["ɵted"](3,["\n      "])),(l()(),t["ɵeld"](0,[[2,0],["tabButtonsContainer",1]],3,13,"div",[["class","tab-buttons-container"]],null,null,null,null,null)),(l()(),t["ɵted"](null,["\n        "])),(l()(),t["ɵand"](16777216,null,null,1,null,h)),t["ɵdid"](16384,null,0,i.i,[t.ViewContainerRef,t.TemplateRef],{ngIf:[0,"ngIf"]},null),(l()(),t["ɵted"](null,["\n        "])),(l()(),t["ɵeld"](0,[[4,0],["tabButtons",1]],null,4,"div",[["class","tab-buttons"]],null,null,null,null,null)),(l()(),t["ɵted"](null,["\n          "])),(l()(),t["ɵand"](16777216,null,null,1,null,k)),t["ɵdid"](802816,null,0,i.h,[t.ViewContainerRef,t.TemplateRef,t.IterableDiffers],{ngForOf:[0,"ngForOf"]},null),(l()(),t["ɵted"](null,["\n        "])),(l()(),t["ɵted"](null,["\n        "])),(l()(),t["ɵand"](16777216,null,null,1,null,E)),t["ɵdid"](16384,null,0,i.i,[t.ViewContainerRef,t.TemplateRef],{ngIf:[0,"ngIf"]},null),(l()(),t["ɵted"](null,["\n      "])),(l()(),t["ɵted"](3,["\n    "])),(l()(),t["ɵted"](null,["\n  "]))],function(l,n){var e=n.component;l(n,6,0,e.color,"md"),l(n,11,0,"bottom"===e.tabsPlacement),l(n,16,0,e.tabs),l(n,20,0,"top"===e.tabsPlacement)},function(l,n){l(n,5,0,n.component.scrollTabs,t["ɵnov"](n,6)._sbPadding)})}t["ɵccf"]("super-tabs-toolbar",p.a,function(l){return t["ɵvid"](0,[(l()(),t["ɵeld"](0,null,null,1,"super-tabs-toolbar",[],null,null,null,y,C)),t["ɵdid"](4374528,null,0,p.a,[t.ElementRef,v.a,t.Renderer2,R.a],null,null)],null,null)},{color:"color",tabsColor:"tabsColor",badgeColor:"badgeColor",scrollTabs:"scrollTabs",indicatorColor:"indicatorColor",selectedTab:"selectedTab",config:"config",tabsPlacement:"tabsPlacement"},{tabSelect:"tabSelect"},[]);var T=e(165),I=t["ɵcrt"]({encapsulation:2,styles:[],data:{}});function D(l){return t["ɵvid"](0,[t["ɵqud"](402653184,1,{container:0}),(l()(),t["ɵeld"](0,[[1,0],["container",1]],null,1,"div",[],null,null,null,null,null)),t["ɵncd"](null,0)],null,null)}t["ɵccf"]("super-tabs-container",T.a,function(l){return t["ɵvid"](0,[(l()(),t["ɵeld"](0,null,null,1,"super-tabs-container",[],null,null,null,D,I)),t["ɵdid"](4374528,null,0,T.a,[t.ElementRef,t.Renderer2,v.a,t.NgZone],null,null)],null,null)},{config:"config",tabsCount:"tabsCount",selectedTabIndex:"selectedTabIndex"},{tabSelect:"tabSelect",onDrag:"onDrag"},["*"]);var S=e(26),P=e(8),w=e(10),B=e(77),x=e(32),M=e(45);e.d(n,"a",function(){return N}),n.b=F;var N=t["ɵcrt"]({encapsulation:2,styles:[],data:{}});function F(l){return t["ɵvid"](0,[t["ɵqud"](402653184,1,{toolbar:0}),t["ɵqud"](402653184,2,{tabsContainer:0}),(l()(),t["ɵted"](null,["\n    "])),(l()(),t["ɵeld"](0,null,null,1,"super-tabs-toolbar",[],[[8,"hidden",0]],[[null,"tabSelect"]],function(l,n,e){var t=!0;"tabSelect"===n&&(t=!1!==l.component.onToolbarTabSelect(e)&&t);return t},y,C)),t["ɵdid"](4374528,[[1,4]],0,p.a,[t.ElementRef,v.a,t.Renderer2,R.a],{color:[0,"color"],tabsColor:[1,"tabsColor"],badgeColor:[2,"badgeColor"],scrollTabs:[3,"scrollTabs"],indicatorColor:[4,"indicatorColor"],selectedTab:[5,"selectedTab"],config:[6,"config"],tabsPlacement:[7,"tabsPlacement"]},{tabSelect:"tabSelect"}),(l()(),t["ɵted"](null,["\n    "])),(l()(),t["ɵeld"](0,null,null,4,"super-tabs-container",[],null,[[null,"tabSelect"],[null,"onDrag"]],function(l,n,e){var t=!0,o=l.component;"tabSelect"===n&&(t=!1!==o.onContainerTabSelect(e)&&t);"onDrag"===n&&(t=!1!==o.onDrag(e)&&t);return t},D,I)),t["ɵdid"](4374528,[[2,4]],0,T.a,[t.ElementRef,t.Renderer2,v.a,t.NgZone],{config:[0,"config"],tabsCount:[1,"tabsCount"],selectedTabIndex:[2,"selectedTabIndex"]},{tabSelect:"tabSelect",onDrag:"onDrag"}),(l()(),t["ɵted"](0,["\n      "])),t["ɵncd"](0,0),(l()(),t["ɵted"](0,["\n    "])),(l()(),t["ɵted"](null,["\n  "]))],function(l,n){var e=n.component;l(n,4,0,e.toolbarBackground,e.toolbarColor,e.badgeColor,e.scrollTabs,e.indicatorColor,e.selectedTabIndex,e.config,e.tabsPlacement),l(n,7,0,e.config,e._tabs.length,e.selectedTabIndex)},function(l,n){l(n,3,0,!n.component._isToolbarVisible)})}t["ɵccf"]("super-tabs",o.a,function(l){return t["ɵvid"](0,[(l()(),t["ɵeld"](0,null,null,2,"super-tabs",[],null,null,null,F,N)),t["ɵdid"](5488640,null,0,o.a,[[2,S.a],[2,P.a],w.a,t.ElementRef,t.Renderer2,B.a,x.a,R.a,v.a],null,null),t["ɵprd"](6144,null,M.a,null,[o.a])],function(l,n){l(n,1,0)},null)},{toolbarBackground:"toolbarBackground",toolbarColor:"toolbarColor",indicatorColor:"indicatorColor",badgeColor:"badgeColor",config:"config",id:"id",name:"name",height:"height",selectedTabIndex:"selectedTabIndex",scrollTabs:"scrollTabs",tabsPlacement:"tabsPlacement"},{tabSelect:"tabSelect"},["*"])},550:function(l,n,e){"use strict";e.d(n,"a",function(){return f}),n.b=g;var t=e(1),o=e(162),u=e(112),a=e(10),r=e(2),i=e(7),d=e(9),c=e(40),s=e(32),b=e(12),f=t["ɵcrt"]({encapsulation:2,styles:[],data:{}});function g(l){return t["ɵvid"](0,[t["ɵqud"](402653184,1,{_vp:0}),(l()(),t["ɵeld"](16777216,[[1,3],["viewport",1]],null,0,"div",[],null,null,null,null,null)),(l()(),t["ɵeld"](0,null,null,0,"div",[["class","nav-decor"]],null,null,null,null,null))],null,null)}t["ɵccf"]("super-tab",o.a,function(l){return t["ɵvid"](0,[(l()(),t["ɵeld"](0,null,null,1,"super-tab",[],null,null,null,g,f)),t["ɵdid"](4440064,null,0,o.a,[u.a,a.a,r.a,i.a,t.ElementRef,t.NgZone,t.Renderer,t.ComponentFactoryResolver,d.j,c.a,t.ErrorHandler,[2,s.a],b.a,t.ChangeDetectorRef],null,null)],function(l,n){l(n,1,0)},null)},{color:"color",mode:"mode",swipeBackEnabled:"swipeBackEnabled",title:"title",icon:"icon",root:"root",rootParams:"rootParams",tabId:"id",badge:"badge"},{},[])}});
+webpackJsonp([0],{
+
+/***/ 617:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Module", function() { return Module; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__page1__ = __webpack_require__(630);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ng_lazyload_image__ = __webpack_require__(285);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ng_lazyload_image___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_ng_lazyload_image__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+
+var Module = (function () {
+    function Module() {
+    }
+    return Module;
+}());
+Module = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
+        declarations: [
+            __WEBPACK_IMPORTED_MODULE_2__page1__["a" /* Page1Page */]
+        ],
+        imports: [
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__page1__["a" /* Page1Page */]), __WEBPACK_IMPORTED_MODULE_3_ng_lazyload_image__["LazyLoadImageModule"]
+        ]
+    })
+], Module);
+
+//# sourceMappingURL=page1.module.js.map
+
+/***/ }),
+
+/***/ 623:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Page2Page; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_yify_movies_yify_movies__ = __webpack_require__(79);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ng_lazyload_image__ = __webpack_require__(285);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ng_lazyload_image___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_ng_lazyload_image__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__home_home__ = __webpack_require__(286);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_toast__ = __webpack_require__(289);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+var Page2Page = (function () {
+    function Page2Page(navCtrl, navParams, yifyprovider, homepage, toast) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.yifyprovider = yifyprovider;
+        this.homepage = homepage;
+        this.toast = toast;
+        this.movielimit = 50;
+        this.moviepage = 1;
+        this.movielist = [];
+        this.badge = 0;
+        this.color = 'primary';
+        this.mode = 'determinate';
+        this.value = 50;
+        this.asyncCall = false;
+        this.defaultImage = 'https://i.imgur.com/DLkGimY.png';
+        this.errorImage = 'https://images.unsplash.com/photo-1443890923422-7819ed4101c0?fm=jpg';
+        this.isScrolled = false;
+        this.offset = 800;
+        this.darkui = true;
+        this.sitecount = -1;
+        this.rootNavCtrl = navParams.get('rootNavCtrl');
+        this.sitecount++;
+        this.loadMovies(this.movielimit, this.moviepage, null);
+    }
+    Page2Page.prototype.loadMovies = function (limit, page, infiniteScroll) {
+        var _this = this;
+        try {
+            if (!this.asyncCall) {
+                if (this.movielist.length == 0)
+                    this.asyncCall = true;
+                this.yifyprovider.loadYifyTopRatedMovies(limit, page, this.sitecount).subscribe(function (res) {
+                    console.log(res);
+                    if (res.status == 'ok') {
+                        if (_this.movielist.length == 0) {
+                            _this.yifyprovider.setUrl(_this.sitecount);
+                            _this.movielist = res.data.movies;
+                            _this.asyncCall = false;
+                            if (infiniteScroll != null)
+                                infiniteScroll.complete();
+                            _this.moviepage = _this.moviepage + 1;
+                            _this.loadMovies(_this.movielimit, _this.moviepage, null);
+                        }
+                        else {
+                            var list = res.data.movies;
+                            for (var i = 0; i < list.length; i++) {
+                                _this.movielist.push(list[i]);
+                            }
+                            _this.asyncCall = false;
+                            if (infiniteScroll != null) {
+                                infiniteScroll.complete();
+                            }
+                        }
+                    }
+                }, function (error) {
+                    _this.asyncCall = false;
+                    if (_this.sitecount < _this.yifyprovider.yifysites.length) {
+                        _this.sitecount++;
+                        _this.loadMovies(_this.movielimit, _this.moviepage, null);
+                    }
+                    else {
+                        _this.toast.show("Server issue please try again later!", '5000', 'bottom').subscribe(function (toast) {
+                            console.log(toast);
+                        });
+                    }
+                    throw error;
+                });
+            }
+        }
+        catch (error) {
+            if (infiniteScroll != null)
+                infiniteScroll.complete();
+        }
+    };
+    Page2Page.prototype.doInfinite = function (infiniteScroll) {
+        console.log('Begin async operation');
+        if (!this.asyncCall) {
+            this.moviepage = this.moviepage + 1;
+            this.loadMovies(this.movielimit, this.moviepage, infiniteScroll);
+        }
+        else {
+            infiniteScroll.complete();
+        }
+    };
+    Page2Page.prototype.openMoviePage = function (movie) {
+        this.viewmovie = movie;
+        this.rootNavCtrl.push('MoviedetailsPage', { movie: movie });
+    };
+    Page2Page.prototype.doRefresh = function (refresher) {
+        this.moviepage = 1;
+        this.movielist = [];
+        refresher.complete();
+        this.loadMovies(this.movielimit, this.moviepage, null);
+    };
+    Page2Page.prototype.scrollToTop = function () {
+        this.isScrolled = false;
+        this.content.scrollToTop(1000);
+    };
+    Page2Page.prototype.shareApp = function () {
+        this.homepage.shareApp();
+    };
+    Page2Page.prototype.ngAfterViewInit = function () {
+        var _this = this;
+        this.content.ionScroll.subscribe(function (data) {
+            if (data != null && data != undefined && data.scrollTop == 0) {
+                _this.isScrolled = false;
+            }
+            else {
+                if (data == null || data == undefined)
+                    _this.isScrolled = false;
+                else
+                    _this.isScrolled = true;
+            }
+        });
+    };
+    Page2Page.prototype.openSettings = function () {
+        this.rootNavCtrl.push('AppSettingsPage');
+    };
+    return Page2Page;
+}());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Content */]),
+    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Content */])
+], Page2Page.prototype, "content", void 0);
+Page2Page = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* IonicPage */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'page-page2',template:/*ion-inline-start:"/media/ravikumar/Soft_Workspace/My GithHub/yify-browser/src/pages/page2/page2.html"*/'<ion-content padding #container [ngClass]="(darkui)?\'darkcolor\':\'litecolor\'" >\n\n        <ion-refresher (ionRefresh)="doRefresh($event)" pullMax="250">\n                <ion-refresher-content\n                pullingIcon="arrow-dropdown"\n                pullingText="Release to refresh"\n                refreshingSpinner="circles"\n                refreshingText="Refreshing...">\n              </ion-refresher-content>\n        </ion-refresher>\n            \n    <div>\n        <ion-spinner name="crescent" *ngIf="asyncCall == true" \n        style="top: 50%;left: 50%; margin-top: 5px;margin-left: -14px;" color="spinner">\n        </ion-spinner>\n    </div>\n\n    <ion-list class="animate-ripple">\n\n        <ion-grid>\n            <ion-row justify-content-center>\n                <ion-col col-4 *ngFor="let movie of movielist" (click)="openMoviePage(movie)">\n                    \n                    <div class="tileimage col" \n                    [lazyLoad]="movie.medium_cover_image" \n                    [offset]="offset" [defaultImage]="defaultImage" [errorImage]="defaultImage"\n                    [scrollTarget]="container.getScrollElement()"\n                        [scrollObservable]="container.ionScroll">\n\n                    </div>\n\n                    \n                    <br>\n                    <span style="padding-left: 5px;float: left;">{{movie.title_long}}</span><br>\n                </ion-col>\n            </ion-row>\n        </ion-grid>\n\n\n\n\n    </ion-list>\n    \n    <ion-fab bottom right>\n\n        <button ion-fab (click)="openSettings()" class="animated zoomIn">\n          <ion-icon ios="ios-settings" md="md-settings"></ion-icon>\n        </button>\n    \n      </ion-fab>\n\n    <ion-infinite-scroll (ionInfinite)="doInfinite($event)" threshold="60%">\n        <ion-infinite-scroll-content loadingSpinner="crescent" color="spinner">\n        </ion-infinite-scroll-content>\n    </ion-infinite-scroll>\n\n</ion-content>'/*ion-inline-end:"/media/ravikumar/Soft_Workspace/My GithHub/yify-browser/src/pages/page2/page2.html"*/,
+        providers: [__WEBPACK_IMPORTED_MODULE_3_ng_lazyload_image__["LazyLoadImageDirective"], __WEBPACK_IMPORTED_MODULE_5__ionic_native_toast__["a" /* Toast */]],
+        styles: ["\n  .ng-lazyloaded {\n      animation: fadein .5s;\n  }\n  @keyframes fadein {\n      from { opacity: 0; }\n      to   { opacity: 1; }\n  }\n  \n"]
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* NavParams */],
+        __WEBPACK_IMPORTED_MODULE_2__providers_yify_movies_yify_movies__["a" /* YifyMoviesProvider */], __WEBPACK_IMPORTED_MODULE_4__home_home__["a" /* HomePage */], __WEBPACK_IMPORTED_MODULE_5__ionic_native_toast__["a" /* Toast */]])
+], Page2Page);
+
+//# sourceMappingURL=page2.js.map
+
+/***/ }),
+
+/***/ 630:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Page1Page; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_storage__ = __webpack_require__(44);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_yify_movies_yify_movies__ = __webpack_require__(79);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__home_home__ = __webpack_require__(286);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ng_lazyload_image__ = __webpack_require__(285);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ng_lazyload_image___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_ng_lazyload_image__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_app_availability__ = __webpack_require__(292);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_page2_page2__ = __webpack_require__(623);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__app_app_component__ = __webpack_require__(288);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_settings_settings__ = __webpack_require__(144);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__ionic_native_toast__ = __webpack_require__(289);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+
+
+
+
+
+
+var Page1Page = (function () {
+    function Page1Page(navCtrl, navParams, yifyprovider, localstorage, homepage, platform, appAvailability, alertCtrl, toastCtrl, page2page, myapp, settings, toast) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.yifyprovider = yifyprovider;
+        this.localstorage = localstorage;
+        this.homepage = homepage;
+        this.platform = platform;
+        this.appAvailability = appAvailability;
+        this.alertCtrl = alertCtrl;
+        this.toastCtrl = toastCtrl;
+        this.page2page = page2page;
+        this.myapp = myapp;
+        this.settings = settings;
+        this.toast = toast;
+        this.yifyappsub = 'Browser for YIFY';
+        this.yifyappmes = 'Download YIFY Torrent Browser (YTS) App from playstore to download high quality 720p,1080p,3D movies !!';
+        this.yifyiconurl = 'https://i.imgur.com/MvPgeiT.png';
+        this.movielimit = 50;
+        this.moviepage = 1;
+        this.movielist = [];
+        this.badge = 0;
+        this.color = 'primary';
+        this.mode = 'determinate';
+        this.value = 50;
+        this.asyncCall = false;
+        this.defaultImage = 'https://i.imgur.com/DLkGimY.png';
+        this.errorImage = 'https://images.unsplash.com/photo-1443890923422-7819ed4101c0?fm=jpg';
+        this.youtube_android = 'com.google.android.youtube';
+        this.youtube_ios = 'youtube://';
+        this.isScrolled = false;
+        this.offset = 100;
+        this.sitecount = -1;
+        this.position = 'bottom';
+        this.icon = 'more';
+        this.enableBackdropDismiss = true;
+        this.buttonColor = 'dark';
+        this.rootNavCtrl = navParams.get('rootNavCtrl');
+        this.sitecount++;
+        this.loadMovies(this.movielimit, this.moviepage, null);
+        this.checkApps();
+        this.isUpdateAvailable();
+        platform.ready().then(function () {
+        });
+    }
+    Page1Page.prototype.presentToast = function (message) {
+        var toast = this.toastCtrl.create({
+            message: message,
+            duration: 1000
+        });
+        toast.present();
+    };
+    Page1Page.prototype.isUpdateAvailable = function () {
+    };
+    Page1Page.prototype.setTheme = function (theme) {
+        this.selectedTheme = theme;
+    };
+    Page1Page.prototype.ngAfterViewInit = function () {
+        var _this = this;
+        this.content.ionScroll.subscribe(function (data) {
+            if (data != null && data != undefined && data.scrollTop == 0) {
+                _this.isScrolled = false;
+            }
+            else {
+                if (data == null || data == undefined)
+                    _this.isScrolled = false;
+                else
+                    _this.isScrolled = true;
+            }
+        });
+    };
+    Page1Page.prototype.checkApps = function () {
+        var _this = this;
+        var app;
+        if (this.platform.is('ios')) {
+            app = this.youtube_ios;
+        }
+        else if (this.platform.is('android')) {
+            app = this.youtube_android;
+        }
+        this.appAvailability.check(app)
+            .then(function (yes) { return _this.localstorage.set('hasytapp', true); }, function (no) { return _this.localstorage.set('hasytapp', false); });
+    };
+    Page1Page.prototype.loadMovies = function (limit, page, infiniteScroll) {
+        var _this = this;
+        try {
+            if (!this.asyncCall) {
+                if (this.movielist.length == 0)
+                    this.asyncCall = true;
+                this.yifyprovider.loadYifyMovies(limit, page, this.sitecount).subscribe(function (res) {
+                    console.log(res);
+                    if (res.status == 'ok') {
+                        if (_this.movielist.length == 0) {
+                            _this.yifyprovider.setUrl(_this.sitecount);
+                            _this.showBadgeCount(res.data.movie_count);
+                            _this.movielist = res.data.movies;
+                            _this.asyncCall = false;
+                            if (infiniteScroll != null)
+                                infiniteScroll.complete();
+                            _this.moviepage = _this.moviepage + 1;
+                            _this.loadMovies(_this.movielimit, _this.moviepage, null);
+                        }
+                        else {
+                            var list = res.data.movies;
+                            for (var i = 0; i < list.length; i++) {
+                                _this.movielist.push(list[i]);
+                            }
+                            _this.asyncCall = false;
+                            if (infiniteScroll != null) {
+                                infiniteScroll.complete();
+                            }
+                        }
+                    }
+                }, function (error) {
+                    _this.asyncCall = false;
+                    if (_this.sitecount < _this.yifyprovider.yifysites.length) {
+                        _this.sitecount++;
+                        _this.loadMovies(_this.movielimit, _this.moviepage, null);
+                    }
+                    else {
+                        _this.toast.show("Server issue please try again later!", '10000', 'bottom').subscribe(function (toast) {
+                            console.log(toast);
+                        });
+                    }
+                    throw error;
+                });
+            }
+        }
+        catch (error) {
+            if (infiniteScroll != null)
+                infiniteScroll.complete();
+        }
+    };
+    Page1Page.prototype.doInfinite = function (infiniteScroll) {
+        console.log('Begin async operation');
+        if (!this.asyncCall) {
+            this.moviepage = this.moviepage + 1;
+            this.loadMovies(this.movielimit, this.moviepage, infiniteScroll);
+        }
+        else {
+            infiniteScroll.complete();
+        }
+    };
+    Page1Page.prototype.openMoviePage = function (movie) {
+        this.rootNavCtrl.push('MoviedetailsPage', { movie: movie });
+    };
+    Page1Page.prototype.showBadgeCount = function (badgecount) {
+        var _this = this;
+        this.localstorage.get('badgecount').then(function (value) {
+            if (value == undefined || value == null) {
+                _this.localstorage.set('badgecount', badgecount);
+                _this.homepage.setBadgeCount('');
+            }
+            else {
+                var badge = (badgecount - value > 0) ? badgecount - value : '';
+                _this.localstorage.set('badgecount', badgecount);
+                _this.homepage.setBadgeCount(badge);
+            }
+        });
+    };
+    Page1Page.prototype.doRefresh = function (refresher) {
+        this.moviepage = 1;
+        this.movielist = [];
+        refresher.complete();
+        this.loadMovies(this.movielimit, this.moviepage, null);
+    };
+    Page1Page.prototype.openSettings = function () {
+        this.rootNavCtrl.push('AppSettingsPage');
+    };
+    Page1Page.prototype.scrollToTop = function () {
+        this.isScrolled = false;
+        this.content.scrollToTop(1000);
+    };
+    Page1Page.prototype.shareApp = function () {
+        if (this.myapp.selectedTheme === 'dark-theme') {
+            this.myapp.selectedTheme = 'light-theme';
+        }
+        else {
+            this.myapp.selectedTheme = 'dark-theme';
+        }
+    };
+    return Page1Page;
+}());
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Content */]),
+    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Content */])
+], Page1Page.prototype, "content", void 0);
+Page1Page = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* IonicPage */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'page-page1',template:/*ion-inline-start:"/media/ravikumar/Soft_Workspace/My GithHub/yify-browser/src/pages/page1/page1.html"*/'<ion-content padding #container [ngClass]="(darkui)?\'darkcolor\':\'litecolor\'">\n  <ion-refresher (ionRefresh)="doRefresh($event)" pullMax="250">\n    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Release to refresh" refreshingSpinner="circles" refreshingText="Refreshing...">\n    </ion-refresher-content>\n  </ion-refresher>\n  <div>\n    <ion-spinner color="spinner" name="crescent" *ngIf="asyncCall == true" style="top: 50%;left: 50%; margin-top: 5px;margin-left: -14px;">\n    </ion-spinner>\n  </div>\n\n  <ion-list class="animate-ripple">\n\n    <ion-grid>\n      <ion-row justify-content-center>\n        <ion-col tappable col-4 *ngFor="let movie of movielist" (click)="openMoviePage(movie)">\n\n          <div class="tileimage col" [lazyLoad]="movie.medium_cover_image" [offset]="offset" [defaultImage]="defaultImage" [errorImage]="defaultImage"\n            [scrollTarget]="container.getScrollElement()" [scrollObservable]="container.ionScroll">\n\n          </div>\n          <br>\n          <span style="padding-left: 5px;float: left;">{{movie.title_long}}</span>\n          <br>\n        </ion-col>\n      </ion-row>\n    </ion-grid>\n\n  </ion-list>\n\n  <ion-fab bottom right>\n\n    <button ion-fab (click)="openSettings()" class="animated zoomIn">\n      <ion-icon ios="ios-settings" md="md-settings"></ion-icon>\n    </button>\n\n  </ion-fab>\n  \n\n  <ion-infinite-scroll (ionInfinite)="doInfinite($event)" threshold="30%">\n    <ion-infinite-scroll-content loadingSpinner="crescent" color="spinner">\n    </ion-infinite-scroll-content>\n  </ion-infinite-scroll>\n\n\n\n</ion-content>\n'/*ion-inline-end:"/media/ravikumar/Soft_Workspace/My GithHub/yify-browser/src/pages/page1/page1.html"*/,
+        providers: [__WEBPACK_IMPORTED_MODULE_9__providers_settings_settings__["a" /* SettingsProvider */], __WEBPACK_IMPORTED_MODULE_5_ng_lazyload_image__["LazyLoadImageDirective"], __WEBPACK_IMPORTED_MODULE_6__ionic_native_app_availability__["a" /* AppAvailability */], __WEBPACK_IMPORTED_MODULE_7__pages_page2_page2__["a" /* Page2Page */], __WEBPACK_IMPORTED_MODULE_10__ionic_native_toast__["a" /* Toast */]],
+        styles: ["\n  .ng-lazyloaded {\n      animation: fadein .3s;\n  }\n  @keyframes fadein {\n      from { opacity: 0; }\n      to   { opacity: 1; }\n  }\n\n\n"]
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* NavController */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* NavParams */],
+        __WEBPACK_IMPORTED_MODULE_3__providers_yify_movies_yify_movies__["a" /* YifyMoviesProvider */],
+        __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */],
+        __WEBPACK_IMPORTED_MODULE_4__home_home__["a" /* HomePage */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* Platform */],
+        __WEBPACK_IMPORTED_MODULE_6__ionic_native_app_availability__["a" /* AppAvailability */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* ToastController */], __WEBPACK_IMPORTED_MODULE_7__pages_page2_page2__["a" /* Page2Page */],
+        __WEBPACK_IMPORTED_MODULE_8__app_app_component__["a" /* MyApp */], __WEBPACK_IMPORTED_MODULE_9__providers_settings_settings__["a" /* SettingsProvider */], __WEBPACK_IMPORTED_MODULE_10__ionic_native_toast__["a" /* Toast */]])
+], Page1Page);
+
+//# sourceMappingURL=page1.js.map
+
+/***/ })
+
+});
+//# sourceMappingURL=0.js.map
