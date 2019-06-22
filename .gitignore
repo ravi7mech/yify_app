@@ -2,4 +2,8 @@ node_modules
 platforms
 plugins
 .sourcemaps
+<<<<<<< HEAD
 www/*
+=======
+www
+>>>>>>> c33a342bc469410716344aa1a22f008cd50f9233

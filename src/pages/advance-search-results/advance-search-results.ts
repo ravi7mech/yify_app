@@ -60,9 +60,20 @@ export class AdvanceSearchResultsPage {
                     if (infiniteScroll != null) infiniteScroll.complete();
                   }
                   else {
+<<<<<<< HEAD
                     this.movielist = [...this.movielist,...res.data.movies];
                     this.asyncCall = false;
                     if (infiniteScroll) infiniteScroll.complete();   
+=======
+                    let list = res.data.movies;
+                    for (let i = 0; i < list.length; i++) {
+                      this.movielist.push(list[i]);
+                    }
+                    this.asyncCall = false;
+                    if (infiniteScroll != null) {
+                      infiniteScroll.complete();
+                    }
+>>>>>>> c33a342bc469410716344aa1a22f008cd50f9233
                   }
                 }else{
                   this.asyncCall = false;

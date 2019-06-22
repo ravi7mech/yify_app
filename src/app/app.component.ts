@@ -46,16 +46,40 @@ export class MyApp {
       params: { type: 'all' }
     },
     {
+<<<<<<< HEAD
+=======
+      name: 'Subtitles',
+      page: 'SubtitleSearchPage',
+      faclass: 'fa fa-file-archive-o fa-lg'
+    },
+    {
+>>>>>>> c33a342bc469410716344aa1a22f008cd50f9233
       name: 'Advanced Search',
       page: 'AdvancedSearchPage',
       faclass: 'fa fa-search-plus fa-lg'
     },
     {
+<<<<<<< HEAD
+=======
+      name: 'Share',
+      page: 'SharePage',
+      faclass: 'fa fa-share-alt fa-lg'
+    },
+    {
+>>>>>>> c33a342bc469410716344aa1a22f008cd50f9233
       name: 'Settings',
       page: 'AppSettingsPage',
       faclass: 'fa fa-cog fa-lg'
     },
     {
+<<<<<<< HEAD
+=======
+      name: 'Rate Us',
+      page: 'RateUs',
+      faclass: 'fa fa-star fa-lg'
+    },
+    {
+>>>>>>> c33a342bc469410716344aa1a22f008cd50f9233
       name: 'Privacy Policy',
       page: 'PrivacyPolicy',
       faclass: 'fa fa-file-text fa-lg'

@@ -98,7 +98,11 @@ export class Page1Page {
     });
   }
   checkApps(): void {
+<<<<<<< HEAD
     let app:string;
+=======
+    let app;
+>>>>>>> c33a342bc469410716344aa1a22f008cd50f9233
     if (this.platform.is('ios')) {
       app = this.youtube_ios;
     } else if (this.platform.is('android')) {
@@ -123,14 +127,29 @@ export class Page1Page {
               this.showBadgeCount(res.data.movie_count);
               this.movielist = res.data.movies;
               this.asyncCall = false;
+<<<<<<< HEAD
               if (infiniteScroll) infiniteScroll.complete();
+=======
+              if (infiniteScroll != null) infiniteScroll.complete();
+>>>>>>> c33a342bc469410716344aa1a22f008cd50f9233
               this.moviepage = this.moviepage + 1;
               this.loadMovies(this.movielimit, this.moviepage, null);
             }
             else {
+<<<<<<< HEAD
              this.movielist = [...this.movielist,...res.data.movies];
               this.asyncCall = false;
               if (infiniteScroll) infiniteScroll.complete();             
+=======
+              let list = res.data.movies;
+              for (let i = 0; i < list.length; i++) {
+                this.movielist.push(list[i]);
+              }
+              this.asyncCall = false;
+              if (infiniteScroll != null) {
+                infiniteScroll.complete();
+              }
+>>>>>>> c33a342bc469410716344aa1a22f008cd50f9233
             }
           }
         }, error => {
@@ -148,7 +167,11 @@ export class Page1Page {
         })
       }
     } catch (error) {
+<<<<<<< HEAD
       if (infiniteScroll) infiniteScroll.complete();
+=======
+      if (infiniteScroll != null) infiniteScroll.complete();
+>>>>>>> c33a342bc469410716344aa1a22f008cd50f9233
     }
   }
   doInfinite(infiniteScroll) {
