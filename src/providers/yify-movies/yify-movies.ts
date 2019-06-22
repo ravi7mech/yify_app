@@ -6,11 +6,7 @@ import 'rxjs/add/operator/catch'
 import { Response, YifySubtitleResultJson, SubsceneResults, TMDbResponse } from '../../models/moviesjson'
 @Injectable()
 export class YifyMoviesProvider {
-<<<<<<< HEAD
   yifysites: any = ['https://yts.lt/api/v2', 'https://yts.unblocked.lat/api/v2', 'https://yts.bypassed.org/api/v2', 'https://yts.pe/api/v2/',
-=======
-  yifysites: any = ['https://yts.am/api/v2', 'https://yts.unblocked.lat/api/v2', 'https://yts.bypassed.org/api/v2', 'https://yts.pe/api/v2/',
->>>>>>> c33a342bc469410716344aa1a22f008cd50f9233
     'https://yifymovie.co/api/v2', 'https://yifytorrent.to/api/v2/', 'https://yts.me/api/v2','https://yts.gs/api/v2']
   sitecount: number = -1
   Url: string

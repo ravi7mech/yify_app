@@ -82,7 +82,6 @@ export class AdvancedSearchPage {
   }
   getQueryStringForAdvancedSearch(){
         let qstring = '';
-<<<<<<< HEAD
         if(this.genre){
           qstring = qstring.concat('genre='+this.genre)
           qstring = qstring.concat('&')
@@ -108,33 +107,6 @@ export class AdvancedSearchPage {
           qstring = qstring.concat('&')
         }
         if (qstring && qstring.charAt(qstring.length - 1) == '&') {
-=======
-        if(this.genre != undefined && this.genre != null && this.genre !=''){
-          qstring = qstring.concat('genre='+this.genre)
-          qstring = qstring.concat('&')
-        }
-        if(this.quality != undefined && this.quality != null && this.quality !=''){
-          qstring = qstring.concat('quality='+this.quality)
-          qstring = qstring.concat('&')
-        }
-        if(this.minimum_rating != undefined && this.minimum_rating != null && this.minimum_rating !=''){
-          qstring = qstring.concat('minimum_rating='+this.minimum_rating)
-          qstring.concat('&')
-        }
-        if(this.sort_by != undefined && this.sort_by != null && this.sort_by !=''){
-          qstring = qstring.concat('sort_by='+this.sort_by)
-          qstring = qstring.concat('&')
-        }
-        if(this.order_by != undefined && this.order_by != null && this.order_by !=''){
-          qstring = qstring.concat('order_by='+this.order_by)
-          qstring = qstring.concat('&')
-        }
-        if(this.moviename != undefined && this.moviename != null && this.moviename !=''){
-          qstring = qstring.concat('query_term='+this.moviename)
-          qstring = qstring.concat('&')
-        }
-        if (qstring != '' && qstring.charAt(qstring.length - 1) == '&') {
->>>>>>> c33a342bc469410716344aa1a22f008cd50f9233
           qstring = qstring.substr(0, qstring.length - 1);
         }
         return qstring;
