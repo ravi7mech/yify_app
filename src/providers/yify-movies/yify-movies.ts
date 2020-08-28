@@ -17,7 +17,7 @@ export class YifyMoviesProvider {
   subscene_download_json: any = { "downlink": [{ "elem": ".download > a:first-of-type", "link": "href" }] }
   Tmdburl: any = 'https://api.themoviedb.org/3/search/movie?include_adult=false&api_key=fa286812af448bf2745c5c960c7b964e'
   ServerIp: any = 'http://18.217.205.247:7070/'
-  /* https://api.themoviedb.org/3/find/tt5997666?api_key=fa286812af448bf2745c5c960c7b964e&language=en-US&external_source=imdb_id */
+
   constructor(public http: Http) {
   }
   loadYifyMovies(limit: number, page: number, sitecount: number): Observable<Response> {
