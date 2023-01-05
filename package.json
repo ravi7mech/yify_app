@@ -80,7 +80,7 @@
   },
   "devDependencies": {
     "@angular/cli": "^1.4.2",
-    "@ionic/app-scripts": "^2.1.4",
+    "@ionic/app-scripts": "^3.2.4",
     "@ionic/cli-plugin-cordova": "1.6.2",
     "@ionic/cli-plugin-ionic-angular": "1.4.1",
     "typescript": "2.3.4"
